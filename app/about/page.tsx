@@ -1,6 +1,7 @@
 "use client"
-
+import { useState, useEffect } from "react";
 import { Users, Target, Lightbulb, Award } from "lucide-react"
+
 
 export default function AboutPage() {
   const values = [
@@ -26,11 +27,64 @@ export default function AboutPage() {
     },
   ]
 
+  const images = [
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=90",
+  ]
+  const videos = [
+    "/videos/video1.crdownload",
+    "/videos/video2.crdownload",
+    "/videos/video3.crdownload"
+  ]
+
+  const [index, setIndex] = useState(0);
+  const [ind, setInd] = useState(0);
+  const [fade, setFade] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // ⏱️ change every 5s
+
+    const interval2 = setInterval(() => {
+      setFade(false); // fade out
+
+      setTimeout(() => {
+        setInd((prev) => (prev + 1) % videos.length);
+        setFade(true); // fade in
+      }, 600); // match fade duration
+
+    }, 3000); // video duration
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(interval2)
+
+    }
+  }, []);
+
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 lg:py-24 bg-black/70 text-primary-foreground">
+        <div className="absolute top-0 left-0 w-full -z-10 h-full overflow-hidden">
+
+          {/* Video Layer */}
+          <video
+            key={index}
+            src={videos[index]}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={`
+          absolute inset-0 w-full h-full object-cover
+          transition-opacity 
+          ${fade ? "opacity-100 " : "opacity-50"}
+        `}
+          />
+        </div>
+        <div className="relative  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">About IEM College</h1>
             <p className="text-lg opacity-90">
@@ -60,12 +114,23 @@ export default function AboutPage() {
                 core commitment to developing ethical, thoughtful, and visionary leaders.
               </p>
             </div>
-            <div className="relative h-96 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl overflow-hidden animate-fade-in">
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-                alt="IEM College Campus"
-                className="w-full h-full object-cover"
-              />
+            {/* image scroll */}
+            <div className="relative w-full h-full overflow-hidden border-[3px] border-black/10 border-solid ">
+
+              <div
+                className="flex transition-transform h-full w-full duration-700 ease-in-out"
+                style={{ transform: `translateX(-${index * 100}%)` }}
+              >
+                {images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    className="w-full h-full object-fit flex-shrink-0"
+                    alt=""
+                  />
+                ))}
+              </div>
+
             </div>
           </div>
         </div>
