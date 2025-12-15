@@ -6,6 +6,9 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
+// 👉 ADD THIS IMPORT
+import { FacultyProvider } from "@/app/context/FacultyContext"
+
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
@@ -40,10 +43,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <Navbar />
-        {children}
-        <Footer />
-        <Analytics />
+
+        {/* ✅ Wrap entire app with FacultyProvider */}
+        <FacultyProvider>
+          <Navbar />
+          
+          {children}
+
+          <Footer />
+          <Analytics />
+        </FacultyProvider>
+
       </body>
     </html>
   )
