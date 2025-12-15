@@ -36,7 +36,7 @@
     ".next\\dev/types/**/*.ts",
     ".next\\dev/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ],
+, "app/faculty/facultyinfo"  ],
   "exclude": [
     "node_modules"
   ]
