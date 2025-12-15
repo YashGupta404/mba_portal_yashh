@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import { Users, Target, Lightbulb, Award } from "lucide-react"
-
+import Videoanimation from "../../components/ui/videoanimation.jsx"
 
 export default function AboutPage() {
   const values = [
@@ -33,29 +33,20 @@ export default function AboutPage() {
     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=90",
   ]
   const videos = [
-    "/videos/video1.mp4",
-    "/videos/video2.mp4",
-    "/videos/video3.mp4"
-  ]
+        "/videos/video1.mp4",
+        "/videos/video2.mp4",
+        "/videos/video3.mp4"
+    ]
 
   const [index, setIndex] = useState(0);
-  const [ind, setInd] = useState(0);
-  const [fade, setFade] = useState(true);
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 5000); // ⏱️ change every 5s
 
-    const interval2 = setInterval(() => {
-      setFade(false); // fade out
-      setInd((prev) => (prev + 1) % videos.length);
-     
-
-    }, 6000); // video duration
-
     return () => {
       clearInterval(interval);
-      clearInterval(interval2)
 
     }
   }, []);
@@ -64,22 +55,7 @@ export default function AboutPage() {
     <main className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative py-16 lg:py-24 bg-black/60 text-primary-foreground">
-        <div className="absolute top-0 left-0 w-full -z-10 h-full overflow-hidden">
-
-          {/* Video Layer */}
-          <video
-            key={index}
-            src={videos[index]}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className={`
-          absolute inset-0 w-full h-full object-cover object-top
-          transition-opacity 
-        `}
-          />
-        </div>
+        <Videoanimation videos={videos}/>
         <div className="relative  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 drop-shadow-[2px_2px_5px_white]">About IEM College</h1>
