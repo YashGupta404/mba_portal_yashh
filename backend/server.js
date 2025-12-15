@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 // Routes
 import facultyRoutes from "./routes/facultyRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
-
+import enquiryRoutes from "./routes/enquiryRoutes.js"
 dotenv.config();
 
 const app = express();
@@ -14,6 +14,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 // Connect to MongoDB
 connectDB();
@@ -21,6 +22,7 @@ connectDB();
 // Routes
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/enquiry",enquiryRoutes);
 
 // Health check (optional but useful)
 app.get("/api/health", (req, res) => {
