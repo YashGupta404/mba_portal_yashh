@@ -33,9 +33,9 @@ export default function AboutPage() {
     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=90",
   ]
   const videos = [
-    "/videos/video1.crdownload",
-    "/videos/video2.crdownload",
-    "/videos/video3.crdownload"
+    "/videos/video1.mp4",
+    "/videos/video2.mp4",
+    "/videos/video3.mp4"
   ]
 
   const [index, setIndex] = useState(0);
@@ -48,13 +48,10 @@ export default function AboutPage() {
 
     const interval2 = setInterval(() => {
       setFade(false); // fade out
+      setInd((prev) => (prev + 1) % videos.length);
+     
 
-      setTimeout(() => {
-        setInd((prev) => (prev + 1) % videos.length);
-        setFade(true); // fade in
-      }, 600); // match fade duration
-
-    }, 3000); // video duration
+    }, 6000); // video duration
 
     return () => {
       clearInterval(interval);
@@ -66,7 +63,7 @@ export default function AboutPage() {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-16 lg:py-24 bg-black/70 text-primary-foreground">
+      <section className="relative py-16 lg:py-24 bg-black/60 text-primary-foreground">
         <div className="absolute top-0 left-0 w-full -z-10 h-full overflow-hidden">
 
           {/* Video Layer */}
@@ -78,16 +75,15 @@ export default function AboutPage() {
             muted
             playsInline
             className={`
-          absolute inset-0 w-full h-full object-cover
+          absolute inset-0 w-full h-full object-cover object-top
           transition-opacity 
-          ${fade ? "opacity-100 " : "opacity-50"}
         `}
           />
         </div>
         <div className="relative  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">About IEM College</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 drop-shadow-[2px_2px_5px_white]">About IEM College</h1>
+            <p className="text-lg drop-shadow-[2px_2px_5px_white] opacity-90">
               For over 25 years, IEM College has been a beacon of excellence in management education, shaping tomorrow's
               leaders and driving organizational transformation across the globe.
             </p>
