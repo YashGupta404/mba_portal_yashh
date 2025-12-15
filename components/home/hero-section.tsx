@@ -44,7 +44,11 @@ export default function HeroSection() {
       setstyle("block")
     }
   }
-  const formfield="h-10 rounded-[4px] hover:border-blue-800 bg-accent/10 hover:border-[2px] border-box py-1 px-3";
+  // csss related......
+  const formfielddiv="h-10 flex flex-col ";
+  const formlabel="font-bold text-blue-700 ";
+  const formfield = "h-full w-full rounded-[4px] hover:border-blue-900/70 focus:border-blue-800/70 focus:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] hover:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] bg-accent/10 hover:border-[2px] focus:border-[2px] border-box py-1 my-1 px-3";
+  const buttonanimation = "transition-all transition-100 active:scale-99 hover:scale-102 active:opacity-[0.9]";
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Animated Background Images with Zoom Effect */}
@@ -87,8 +91,8 @@ export default function HeroSection() {
       </div>
       {/*form*/}
       <div className={clsx("w-screen h-screen top-0  fixed z-90 bg-black/50", style)}>
-        <div id="homeenquiryform" className={clsx("flex flex-col items-end border-box py-5 px-8 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 w-[50vw] h-[90vh]  bg-zinc-50 transition-all duration-300 transform ease-out rounded-[10px] ", style === "block" ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none")}>
-          <button type="button" onClick={handleclick} className="w-auto  ">
+        <div id="homeenquiryform" className={clsx("flex flex-col justify-center items-end border-box py-5 px-8 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 w-[50vw] h-[90vh]  bg-zinc-50 transition-all duration-300 transform ease-out rounded-[10px] ", style === "block" ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none")}>
+          <button type="button" onClick={handleclick} className={clsx("w-auto ",buttonanimation)}>
             <CircleX size={40} className="text-accent" strokeWidth={2.5} />
           </button>
           <div className="w-full h-full flex flex-col justify-around">
@@ -96,19 +100,34 @@ export default function HeroSection() {
               <p className="text-[3rem] text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent/50 to-blue-900 leading-tight" >MBA Course Enquiry</p>
               <p className="text-[0.8rem] text-center font-bold">Having enquiry regarding our MBA course?? Feel free to ask us through our portal</p>
             </div>
-            <form className="grid grid-cols-2 grid-rows-6 gap-7  w-full h-auto">
-              <input placeholder="Enter Name e.g. xxx xx" className={clsx(formfield)}/>
-              <input placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)}/>
-              <input placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)}/>
-              <select className={clsx(formfield)}>
-                <option value="">Enquiry Type</option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-              </select>
-              <textarea  placeholder="State your Enquiry..." className={clsx(formfield,"col-span-2 row-span-3 h-full resize-none ")}>5</textarea>
-              <button className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500")}>Submit your query</button>
+            <form className="grid grid-cols-2 grid-rows-6 gap-9  w-full h-auto">
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="name" className={clsx(formlabel)}>Name</label>
+                <input id="name" name="name" required placeholder="Enter Name e.g. xxx xx" className={clsx(formfield)} />
+              </div>
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="name" className={clsx(formlabel)}>Email ID</label>
+                <input id="email" name="email" required placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)} />
+              </div>
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="name" className={clsx(formlabel)}>Contact Number</label>
+                <input id="mobile" name="mobile" required placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)} />
+              </div>
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="name" className={clsx(formlabel)}>Subject</label>
+                <select id="enquiry" name="enquiry" required className={clsx(formfield)}>
+                  <option value="">Subject Type</option>
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                </select>
+              </div>
+              <div className={clsx(formfielddiv,"col-span-2 row-span-3 h-full resize-none ")}>
+                <label htmlFor="name" className={clsx(formlabel)}>Message</label>
+                <textarea id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield, )}></textarea>
+              </div>
+              <button type="submit" className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
             </form>
 
           </div>
@@ -118,7 +137,7 @@ export default function HeroSection() {
       <div className="absolute z-3 bottom-10 right-10 w-60 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
             shadow-lg  p-6 animate-float p-1 border-box flex flex-col justify-between  gap-4" >
         <p className=" text-white drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight">Want to know more About MBA program?</p>
-        <button type="button" onClick={handleclick} className="py-1 hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground transition-all transition-100 active:scale-98 hover:scale-103">
+        <button type="button" onClick={handleclick} className={clsx("py-1 hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation)}>
           Enquire Here
         </button>
       </div>
