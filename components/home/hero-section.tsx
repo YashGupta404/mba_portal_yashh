@@ -89,6 +89,7 @@ export default function HeroSection() {
       if(success)
       {
         console.log("Enquiry posted successfully");
+        handleclick()
         setformdata({
           name:"",
           email:"",
@@ -192,7 +193,7 @@ export default function HeroSection() {
                 <label htmlFor="message" className={clsx(formlabel)}>Message</label>
                 <textarea value={formdata.message} onChange={handlechange}  id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield, )}></textarea>
               </div>
-              <button type="submit" className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
+              <button type="submit"  className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
             </form>
 
           </div>
