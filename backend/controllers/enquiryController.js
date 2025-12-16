@@ -107,3 +107,29 @@ export const deleteenquirybysubject=async (req,res)=>{
         })
     }
 }
+
+export const deleteenquiryspecific=async (req,res)=>{
+    try{
+        const {id}=req.params;
+        const find=await enquirymodel.findOne({_id:id})
+        if(!find)
+        {
+            return res.json({
+                success:false,
+                message:"Already absent from Database"
+            })
+        }
+        const deletespecific=await enquirymodel.deleteOne({_id:id})
+        return res.json({
+            sucess:true,
+            message:"Sucessfully deleted this one ",id
+        })
+    }
+    catch(error){
+        return res.json({
+            success:false,
+            message:"Issue releted to delete this specific one"
+        })
+    }
+    
+}
