@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { ChevronRight, Sparkles, CircleX } from "lucide-react"
 import clsx from "clsx"
 import ApplicationForm from "@/components/application/ApplicationForm"
+import axios from "axios";
 
 export default function HeroSection() {
   const [imageIndex, setImageIndex] = useState(0)
@@ -51,6 +52,64 @@ export default function HeroSection() {
   const formlabel="font-bold text-blue-700 ";
   const formfield = "h-full w-full rounded-[4px] hover:border-blue-900/70 focus:border-blue-800/70 focus:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] hover:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] bg-accent/10 hover:border-[2px] focus:border-[2px] border-box py-1 my-1 px-3";
   const buttonanimation = "transition-all transition-100 active:scale-99 hover:scale-102 active:opacity-[0.9]";
+
+  //enquiry form logic
+  const [formdata,setformdata]=useState<Record<string, string>>({
+    name:"",
+    email:"",
+    mobile:"",
+    subject:"",
+    message:""
+  });
+
+  const handlechange=(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)=>{
+    const {name,value}=e.target;
+    console.log(name,value);
+    const shallowcopy={...formdata};
+    shallowcopy[name]=value;
+    setformdata(shallowcopy);
+  }
+
+  const handlesubmission=async (e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    const {name,email,mobile,subject,message}=formdata;
+    if(!name || !email || !message || !subject || !mobile)
+    {
+      console.log("Kindly fill up the credentials")
+    }
+    try{
+      const response= await axios.post("http://localhost:5000/api/enquiry/post",formdata,{
+        headers:{
+          "Content-Type":"application/json",
+          
+        },
+        withCredentials: true,
+      })
+      const {success,error,message}=response.data;
+      if(success)
+      {
+        console.log("Enquiry posted successfully");
+        setformdata({
+          name:"",
+          email:"",
+          message:"",
+          mobile:"",
+          subject:""
+        })
+      }
+      if(error)
+      {
+        console.log("Error occured while posting data=",error)
+      }
+    }
+    catch(err)
+    {
+      console.log("Error with enquiry form api...",err)
+    }
+  }
+
+
+
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Animated Background Images */}
@@ -106,32 +165,32 @@ export default function HeroSection() {
               <p className="text-[3rem] text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent/50 to-blue-900 leading-tight" >MBA Course Enquiry</p>
               <p className="text-[0.8rem] text-center font-bold">Having enquiry regarding our MBA course?? Feel free to ask us through our portal</p>
             </div>
-            <form className="grid grid-cols-2 grid-rows-6 gap-9  w-full h-auto">
+            <form onSubmit={handlesubmission} className="grid grid-cols-2 grid-rows-6 gap-9  w-full h-auto">
               <div className={clsx(formfielddiv)}>
                 <label htmlFor="name" className={clsx(formlabel)}>Name</label>
-                <input id="name" name="name" required placeholder="Enter Name e.g. xxx xx" className={clsx(formfield)} />
+                <input onChange={handlechange} value={formdata.name} id="name" name="name" required placeholder="Enter Name e.g. xxx xx" className={clsx(formfield)} />
               </div>
               <div className={clsx(formfielddiv)}>
-                <label htmlFor="name" className={clsx(formlabel)}>Email ID</label>
-                <input id="email" name="email" required placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)} />
+                <label htmlFor="email" className={clsx(formlabel)}>Email ID</label>
+                <input onChange={handlechange} value={formdata.email}  id="email" name="email" required placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)} />
               </div>
               <div className={clsx(formfielddiv)}>
-                <label htmlFor="name" className={clsx(formlabel)}>Contact Number</label>
-                <input id="mobile" name="mobile" required placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)} />
+                <label htmlFor="mobile" className={clsx(formlabel)}>Contact Number</label>
+                <input onChange={handlechange} value={formdata.mobile}  id="mobile" name="mobile" required placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)} />
               </div>
               <div className={clsx(formfielddiv)}>
-                <label htmlFor="name" className={clsx(formlabel)}>Subject</label>
-                <select id="enquiry" name="enquiry" required className={clsx(formfield)}>
+                <label htmlFor="subject" className={clsx(formlabel)}>Subject</label>
+                <select onChange={handlechange} value={formdata.subject}  id="subject" name="subject" required className={clsx(formfield)} >
                   <option value="">Subject Type</option>
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
+                  <option value="Admission Query">Admission Query</option>
+                  <option value="Program Details">Program Details</option>
+                  <option value="Placement Information">Placement Information</option>
+                  <option value="Others">Others</option>
                 </select>
               </div>
               <div className={clsx(formfielddiv,"col-span-2 row-span-3 h-full resize-none ")}>
-                <label htmlFor="name" className={clsx(formlabel)}>Message</label>
-                <textarea id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield, )}></textarea>
+                <label htmlFor="message" className={clsx(formlabel)}>Message</label>
+                <textarea value={formdata.message} onChange={handlechange}  id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield, )}></textarea>
               </div>
               <button type="submit" className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
             </form>

@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+        origin:['http://localhost:3000'],
+        methods:['POST'],
+        credentials:true
+    })
+);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
