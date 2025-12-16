@@ -48,7 +48,7 @@ export default function HeroSection() {
     }
   }
   // csss related......
-  const formfielddiv="h-10 flex flex-col ";
+  const formfielddiv="h-13 flex flex-col  ";
   const formlabel="font-bold text-blue-700 ";
   const formfield = "h-full w-full rounded-[4px] hover:border-blue-900/70 focus:border-blue-800/70 focus:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] hover:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] bg-accent/10 hover:border-[2px] focus:border-[2px] border-box py-1 my-1 px-3";
   const buttonanimation = "transition-all transition-100 active:scale-99 hover:scale-102 active:opacity-[0.9]";
@@ -155,6 +155,11 @@ export default function HeroSection() {
           />
         ))}
       </div>
+
+
+
+
+
       {/*form*/}
       <div className={clsx("w-screen h-screen top-0  fixed z-90 bg-black/50", style)}>
         <div id="homeenquiryform" className={clsx("flex flex-col justify-center items-end border-box py-5 px-8 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 w-[50vw] h-[90vh]  bg-zinc-50 transition-all duration-300 transform ease-out rounded-[10px] ", style === "block" ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none")}>
@@ -166,7 +171,7 @@ export default function HeroSection() {
               <p className="text-[3rem] text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent/50 to-blue-900 leading-tight" >MBA Course Enquiry</p>
               <p className="text-[0.8rem] text-center font-bold">Having enquiry regarding our MBA course?? Feel free to ask us through our portal</p>
             </div>
-            <form onSubmit={handlesubmission} className="grid grid-cols-2 grid-rows-6 gap-9  w-full h-auto">
+            <form onSubmit={handlesubmission} className="grid grid-cols-2 grid-rows-6 gap-6  w-full h-auto">
               <div className={clsx(formfielddiv)}>
                 <label htmlFor="name" className={clsx(formlabel)}>Name</label>
                 <input onChange={handlechange} value={formdata.name} id="name" name="name" required placeholder="Enter Name e.g. xxx xx" className={clsx(formfield)} />
@@ -199,6 +204,10 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
+
+
+
       {/*enquiry box*/}
       <div className="absolute z-3 bottom-10 right-10 w-60 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
             shadow-lg  p-6 animate-float p-1 border-box flex flex-col justify-between  gap-4" >
@@ -207,6 +216,9 @@ export default function HeroSection() {
           Enquire Here
         </button>
       </div>
+
+
+
       <div className="absolute bottom-32 left-10 w-40 h-40 rounded-full bg-secondary/10 blur-3xl animate-float-delayed" />
       <div className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-primary/5 blur-2xl animate-float-slow" />
 
