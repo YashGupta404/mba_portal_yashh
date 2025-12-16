@@ -57,6 +57,14 @@ export const getenquiry=async (req,res)=>{
 export const getenquiryspecificbysubject=async (req,res)=>{
     try{
         const {subject}=req.params;
+        const x=await enquirymodel.findOne({subject});
+        if(!x)
+        {
+            return res.json({
+                success:false,
+                message:"No enquirires are there related to "+subject
+            })
+        }
         const getsubjectbasedenquiry=await enquirymodel.find({subject});
         return res.json({
             success:true,
@@ -70,6 +78,32 @@ export const getenquiryspecificbysubject=async (req,res)=>{
             success:false,
             message:"Filtering failed based on subject",
             error:err.message
+        })
+    }
+}
+
+export const deleteenquirybysubject=async (req,res)=>{
+    try{
+        const {subject}=req.params;
+        const x=await enquirymodel.findOne({subject});
+        if(!x)
+            return res.json({
+                success:false,
+                message:"Nothing left to be deleted"
+        })
+        await enquirymodel.deleteMany({subject});
+        return res.json({
+            success:true,
+            message:"Deleted all queries releted to "+subject,
+        })
+        
+    }
+    catch(err)
+    {
+        return res.json({
+            success:false,
+            message:"Issues deleting all data",
+            error:err
         })
     }
 }
