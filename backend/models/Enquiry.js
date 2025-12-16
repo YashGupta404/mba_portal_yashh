@@ -28,6 +28,10 @@ const enquirySchema = new mongoose.Schema({
         trim: true,
         minlength: 5,
         maxlength: 1000
+    },
+    date: {
+        type:Date,
+        default:Date.now
     }
 })
 

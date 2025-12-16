@@ -22,3 +22,42 @@ export const postenquiry=async (req,res)=>{
         })
     }
 }
+
+export const getenquiry=async (req,res)=>{
+    try{
+        const displayenquiries=await enquirymodel.find();
+        return res.json({
+            success:true,
+            message:"Fetched all enquiries",
+            count:displayenquiries.length,
+            "enquiry":displayenquiries
+        })
+    }
+    catch(err)
+    {
+        return res.json({
+            success:true,
+            message:"Error fetching enquiries..",
+            error:err.message
+        })
+    }
+}
+export const getenquiryspecificbysubject=async (req,res)=>{
+    try{
+        const {subject}=req.params;
+        const getsubjectbasedenquiry=await enquirymodel.find({subject});
+        return res.json({
+            success:true,
+            message:"List of enquiries based on "+subject,
+            "displaysubjectbasedenquiry":getsubjectbasedenquiry
+        })
+    }
+    catch(err)
+    {
+        return res.json({
+            success:false,
+            message:"Filtering failed based on subject",
+            error:err.message
+        })
+    }
+}
