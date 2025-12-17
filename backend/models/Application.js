@@ -2,9 +2,18 @@ import mongoose from "mongoose";
 
 const ApplicationSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    name: {
+      first: { type: String, required: true },
+      middle: { type: String },
+      last: { type: String, required: true },
+    },
+
     email: { type: String, required: true },
-    mobile: { type: String, required: true },
+
+    phone: {
+      code: { type: String, required: true },
+      number: { type: String, required: true },
+    },
 
     address: {
       country: { type: String, required: true },
@@ -15,17 +24,10 @@ const ApplicationSchema = new mongoose.Schema(
 
     education: {
       bachelors: { type: String, required: true },
-      masters: { type: String, default: null },
-      other: {
-        type: { type: String, default: null },
-        detail: { type: String, default: null },
-      },
+      masters: { type: String },
     },
 
-    mbaProgram: {
-      type: String,
-      required: true,
-    },
+    mbaProgram: { type: String, required: true },
   },
   { timestamps: true }
 );
