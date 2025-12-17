@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronRight, Sparkles } from "lucide-react"
+import { ChevronRight, Sparkles, CircleX } from "lucide-react"
+import clsx from "clsx"
 import ApplicationForm from "@/components/application/ApplicationForm"
+import axios from "axios";
 
 export default function HeroSection() {
   const [imageIndex, setImageIndex] = useState(0)
@@ -32,6 +34,82 @@ export default function HeroSection() {
     }))
     setParticles(generatedParticles)
   }, [])
+
+
+  const [style, setstyle] = useState('hidden');
+  const handleclick = () => {
+    if (style === "block") {
+      document.body.style.overflow = "auto";
+      setstyle("hidden");
+    }
+    else {
+      document.body.style.overflow = "hidden";
+      setstyle("block")
+    }
+  }
+  // csss related......
+  const formfielddiv="h-13 flex flex-col  ";
+  const formlabel="font-bold text-blue-700 ";
+  const formfield = "h-full w-full rounded-[4px] hover:border-blue-900/70 focus:border-blue-800/70 focus:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] hover:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] bg-accent/10 hover:border-[2px] focus:border-[2px] border-box py-1 my-1 px-3";
+  const buttonanimation = "transition-all transition-100 active:scale-99 hover:scale-102 active:opacity-[0.9]";
+
+  //enquiry form logic
+  const [formdata,setformdata]=useState<Record<string, string>>({
+    name:"",
+    email:"",
+    mobile:"",
+    subject:"",
+    message:""
+  });
+
+  const handlechange=(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)=>{
+    const {name,value}=e.target;
+    console.log(name,value);
+    const shallowcopy={...formdata};
+    shallowcopy[name]=value;
+    setformdata(shallowcopy);
+  }
+
+  const handlesubmission=async (e: React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    const {name,email,mobile,subject,message}=formdata;
+    if(!name || !email || !message || !subject || !mobile)
+    {
+      console.log("Kindly fill up the credentials")
+    }
+    try{
+      const response= await axios.post("http://localhost:5000/api/enquiry/post",formdata,{
+        headers:{
+          "Content-Type":"application/json",
+          
+        },
+        withCredentials: true,
+      })
+      const {success,error,message}=response.data;
+      if(success)
+      {
+        console.log("Enquiry posted successfully");
+        handleclick()
+        setformdata({
+          name:"",
+          email:"",
+          message:"",
+          mobile:"",
+          subject:""
+        })
+      }
+      if(error)
+      {
+        console.log("Error occured while posting data=",error)
+      }
+    }
+    catch(err)
+    {
+      console.log("Error with enquiry form api...",err)
+    }
+  }
+
+
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -78,7 +156,69 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-accent/10 blur-3xl animate-float" />
+
+
+
+
+      {/*form*/}
+      <div className={clsx("w-screen h-screen top-0  fixed z-90 bg-black/50", style)}>
+        <div id="homeenquiryform" className={clsx("flex flex-col justify-center items-end border-box py-5 px-8 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 w-[50vw] h-[90vh]  bg-zinc-50 transition-all duration-300 transform ease-out rounded-[10px] ", style === "block" ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none")}>
+          <button type="button" onClick={handleclick} className={clsx("w-auto ",buttonanimation)}>
+            <CircleX size={40} className="text-accent" strokeWidth={2.5} />
+          </button>
+          <div className="w-full h-full flex flex-col justify-around">
+            <div>
+              <p className="text-[3rem] text-center font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent/50 to-blue-900 leading-tight" >MBA Course Enquiry</p>
+              <p className="text-[0.8rem] text-center font-bold">Having enquiry regarding our MBA course?? Feel free to ask us through our portal</p>
+            </div>
+            <form onSubmit={handlesubmission} className="grid grid-cols-2 grid-rows-6 gap-6  w-full h-auto">
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="name" className={clsx(formlabel)}>Name</label>
+                <input onChange={handlechange} value={formdata.name} id="name" name="name" required placeholder="Enter Name e.g. xxx xx" className={clsx(formfield)} />
+              </div>
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="email" className={clsx(formlabel)}>Email ID</label>
+                <input onChange={handlechange} value={formdata.email}  id="email" name="email" required placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)} />
+              </div>
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="mobile" className={clsx(formlabel)}>Contact Number</label>
+                <input onChange={handlechange} value={formdata.mobile}  id="mobile" name="mobile" required placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)} />
+              </div>
+              <div className={clsx(formfielddiv)}>
+                <label htmlFor="subject" className={clsx(formlabel)}>Subject</label>
+                <select onChange={handlechange} value={formdata.subject}  id="subject" name="subject" required className={clsx(formfield)} >
+                  <option value="">Subject Type</option>
+                  <option value="Admission Query">Admission Query</option>
+                  <option value="Program Details">Program Details</option>
+                  <option value="Placement Information">Placement Information</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+              <div className={clsx(formfielddiv,"col-span-2 row-span-3 h-full resize-none ")}>
+                <label htmlFor="message" className={clsx(formlabel)}>Message</label>
+                <textarea value={formdata.message} onChange={handlechange}  id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield, )}></textarea>
+              </div>
+              <button type="submit"  className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+      {/*enquiry box*/}
+      <div className="absolute z-3 bottom-10 right-10 w-60 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
+            shadow-lg  p-6 animate-float p-1 border-box flex flex-col justify-between  gap-4" >
+        <p className=" text-white drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight">Want to know more About MBA program?</p>
+        <button type="button" onClick={handleclick} className={clsx("py-1 hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation)}>
+          Enquire Here
+        </button>
+      </div>
+
+
+
       <div className="absolute bottom-32 left-10 w-40 h-40 rounded-full bg-secondary/10 blur-3xl animate-float-delayed" />
       <div className="absolute top-1/2 right-1/4 w-24 h-24 rounded-full bg-primary/5 blur-2xl animate-float-slow" />
 

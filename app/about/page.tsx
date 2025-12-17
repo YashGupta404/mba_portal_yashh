@@ -1,6 +1,7 @@
 "use client"
-
+import { useState, useEffect } from "react";
 import { Users, Target, Lightbulb, Award } from "lucide-react"
+import Videoanimation from "../../components/ui/videoanimation.jsx"
 
 export default function AboutPage() {
   const values = [
@@ -26,14 +27,39 @@ export default function AboutPage() {
     },
   ]
 
+  const images = [
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop&q=90",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop&q=90",
+  ]
+  const videos = [
+        "/videos/video1.mp4",
+        "/videos/video2.mp4",
+        "/videos/video3.mp4"
+    ]
+
+  const [index, setIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // ⏱️ change every 5s
+
+    return () => {
+      clearInterval(interval);
+
+    }
+  }, []);
+
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 lg:py-24 bg-black/60 text-primary-foreground">
+        <Videoanimation videos={videos}/>
+        <div className="relative  max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">About IEM College</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 drop-shadow-[2px_2px_5px_white]">About IEM College</h1>
+            <p className="text-lg drop-shadow-[2px_2px_5px_white] opacity-90">
               For over 25 years, IEM College has been a beacon of excellence in management education, shaping tomorrow's
               leaders and driving organizational transformation across the globe.
             </p>
@@ -60,12 +86,23 @@ export default function AboutPage() {
                 core commitment to developing ethical, thoughtful, and visionary leaders.
               </p>
             </div>
-            <div className="relative h-96 bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl overflow-hidden animate-fade-in">
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-                alt="IEM College Campus"
-                className="w-full h-full object-cover"
-              />
+            {/* image scroll */}
+            <div className="relative w-full h-full overflow-hidden border-[3px] border-black/10 border-solid ">
+
+              <div
+                className="flex transition-transform h-full w-full duration-700 ease-in-out"
+                style={{ transform: `translateX(-${index * 100}%)` }}
+              >
+                {images.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    className="w-full h-full object-fit flex-shrink-0"
+                    alt=""
+                  />
+                ))}
+              </div>
+
             </div>
           </div>
         </div>
