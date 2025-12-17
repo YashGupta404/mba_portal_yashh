@@ -1,6 +1,7 @@
 "use client"
 
 import { Users, Zap, Gamepad2, Music, Award, Heart } from "lucide-react"
+import Videoanimation from "../../components/ui/videoanimation.jsx"
 
 export default function StudentLifePage() {
   const activities = [
@@ -50,15 +51,20 @@ export default function StudentLifePage() {
     { title: "Cafeteria", details: "Multi-cuisine dining with healthy options" },
     { title: "Hostel", details: "Comfortable accommodation for out-station students" },
   ]
-
+const videos = [
+        "/videos/video1.mp4",
+        "/videos/video2.mp4",
+        "/videos/video3.mp4"
+    ]
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
+        <Videoanimation videos={videos}/>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Student Life at IEM</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Student Life at IEM</h1>
+            <p className="drop-shadow-[2px_2px_5px_white] text-lg opacity-90">
               Experience a vibrant community where academics meet culture, sports, entrepreneurship, and lasting
               friendships. Your MBA journey is about holistic growth.
             </p>

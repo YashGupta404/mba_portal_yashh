@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import Videoanimation from "../../components/ui/videoanimation.jsx"
 
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
 import { useState } from "react"
@@ -13,7 +14,11 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
-
+  const videos = [
+        "/videos/video1.mp4",
+        "/videos/video2.mp4",
+        "/videos/video3.mp4"
+    ]
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -61,11 +66,12 @@ export default function ContactPage() {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
+      <Videoanimation videos={videos}/>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Get In Touch</h1>
+            <p className="drop-shadow-[2px_2px_5px_white] text-lg opacity-90">
               Have questions about our programs? We'd love to hear from you. Reach out to us through any channel, and
               we'll get back to you shortly.
             </p>
@@ -75,6 +81,7 @@ export default function ContactPage() {
 
       {/* Contact Info */}
       <section className="py-16 lg:py-24 bg-background">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => {
@@ -98,6 +105,7 @@ export default function ContactPage() {
 
       {/* Contact Form and Map */}
       <section className="py-16 lg:py-24 bg-muted/50">
+      
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}

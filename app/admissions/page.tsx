@@ -2,6 +2,8 @@
 
 import { CheckCircle, DollarSign, Users } from "lucide-react"
 import { useState } from "react"
+import Videoanimation from "../../components/ui/videoanimation.jsx"
+
 
 export default function AdmissionsPage() {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
@@ -14,7 +16,7 @@ export default function AdmissionsPage() {
   ]
 
   const timeline = [
-    { month: "January", event: "Applications Open", action: "Apply Now" },
+    { month: "January", event: "Applications Open", action: "" },
     { month: "March", event: "Entrance Exam (CAT/GMAT)", action: "Register" },
     { month: "April", event: "Group Discussion & PI", action: "Shortlisted" },
     { month: "May", event: "Admission Offers", action: "Confirm" },
@@ -44,6 +46,11 @@ export default function AdmissionsPage() {
       features: ["Live Classes", "Self-Paced", "Global Reach"],
     },
   ]
+  const videos = [
+        "/videos/video1.mp4",
+        "/videos/video2.mp4",
+        "/videos/video3.mp4"
+    ]
 
   const faqs = [
     {
@@ -70,11 +77,12 @@ export default function AdmissionsPage() {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-16 lg:py-24 bg-black/70 text-primary-foreground">
+      <Videoanimation videos={videos}/>
+        <div className=" relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Admissions</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Admissions</h1>
+            <p className="drop-shadow-[2px_2px_5px_white] text-lg opacity-90">
               Join a community of ambitious professionals committed to excellence and transformation. Start your MBA
               journey with us today.
             </p>

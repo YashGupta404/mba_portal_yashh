@@ -1,6 +1,7 @@
 "use client"
 
 import { TrendingUp, Target, Users, Award } from "lucide-react"
+import Videoanimation from "../../components/ui/videoanimation.jsx"
 
 export default function PlacementsPage() {
   const stats = [
@@ -9,7 +10,11 @@ export default function PlacementsPage() {
     { label: "150+", subtext: "Recruiting Companies", icon: Users },
     { label: "₹45L", subtext: "Highest Package", icon: Award },
   ]
-
+const videos = [
+        "/videos/video1.mp4",
+        "/videos/video2.mp4",
+        "/videos/video3.mp4"
+    ]
   const companies = [
     { name: "McKinsey & Company", sector: "Consulting" },
     { name: "Goldman Sachs", sector: "Finance" },
@@ -46,11 +51,12 @@ export default function PlacementsPage() {
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
+      <Videoanimation videos={videos}/>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6">Placements</h1>
-            <p className="text-lg opacity-90">
+            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Placements</h1>
+            <p className="drop-shadow-[2px_2px_5px_white] text-lg opacity-90">
               Our students are highly sought after by leading global organizations. Discover how our career support and
               rigorous curriculum prepare graduates for success.
             </p>
