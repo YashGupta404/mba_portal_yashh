@@ -1,5 +1,5 @@
 import express from "express";
-import {postenquiry,getenquiry,getenquiryspecificbysubject,deleteenquirybysubject,deleteenquiryspecific,searchspecific} from "../controllers/enquiryController.js"
+import {postenquiry,getenquiry,getenquiryspecificbysubject,deleteenquirybysubject,deleteenquiryspecific,searchspecific,updatestatus} from "../controllers/enquiryController.js"
 
 const app=express()
 app.use(express.json()); // this parses JSON body
@@ -11,6 +11,7 @@ router.get("/",getenquiry)
 router.get("/filter/:subject",getenquiryspecificbysubject)
 router.delete("/delete/:subject",deleteenquirybysubject)
 router.delete("/deletespecific/:id",deleteenquiryspecific)
-router.get("/",searchspecific)
+router.get("/search",searchspecific)
+router.put("/status/:id",updatestatus)
 
 export default router;

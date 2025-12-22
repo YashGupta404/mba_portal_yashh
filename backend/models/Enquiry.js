@@ -16,6 +16,16 @@ const enquirySchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    status:{
+        type:String,
+        enum:["all","new","in-progress","responded"],
+        default:"new"
+    },
+    priority:{
+        type:String,
+        enum:["all","low","medium","high"],
+        default:"medium"
+    },
     subject: {
         type: String,
         required: true,
