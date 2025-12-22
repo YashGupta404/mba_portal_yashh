@@ -16,7 +16,7 @@ const SendMail = async (name, email, mobile,subject,message) => {
     })
 
     const mail1 = {
-        from :process.env.HOST_EMAIL,
+        from :`${name} <${process.env.HOST_USER}>`,
         to:process.env.HOST_EMAIL,
         replyTo:email,
         subject: `${subject}-Enquiry from ${name}`,
