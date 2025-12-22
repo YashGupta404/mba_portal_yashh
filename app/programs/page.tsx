@@ -2,8 +2,10 @@
 
 import { Clock, Users, Award, CheckCircle } from "lucide-react"
 import Videoanimation from "../../components/ui/videoanimation.jsx"
+import { useRouter } from "next/navigation"
 
 export default function ProgramsPage() {
+  const router = useRouter()
 
   const videos=["/videos/video1.mp4","/videos/video2.mp4","/videos/video3.mp4"];
 
@@ -50,9 +52,19 @@ export default function ProgramsPage() {
                 ))}
               </ul>
 
-              <button className="px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                Apply Now
-              </button>
+              {/* Updated Buttons */}
+              <div className="flex gap-4">
+                <button className="px-8 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                  Apply Now
+                </button>
+
+                <button
+                  onClick={() => router.push("/programs/fulltime")}
+                  className="px-8 py-3 border border-accent text-accent rounded-lg font-semibold hover:bg-accent hover:text-accent-foreground transition-all"
+                >
+                  Learn More
+                </button>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4 animate-fade-in">

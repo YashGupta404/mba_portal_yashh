@@ -4,6 +4,11 @@ import StatsSection from "@/components/home/stats-section"
 import ProgramsSection from "@/components/home/programs-section"
 import AccreditationSection from "@/components/home/accreditation-section"
 import TestimonialsSection from "@/components/home/testimonials-section"
+import PlacementSection from "@/components/home/PlacementSection"
+import StudentAcademicExcellenceSection from "@/components/home/StudentexcellenceSection"
+
+
+
 
 export default function Home() {
   return (
@@ -11,9 +16,12 @@ export default function Home() {
       <HeroSection />
       <NewsScrollBanner />
       <StatsSection />
+      <PlacementSection />
+      <StudentAcademicExcellenceSection/>
       <ProgramsSection />
       <AccreditationSection />
       <TestimonialsSection />
+
     </main>
   )
 }

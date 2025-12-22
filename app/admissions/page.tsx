@@ -16,7 +16,7 @@ export default function AdmissionsPage() {
   ]
 
   const timeline = [
-    { month: "January", event: "Applications Open", action: "Apply Now" },
+    { month: "January", event: "Applications Open", action: "" },
     { month: "March", event: "Entrance Exam (CAT/GMAT)", action: "Register" },
     { month: "April", event: "Group Discussion & PI", action: "Shortlisted" },
     { month: "May", event: "Admission Offers", action: "Confirm" },

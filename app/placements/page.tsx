@@ -1,218 +1,255 @@
 "use client"
 
+import Image from "next/image"
+import {
+  RadialBarChart,
+  RadialBar,
+  ResponsiveContainer,
+  Tooltip,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts"
+
 import { TrendingUp, Target, Users, Award } from "lucide-react"
 import Videoanimation from "../../components/ui/videoanimation.jsx"
 
-export default function PlacementsPage() {
-  const stats = [
-    { label: "100%", subtext: "Placement Rate", icon: TrendingUp },
-    { label: "₹18L", subtext: "Avg. Package", icon: Target },
-    { label: "150+", subtext: "Recruiting Companies", icon: Users },
-    { label: "₹45L", subtext: "Highest Package", icon: Award },
-  ]
+/* ===================== DATA ===================== */
+
+const statsCards = [
+  { label: "100%", subtext: "Placement Rate", icon: TrendingUp },
+  { label: "₹18L", subtext: "Avg. Package", icon: Target },
+  { label: "150+", subtext: "Recruiting Companies", icon: Users },
+  { label: "₹45L", subtext: "Highest Package", icon: Award },
+]
+
+const placementStats = [
+  { name: "Placement %", value: 100, unit: "%", fill: "#2563eb" },
+  { name: "Highest Package", value: 45, unit: " LPA", fill: "#facc15" },
+  { name: "Average Package", value: 18, unit: " LPA", fill: "#059669" },
+]
+
+const sectorData = [
+  { name: "Consulting", value: 25 },
+  { name: "Finance", value: 20 },
+  { name: "Technology", value: 18 },
+  { name: "FMCG", value: 15 },
+  { name: "E-commerce", value: 12 },
+  { name: "Others", value: 10 },
+]
+
+const roleData = [
+  { role: "Senior Analyst", value: 52 },
+  { role: "Management Consultant", value: 45 },
+  { role: "Product Manager", value: 38 },
+  { role: "Operations Manager", value: 32 },
+  { role: "Finance Manager", value: 28 },
+]
+
+const companies = [
+  { name: "Goldman Sachs", sector: "Finance", logo: "/recruiters/goldman-sachs.png" },
+  { name: "Deloitte", sector: "Consulting", logo: "/recruiters/deloitte.png" },
+  { name: "Accenture", sector: "Technology", logo: "/recruiters/accenture.png" },
+  { name: "HDFC Bank", sector: "Banking", logo: "/recruiters/hdfc.png" },
+  { name: "Flipkart", sector: "E-commerce", logo: "/recruiters/flipkart.png" },
+  { name: "TCS", sector: "IT Services", logo: "/recruiters/tcs.png" },
+  { name: "Infosys", sector: "IT Services", logo: "/recruiters/infosys.png" },
+  { name: "EY", sector: "Consulting", logo: "/recruiters/ey.png" },
+  { name: "Wipro", sector: "Technology", logo: "/recruiters/wipro.png" },
+]
+
 const videos = [
-        "/videos/video1.mp4",
-        "/videos/video2.mp4",
-        "/videos/video3.mp4"
-    ]
-  const companies = [
-    { name: "McKinsey & Company", sector: "Consulting" },
-    { name: "Goldman Sachs", sector: "Finance" },
-    { name: "Microsoft", sector: "Technology" },
-    { name: "Amazon", sector: "E-commerce" },
-    { name: "Deloitte", sector: "Consulting" },
-    { name: "Accenture", sector: "Technology" },
-    { name: "HDFC Bank", sector: "Banking" },
-    { name: "Flipkart", sector: "E-commerce" },
-    { name: "TCS", sector: "IT Services" },
-    { name: "Infosys", sector: "IT Services" },
-    { name: "ITC Limited", sector: "FMCG" },
-    { name: "Nestlé", sector: "FMCG" },
-  ]
+  "/videos/video1.mp4",
+  "/videos/video2.mp4",
+  "/videos/video3.mp4",
+]
 
-  const sectors = [
-    { name: "Consulting", percentage: 25, color: "bg-accent" },
-    { name: "Finance", percentage: 20, color: "bg-secondary" },
-    { name: "Technology", percentage: 18, color: "from-primary to-accent" },
-    { name: "FMCG", percentage: 15, color: "from-secondary to-primary" },
-    { name: "E-commerce", percentage: 12, color: "bg-primary" },
-    { name: "Others", percentage: 10, color: "bg-muted" },
-  ]
+/* ===================== COMPONENT ===================== */
 
-  const roles = [
-    { role: "Management Consultant", companies: 45 },
-    { role: "Product Manager", companies: 38 },
-    { role: "Senior Analyst", companies: 52 },
-    { role: "Business Development", companies: 35 },
-    { role: "Finance Manager", companies: 28 },
-    { role: "Operations Manager", companies: 32 },
-  ]
-
+export default function PlacementsPage() {
   return (
     <main className="overflow-hidden">
-      {/* Hero Section */}
+
+      {/* HERO */}
       <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
-      <Videoanimation videos={videos}/>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Placements</h1>
-            <p className="drop-shadow-[2px_2px_5px_white] text-lg opacity-90">
-              Our students are highly sought after by leading global organizations. Discover how our career support and
-              rigorous curriculum prepare graduates for success.
-            </p>
-          </div>
+        <Videoanimation videos={videos} />
+        <div className="relative max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6 drop-shadow-[2px_2px_5px_white]">
+            Placements
+          </h1>
+          <p className="text-lg opacity-90 drop-shadow-[2px_2px_5px_white] max-w-2xl">
+            Our outcomes reflect academic rigor, industry alignment, and career-focused mentoring.
+          </p>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon
-              return (
-                <div
-                  key={idx}
-                  className="text-center p-6 bg-card rounded-xl border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300 animate-slide-in-up"
-                  style={{ animationDelay: `${idx * 100}ms` }}
-                >
-                  <Icon className="w-8 h-8 text-accent mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-foreground mb-1">{stat.label}</p>
-                  <p className="text-foreground/60 text-sm">{stat.subtext}</p>
-                </div>
-              )
-            })}
-          </div>
+      {/* STATISTICS CARDS */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {statsCards.map((stat, idx) => {
+            const Icon = stat.icon
+            return (
+              <div
+                key={idx}
+                className="text-center p-6 bg-card rounded-xl border border-border hover:border-accent/50 hover:shadow-lg transition-all"
+              >
+                <Icon className="w-8 h-8 text-accent mx-auto mb-3" />
+                <p className="text-3xl font-bold text-foreground mb-1">
+                  {stat.label}
+                </p>
+                <p className="text-foreground/60 text-sm">
+                  {stat.subtext}
+                </p>
+              </div>
+            )
+          })}
         </div>
       </section>
 
-      {/* Companies Section */}
-      <section className="py-16 lg:py-24 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-slide-in-up">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Top Recruiting Companies</h2>
-            <p className="text-foreground/60 text-lg">150+ organizations trust IEM graduates</p>
-          </div>
+      {/* TOP RECRUITING COMPANIES */}
+      <section className="py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Top Recruiting Companies
+          </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             {companies.map((company, idx) => (
               <div
                 key={idx}
-                className="p-6 bg-card rounded-lg border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300 group animate-slide-in-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
+                className="flex flex-col items-center justify-center p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all"
               >
-                <p className="font-semibold text-foreground group-hover:text-accent transition-colors">
-                  {company.name}
-                </p>
-                <p className="text-sm text-foreground/60">{company.sector}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sector Distribution */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-slide-in-up">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Sector Distribution</h2>
-            <p className="text-foreground/60 text-lg">Diverse career opportunities across industries</p>
-          </div>
-
-          <div className="space-y-4 max-w-2xl mx-auto">
-            {sectors.map((sector, idx) => (
-              <div key={idx} className="space-y-2 animate-slide-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                <div className="flex justify-between items-center mb-2">
-                  <p className="font-medium text-foreground">{sector.name}</p>
-                  <p className="text-accent font-semibold">{sector.percentage}%</p>
-                </div>
-                <div className="w-full h-3 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className={`h-full ${sector.color} rounded-full transition-all duration-1000`}
-                    style={{ width: `${sector.percentage}%` }}
+                <div className="h-16 w-full flex items-center justify-center mb-4">
+                  <Image
+                    src={company.logo}
+                    alt={company.name}
+                    width={140}
+                    height={70}
+                    className="object-contain"
                   />
                 </div>
+
+                <p className="font-semibold text-sm text-center">
+                  {company.name}
+                </p>
+                <p className="text-xs text-foreground/60">
+                  {company.sector}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Top Roles */}
-      <section className="py-16 lg:py-24 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-slide-in-up">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Most Sought Roles</h2>
-            <p className="text-foreground/60 text-lg">Career paths our graduates pursue</p>
+      {/* PLACEMENT SNAPSHOT + SECTOR-WISE */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
+
+          <div className="text-center">
+            <h2 className="text-3xl font-bold mb-6">Placement Snapshot</h2>
+
+            <div className="h-[320px] max-w-md mx-auto">
+              <ResponsiveContainer width="100%" height="100%">
+                <RadialBarChart
+                  data={placementStats}
+                  innerRadius="30%"
+                  outerRadius="90%"
+                  startAngle={90}
+                  endAngle={-270}
+                >
+                  <RadialBar dataKey="value" cornerRadius={10} background />
+                  <Tooltip formatter={(v, _, p) => `${v}${p.payload.unit}`} />
+                </RadialBarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="mt-6 space-y-2 text-sm">
+              {placementStats.map((item) => (
+                <div key={item.name} className="flex justify-center gap-3">
+                  <span
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: item.fill }}
+                  />
+                  <span>
+                    {item.name}: <strong>{item.value}{item.unit}</strong>
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="space-y-6">
-            {roles.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-6 animate-slide-in-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="w-full">
-                  <div className="flex justify-between items-center mb-2">
-                    <p className="font-medium text-foreground">{item.role}</p>
-                    <p className="text-accent font-bold">{item.companies} placements</p>
+          {/* SECTOR-WISE */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6">Sector-wise Hiring</h3>
+
+            <div className="space-y-5">
+              {sectorData.map((s) => (
+                <div key={s.name}>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span>{s.name}</span>
+                    <span className="font-semibold">{s.value}%</span>
                   </div>
-                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-muted rounded-full">
                     <div
-                      className="h-full bg-gradient-to-r from-accent to-secondary rounded-full"
-                      style={{ width: `${(item.companies / 52) * 100}%` }}
+                      className="h-2 bg-primary rounded-full"
+                      style={{ width: `${s.value}%` }}
                     />
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ROLE-WISE HIRING */}
+      <section className="py-20 bg-muted/50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Role-wise Hiring
+          </h2>
+
+          <div className="h-[360px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={roleData} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis type="category" dataKey="role" width={170} />
+                <Tooltip formatter={(v) => [`${v}%`, "Placement %"]} />
+                <Bar dataKey="value" fill="#2563eb" radius={[0, 8, 8, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </section>
 
-      {/* Career Support */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-slide-in-up">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Our Career Support</h2>
-            <p className="text-foreground/60 text-lg">Comprehensive services to ensure your success</p>
-          </div>
+      {/* CAREER SUPPORT */}
+      <section className="py-16 bg-muted/50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Our Career Support
+          </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                title: "Career Counseling",
-                description: "Personalized guidance to identify the right career path for your skills and aspirations",
-              },
-              {
-                title: "Resume Building",
-                description: "Professional resume crafting workshops and one-on-one feedback from industry experts",
-              },
-              {
-                title: "Interview Prep",
-                description: "Mock interviews, case study preparation, and behavioral training with alumni mentors",
-              },
-              {
-                title: "Internships",
-                description: "Summer internship placements with leading companies across multiple sectors",
-              },
-              {
-                title: "Networking Events",
-                description: "Industry meet-ups, alumni interactions, and exclusive corporate presentations",
-              },
-              {
-                title: "Alumni Network",
-                description: "Access to 5000+ successful alumni for mentoring and job opportunities",
-              },
-            ].map((support, idx) => (
+              "Career Counseling",
+              "Resume Building",
+              "Interview Preparation",
+              "Internships",
+              "Networking Events",
+              "Alumni Network",
+            ].map((title, idx) => (
               <div
                 key={idx}
-                className="p-6 bg-card rounded-xl border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300 animate-slide-in-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
+                className="p-6 bg-card rounded-xl border border-border"
               >
-                <h3 className="font-bold text-lg mb-2 text-foreground">{support.title}</h3>
-                <p className="text-foreground/60 text-sm">{support.description}</p>
+                <h3 className="font-bold mb-2">{title}</h3>
+                <p className="text-sm text-foreground/60">
+                  Structured support designed to maximize student success.
+                </p>
               </div>
             ))}
           </div>
@@ -220,15 +257,17 @@ const videos = [
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Join Our Success Stories</h2>
-          <p className="text-lg opacity-90 mb-8">Be part of a legacy of excellence and career transformation</p>
-          <button className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:bg-secondary/90 transition-colors shadow-lg">
-            Apply Now
-          </button>
-        </div>
+      <section className="py-20 bg-primary text-primary-foreground text-center">
+        <TrendingUp className="w-10 h-10 mx-auto mb-4" />
+        <h2 className="text-3xl font-bold mb-4">Join Our Success Stories</h2>
+        <p className="opacity-90 mb-8">
+          Be part of a placement-driven MBA experience.
+        </p>
+        <button className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold">
+          Apply Now
+        </button>
       </section>
+
     </main>
   )
 }

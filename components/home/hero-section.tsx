@@ -5,6 +5,8 @@ import { ChevronRight, Sparkles, CircleX } from "lucide-react"
 import clsx from "clsx"
 import ApplicationForm from "@/components/application/ApplicationForm"
 import axios from "axios";
+import Link from "next/link"
+
 
 export default function HeroSection() {
   const [imageIndex, setImageIndex] = useState(0)
@@ -252,12 +254,54 @@ export default function HeroSection() {
               </div>
             </button>
 
-            <button className="group px-8 py-4 bg-white/15 text-primary-foreground rounded-lg font-bold hover:bg-white/25 transition-all border-2 border-white/30">
-              Explore Programs
-            </button>
+            <Link
+  href="/programs"
+  className="group px-8 py-4 bg-white/15 text-primary-foreground rounded-lg font-bold hover:bg-white/25 transition-all border-2 border-white/30 inline-flex items-center justify-center"
+>
+  Explore Programs
+</Link>
+
           </div>
         </div>
       </div>
+
+<aside
+  className="hidden lg:block absolute top-10 right-10 w-32 
+  bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl 
+  p-3 shadow-2xl overflow-hidden animate-fade-in"
+>
+  {/* Header */}
+  <div className="flex items-start gap-2 mb-2">
+    <div className="w-1 h-7 bg-gradient-to-b from-yellow-300 via-orange-400 to-red-400 rounded-full animate-pulse"></div>
+
+    <h3 className="text-[11px] font-semibold text-white tracking-tight leading-snug break-words">
+      News & Announcements
+    </h3>
+  </div>
+
+  {/* Auto-Scrolling Content */}
+  <div className="relative h-64 overflow-hidden">
+   <ul className="news-loop absolute w-full animate-news-loop space-y-4 text-white/90 text-[10px] pr-1">
+
+  {/* ORIGINAL LIST */}
+  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🏆 IEM ranked top 10 in Eastern India.</li>
+  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🌍 Leadership Summit in Jan 2025.</li>
+  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">💼 98.5% placement achieved.</li>
+  <li className="hover:text-yellow-300">✨ New specialization added.</li>
+
+  {/* --- GAP / SPACER (visible gap between loops) --- */}
+  <li className="h-8"></li>  {/* Add a blank vertical gap */}
+
+  {/* DUPLICATE LIST */}
+  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🏆 IEM ranked top 10 in Eastern India.</li>
+  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🌍 Leadership Summit in Jan 2025.</li>
+  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">💼 98.5% placement achieved.</li>
+  <li className="hover:text-yellow-300">✨ New specialization added.</li>
+
+</ul>
+
+  </div>
+</aside>
 
       {/* APPLICATION FORM MODAL */}
       {openForm && (
