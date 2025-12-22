@@ -2,8 +2,10 @@
 
 import { Clock, Users, Award, CheckCircle } from "lucide-react"
 import Videoanimation from "../../components/ui/videoanimation.jsx"
+import { useRouter } from "next/navigation"
 
 export default function ProgramsPage() {
+  const router = useRouter()
 
   const videos=["/videos/video1.mp4","/videos/video2.mp4","/videos/video3.mp4"];
 

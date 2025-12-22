@@ -75,10 +75,13 @@ export default function ProgramsSection() {
                 </ul>
 
                 {/* Learn More Button */}
-                <Link href={`/programs/${program.slug}`}>
-                  <button className="w-full px-4 py-2 border border-accent text-accent rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition-colors">
+                <Link
+                  href={`/programs/${program.slug}`}
+                  className="w-full inline-block"
+                >
+                  <span className="w-full block px-4 py-2 border border-accent text-accent rounded-lg font-medium text-center hover:bg-accent hover:text-accent-foreground transition-colors">
                     Learn More
-                  </button>
+                  </span>
                 </Link>
               </div>
             )
