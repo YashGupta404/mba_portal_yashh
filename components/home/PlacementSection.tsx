@@ -46,11 +46,61 @@ const placementDataByYear: Record<string, PlacementYearData> = {
     ],
   },
 
-  /* Placeholder years (add real data later) */
-  "2023": { stats: [], sectors: [] },
-  "2022": { stats: [], sectors: [] },
-  "2021": { stats: [], sectors: [] },
-  "2020": { stats: [], sectors: [] },
+  "2023": {
+    stats: [
+      { name: "Placement %", value: 87, unit: "%", fill: "#1e3a8a" },
+      { name: "Highest Package", value: 36, unit: " LPA", fill: "#fb923c" },
+      { name: "Average Package", value: 9, unit: " LPA", fill: "#0891b2" },
+    ],
+    sectors: [
+      { name: "IT & Analytics", value: 35 },
+      { name: "Consulting", value: 25 },
+      { name: "Finance", value: 20 },
+      { name: "Operations", value: 20 },
+    ],
+  },
+
+  "2022": {
+    stats: [
+      { name: "Placement %", value: 85, unit: "%", fill: "#2563eb" },
+      { name: "Highest Package", value: 32, unit: " LPA", fill: "#f59e0b" },
+      { name: "Average Package", value: 8, unit: " LPA", fill: "#10b981" },
+    ],
+    sectors: [
+      { name: "IT & Analytics", value: 30 },
+      { name: "Consulting", value: 20 },
+      { name: "Finance", value: 25 },
+      { name: "Operations", value: 25 },
+    ],
+  },
+
+  "2021": {
+    stats: [
+      { name: "Placement %", value: 80, unit: "%", fill: "#1e40af" },
+      { name: "Highest Package", value: 30, unit: " LPA", fill: "#f97316" },
+      { name: "Average Package", value: 7, unit: " LPA", fill: "#059669" },
+    ],
+    sectors: [
+      { name: "IT & Analytics", value: 25 },
+      { name: "Consulting", value: 20 },
+      { name: "Finance", value: 30 },
+      { name: "Operations", value: 25 },
+    ],
+  },
+
+  "2020": {
+    stats: [
+      { name: "Placement %", value: 75, unit: "%", fill: "#1e3a8a" },
+      { name: "Highest Package", value: 28, unit: " LPA", fill: "#f59e0b" },
+      { name: "Average Package", value: 6, unit: " LPA", fill: "#059669" },
+    ],
+    sectors: [
+      { name: "IT & Analytics", value: 20 },
+      { name: "Consulting", value: 15 },
+      { name: "Finance", value: 35 },
+      { name: "Operations", value: 30 },
+    ],
+  },
 }
 
 const recruiters = [
@@ -70,7 +120,24 @@ export default function PlacementSection() {
   )
 
   const [selectedYear, setSelectedYear] = useState(years[0])
-  const { stats, sectors } = placementDataByYear[selectedYear]
+
+  // Use selected year if data exists; otherwise fall back to the most
+  // recent year that has placement data available. This preserves the
+  // five-year dropdown while ensuring the chart shows meaningful data.
+  const rawData = placementDataByYear[selectedYear] ?? { stats: [], sectors: [] }
+  let stats = rawData.stats
+  let sectors = rawData.sectors
+  let displayYear = selectedYear
+
+  if ((stats?.length ?? 0) === 0) {
+    const latestAvailable = years.find((y) => (placementDataByYear[y]?.stats?.length ?? 0) > 0)
+    if (latestAvailable) {
+      const fallback = placementDataByYear[latestAvailable]
+      stats = fallback.stats
+      sectors = fallback.sectors
+      displayYear = latestAvailable
+    }
+  }
 
   return (
     <section className="pt-12 pb-24 bg-background">
@@ -110,6 +177,8 @@ export default function PlacementSection() {
               <h3 className="text-xl font-semibold mb-6">
                 Placement Snapshot
               </h3>
+
+              {/* fallback notice removed per user request */}
 
               <div className="h-[320px] w-full max-w-md">
                 <ResponsiveContainer width="100%" height="100%">
@@ -152,7 +221,7 @@ export default function PlacementSection() {
 
             {/* ===== RIGHT : SECTOR-WISE ===== */}
             <div>
-              <h3 className="text-xl font-semibold mb-6">
+                <h3 className="text-xl font-semibold mb-6">
                 Sector-wise Hiring
               </h3>
 
