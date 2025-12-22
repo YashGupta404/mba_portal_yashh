@@ -5,6 +5,8 @@ import { ChevronRight, Sparkles, CircleX } from "lucide-react"
 import clsx from "clsx"
 import ApplicationForm from "@/components/application/ApplicationForm"
 import axios from "axios";
+import Link from "next/link"
+
 
 export default function HeroSection() {
   const [imageIndex, setImageIndex] = useState(0)
@@ -252,9 +254,13 @@ export default function HeroSection() {
               </div>
             </button>
 
-            <button className="group px-8 py-4 bg-white/15 text-primary-foreground rounded-lg font-bold hover:bg-white/25 transition-all border-2 border-white/30">
-              Explore Programs
-            </button>
+            <Link
+  href="/programs"
+  className="group px-8 py-4 bg-white/15 text-primary-foreground rounded-lg font-bold hover:bg-white/25 transition-all border-2 border-white/30 inline-flex items-center justify-center"
+>
+  Explore Programs
+</Link>
+
           </div>
         </div>
       </div>
