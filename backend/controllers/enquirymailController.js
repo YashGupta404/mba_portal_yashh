@@ -17,6 +17,7 @@ export const replyenquiry = async (req, res) => {
     }
     await replymail(enquiry.email,enquiry.subject,enquiry.name,reply,enquiry.messageId);
     enquiry.reply=reply;
+    enquiry.replyDate=Date.now();
     await enquiry.save();
 
     return res.json({

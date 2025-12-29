@@ -45,8 +45,12 @@ const enquirySchema = new mongoose.Schema({
     },
     reply:{
         type:String,
-        default:"",
-        date:Date.now
+        default:""
+    
+    },
+    replyDate:{
+        type:Date,
+        default:null
     },
     date: {
         type:Date,
