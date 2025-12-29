@@ -6,20 +6,23 @@ import connectDB from "./config/db.js";
 // Routes
 import facultyRoutes from "./routes/facultyRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
-import enquiryRoutes from "./routes/enquiryRoutes.js"
+import enquiryRoutes from "./routes/enquiryRoutes.js";
+import studentLifeRoutes from "./routes/studentLifeRoutes.js";
+import facilityRoutes from "./routes/facilityRoutes.js";
 dotenv.config();
 
 const app = express();
 
 // Middleware
 app.use(cors({
-        origin:['http://localhost:3000',"http://localhost:8080"],
-        methods:['POST',"GET","PUT"],
-        credentials:true
-    })
+  origin: ['http://localhost:3000', 'http://localhost:8080'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+})
 );
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 connectDB();
@@ -27,7 +30,9 @@ connectDB();
 // Routes
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/applications", applicationRoutes);
-app.use("/api/enquiry",enquiryRoutes);
+app.use("/api/enquiry", enquiryRoutes);
+app.use("/api/student-life", studentLifeRoutes);
+app.use("/api/facilities", facilityRoutes);
 
 // Health check (optional but useful)
 app.get("/api/health", (req, res) => {
