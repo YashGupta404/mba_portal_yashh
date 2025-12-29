@@ -85,7 +85,7 @@ export default function PlacementsPage() {
         </div>
       </section>
 
-      {/* STATISTICS CARDS */}
+      {/* STAT CARDS */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {statsCards.map((stat, idx) => {
@@ -96,57 +96,59 @@ export default function PlacementsPage() {
                 className="text-center p-6 bg-card rounded-xl border border-border hover:border-accent/50 hover:shadow-lg transition-all"
               >
                 <Icon className="w-8 h-8 text-accent mx-auto mb-3" />
-                <p className="text-3xl font-bold text-foreground mb-1">
-                  {stat.label}
-                </p>
-                <p className="text-foreground/60 text-sm">
-                  {stat.subtext}
-                </p>
+                <p className="text-3xl font-bold mb-1">{stat.label}</p>
+                <p className="text-sm text-foreground/60">{stat.subtext}</p>
               </div>
             )
           })}
         </div>
       </section>
 
-      {/* TOP RECRUITING COMPANIES */}
+      {/* TOP RECRUITERS */}
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Top Recruiting Companies
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-            {companies.map((company, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center justify-center p-6 bg-card rounded-xl border border-border hover:shadow-lg transition-all"
-              >
-                <div className="h-16 w-full flex items-center justify-center mb-4">
-                  <Image
-                    src={company.logo}
-                    alt={company.name}
-                    width={140}
-                    height={70}
-                    className="object-contain"
-                  />
-                </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {companies.map((company, idx) => {
+              let logoClass = "max-h-14"
+              if (company.name === "Deloitte") logoClass = "max-h-10"
+              if (company.name === "Flipkart") logoClass = "max-h-20"
+              if (company.name === "EY" || company.name === "Wipro") logoClass = "max-h-10"
 
-                <p className="font-semibold text-sm text-center">
-                  {company.name}
-                </p>
-                <p className="text-xs text-foreground/60">
-                  {company.sector}
-                </p>
-              </div>
-            ))}
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center p-6 bg-card rounded-xl border border-border hover:shadow-lg transition"
+                >
+                  <div className="h-16 flex items-center mb-4">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      width={140}
+                      height={70}
+                      className={`object-contain ${logoClass}`}
+                    />
+                  </div>
+
+                  <p className="font-semibold text-sm">{company.name}</p>
+                  <span className="mt-1 text-sm font-semibold text-accent bg-accent/10 px-3 py-1 rounded-full">
+                    {company.sector}
+                  </span>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* PLACEMENT SNAPSHOT + SECTOR-WISE */}
+      {/* PLACEMENT SNAPSHOT + SECTOR */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
 
+          {/* SNAPSHOT */}
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-6">Placement Snapshot</h2>
 
@@ -165,25 +167,32 @@ export default function PlacementsPage() {
               </ResponsiveContainer>
             </div>
 
-            <div className="mt-6 space-y-2 text-sm">
+            {/* LEGEND WITH VALUES */}
+            <div className="mt-8 flex justify-center gap-8 flex-wrap">
               {placementStats.map((item) => (
-                <div key={item.name} className="flex justify-center gap-3">
+                <div
+                  key={item.name}
+                  className="flex items-center gap-3 px-4 py-2 rounded-lg bg-muted/40"
+                >
                   <span
                     className="w-3 h-3 rounded-full"
                     style={{ backgroundColor: item.fill }}
                   />
-                  <span>
-                    {item.name}: <strong>{item.value}{item.unit}</strong>
-                  </span>
+                  <div className="text-left">
+                    <p className="text-sm font-medium">{item.name}</p>
+                    <p className="text-sm font-semibold">
+                      {item.value}
+                      {item.unit}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* SECTOR-WISE */}
+          {/* SECTOR */}
           <div>
             <h3 className="text-xl font-semibold mb-6">Sector-wise Hiring</h3>
-
             <div className="space-y-5">
               {sectorData.map((s) => (
                 <div key={s.name}>
@@ -205,7 +214,7 @@ export default function PlacementsPage() {
         </div>
       </section>
 
-      {/* ROLE-WISE HIRING */}
+      {/* ROLE-WISE */}
       <section className="py-20 bg-muted/50">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-10">
@@ -224,48 +233,6 @@ export default function PlacementsPage() {
             </ResponsiveContainer>
           </div>
         </div>
-      </section>
-
-      {/* CAREER SUPPORT */}
-      <section className="py-16 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Our Career Support
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              "Career Counseling",
-              "Resume Building",
-              "Interview Preparation",
-              "Internships",
-              "Networking Events",
-              "Alumni Network",
-            ].map((title, idx) => (
-              <div
-                key={idx}
-                className="p-6 bg-card rounded-xl border border-border"
-              >
-                <h3 className="font-bold mb-2">{title}</h3>
-                <p className="text-sm text-foreground/60">
-                  Structured support designed to maximize student success.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-primary text-primary-foreground text-center">
-        <TrendingUp className="w-10 h-10 mx-auto mb-4" />
-        <h2 className="text-3xl font-bold mb-4">Join Our Success Stories</h2>
-        <p className="opacity-90 mb-8">
-          Be part of a placement-driven MBA experience.
-        </p>
-        <button className="px-8 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold">
-          Apply Now
-        </button>
       </section>
 
     </main>

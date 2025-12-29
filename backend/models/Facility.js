@@ -1,0 +1,23 @@
+// backend/models/Facility.js
+
+import mongoose from "mongoose";
+
+const FacilitySchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    details: {
+        type: String,
+        required: true
+    }
+}, {
+    timestamps: true
+});
+
+export default mongoose.model("Facility", FacilitySchema, "facilities");

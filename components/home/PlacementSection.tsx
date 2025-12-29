@@ -262,14 +262,14 @@ export default function PlacementSection() {
               {[...recruiters, ...recruiters].map((company, idx) => (
                 <div
                   key={idx}
-                  className="h-16 min-w-[160px] flex items-center justify-center"
+                  className="h-16 min-w-[120px] flex items-center justify-center"
                 >
                   <Image
                     src={company.logo}
                     alt={company.name}
-                    width={80}
-                    height={30}
-                    className="h-[44px] w-auto object-contain transition duration-500"
+                    width={120}
+                    height={44}
+                    className="h-11 w-auto object-contain transition duration-500"
                   />
                 </div>
               ))}

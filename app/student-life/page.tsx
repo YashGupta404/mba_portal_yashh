@@ -1,66 +1,87 @@
 "use client"
 
-import { Users, Zap, Gamepad2, Music, Award, Heart } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Calendar, Clock, MapPin, Users } from "lucide-react"
 import Videoanimation from "../../components/ui/videoanimation.jsx"
 
+interface Activity {
+  _id: string;
+  id: number;
+  title: string;
+  description: string;
+  category: 'cultural' | 'academic' | 'sports' | 'career' | 'networking' | 'social';
+  status: 'upcoming' | 'ongoing' | 'completed' | 'cancelled';
+  date: string;
+  time: string;
+  venue: string;
+  attendees: number;
+  image: string;
+}
+
+const categoryColors: Record<string, string> = {
+  cultural: 'bg-purple-500',
+  academic: 'bg-blue-500',
+  sports: 'bg-green-500',
+  career: 'bg-orange-500',
+  networking: 'bg-pink-500',
+  social: 'bg-red-500',
+}
+
+const statusColors: Record<string, string> = {
+  upcoming: 'bg-green-500 text-white',
+  ongoing: 'bg-yellow-500 text-black',
+  completed: 'bg-gray-500 text-white',
+  cancelled: 'bg-red-500 text-white',
+}
+
+interface Facility {
+  _id: string;
+  id: number;
+  title: string;
+  details: string;
+}
+
 export default function StudentLifePage() {
-  const activities = [
-    {
-      icon: Users,
-      title: "Student Clubs",
-      description: "Join 20+ clubs including Entrepreneurship, Analytics, Social Impact, and more",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
-    },
-    {
-      icon: Music,
-      title: "Cultural Events",
-      description: "Annual fest with music, dance, theater, and international cultural performances",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
-    },
-    {
-      icon: Award,
-      title: "Sports & Wellness",
-      description: "State-of-the-art facilities for cricket, basketball, badminton, yoga, and fitness",
-      image: "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=400&h=300&fit=crop",
-    },
-    {
-      icon: Zap,
-      title: "Case Competitions",
-      description: "Inter-college competitions, national case championships, and business simulations",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
-    },
-    {
-      icon: Heart,
-      title: "Social Initiatives",
-      description: "CSR projects, community outreach, and sustainability-focused activities",
-      image: "https://images.unsplash.com/photo-1559027615-cd2628902d4a?w=400&h=300&fit=crop",
-    },
-    {
-      icon: Gamepad2,
-      title: "Internals & Events",
-      description: "Regular seminars, panel discussions, industry talks, and networking events",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop",
-    },
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [facilities, setFacilities] = useState<Facility[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+
+        // Fetch both activities and facilities
+        const [activitiesRes, facilitiesRes] = await Promise.all([
+          fetch("http://localhost:5000/api/student-life"),
+          fetch("http://localhost:5000/api/facilities")
+        ]);
+
+        const activitiesData = await activitiesRes.json();
+        const facilitiesData = await facilitiesRes.json();
+
+        setActivities(activitiesData);
+        setFacilities(facilitiesData);
+      } catch (error) {
+        console.error("Failed to load data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  const videos = [
+    "/videos/video1.mp4",
+    "/videos/video2.mp4",
+    "/videos/video3.mp4"
   ]
 
-  const facilities = [
-    { title: "Modern Campus", details: "State-of-the-art classrooms with latest AV technology" },
-    { title: "Library", details: "50,000+ books, digital journals, and research databases" },
-    { title: "Computing Lab", details: "Advanced software and high-speed internet infrastructure" },
-    { title: "Auditorium", details: "500-seat capacity for seminars and events" },
-    { title: "Cafeteria", details: "Multi-cuisine dining with healthy options" },
-    { title: "Hostel", details: "Comfortable accommodation for out-station students" },
-  ]
-const videos = [
-        "/videos/video1.mp4",
-        "/videos/video2.mp4",
-        "/videos/video3.mp4"
-    ]
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
-        <Videoanimation videos={videos}/>
+        <Videoanimation videos={videos} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
             <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Student Life at IEM</h1>
@@ -72,40 +93,89 @@ const videos = [
         </div>
       </section>
 
-      {/* Activities Section */}
+      {/* Activities Section - Cards like Admin Portal */}
       <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 animate-slide-in-up">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Activities & Experiences</h2>
-            <p className="text-foreground/60 text-lg">Beyond the classroom - a holistic learning environment</p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Events & Activities</h2>
+            <p className="text-foreground/60 text-lg">Campus events and student activities</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activities.map((activity, idx) => {
-              const Icon = activity.icon
-              return (
+          {loading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent"></div>
+            </div>
+          ) : activities.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-foreground/60 text-lg">No activities found. Check back later!</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {activities.map((activity, idx) => (
                 <div
-                  key={idx}
-                  className="group bg-card rounded-xl overflow-hidden border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 animate-slide-in-up"
+                  key={activity._id}
+                  className="bg-card rounded-xl border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-300 animate-slide-in-up overflow-hidden"
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
-                  <div className="h-48 overflow-hidden bg-muted">
-                    <img
-                      src={activity.image || "/placeholder.svg"}
-                      alt={activity.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                  {/* Category & Status Badges */}
+                  <div className="p-4 pb-0">
+                    <div className="flex gap-2 mb-4">
+                      <span className={`px-3 py-1 text-xs font-bold text-white rounded-full ${categoryColors[activity.category]}`}>
+                        {activity.category}
+                      </span>
+                      <span className={`px-3 py-1 text-xs font-bold rounded-full ${statusColors[activity.status]}`}>
+                        {activity.status}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="p-6">
-                    <Icon className="w-6 h-6 text-accent mb-3" />
+                  {/* Calendar Icon Placeholder (like admin portal) */}
+                  <div className="flex justify-center items-center h-32 bg-muted/30">
+                    {activity.image ? (
+                      <img
+                        src={activity.image}
+                        alt={activity.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Calendar className="w-16 h-16 text-foreground/20" />
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
                     <h3 className="text-lg font-bold text-foreground mb-2">{activity.title}</h3>
-                    <p className="text-foreground/60 text-sm">{activity.description}</p>
+                    <p className="text-foreground/60 text-sm mb-4 line-clamp-2">{activity.description}</p>
+
+                    {/* Event Details */}
+                    <div className="space-y-2 text-sm text-foreground/70 mb-4">
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-foreground/40" />
+                        <span>{activity.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-foreground/40" />
+                        <span>{activity.time}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-foreground/40" />
+                        <span>{activity.venue}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-foreground/40" />
+                        <span>{activity.attendees} attendees</span>
+                      </div>
+                    </div>
+
+                    {/* View Details Button */}
+                    <button className="w-full py-2.5 border border-accent text-accent rounded-lg font-medium hover:bg-accent hover:text-accent-foreground transition-all duration-300">
+                      View Details
+                    </button>
                   </div>
                 </div>
-              )
-            })}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -120,7 +190,7 @@ const videos = [
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {facilities.map((facility, idx) => (
               <div
-                key={idx}
+                key={facility._id}
                 className="p-6 bg-card rounded-lg border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300 animate-slide-in-up"
                 style={{ animationDelay: `${idx * 100}ms` }}
               >
