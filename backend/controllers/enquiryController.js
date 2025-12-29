@@ -2,7 +2,7 @@ import enquirymodel from "../models/Enquiry.js";
 import dotenv from "dotenv";
 dotenv.config();
 import emailverification from "../utils/emailverification.js";
-import Sendmail from "../utils/mailer.js";
+import {Sendmail} from "../utils/mailer.js";
 
 export const postenquiry = async (req, res) => {
   try {
@@ -14,14 +14,16 @@ export const postenquiry = async (req, res) => {
         message: "Unverified email",
       });
     }
+    const info=await Sendmail(name, email, mobile, subject, message);
     const newenquiry = await enquirymodel.create({
       name,
       email,
       mobile,
       subject,
       message,
+      messageId: info.messageId
     });
-    Sendmail(name, email, mobile, subject, message);
+    
     return res.json({
       success: true,
       message: "Successfully posted enquiry",
@@ -205,3 +207,5 @@ export const updatestatus = async (req, res) => {
     });
   }
 };
+
+

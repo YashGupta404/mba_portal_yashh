@@ -39,6 +39,19 @@ const enquirySchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 1000
     },
+    messageId:{
+        type:String,
+        required:true,
+    },
+    reply:{
+        type:String,
+        default:""
+    
+    },
+    replyDate:{
+        type:Date,
+        default:null
+    },
     date: {
         type:Date,
         default:Date.now
