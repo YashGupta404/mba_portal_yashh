@@ -1,6 +1,7 @@
 import express from "express";
 import {postenquiry,getenquiry,getenquiryspecificbysubject,deleteenquirybysubject,deleteenquiryspecific,searchspecific,updatestatus} from "../controllers/enquiryController.js"
 import {downloadenquiries} from "../controllers/enquirydownloadController.js"
+import {replyenquiry} from "../controllers/enquirymailController.js"
 
 const app=express()
 app.use(express.json()); // this parses JSON body
@@ -17,5 +18,8 @@ router.put("/status/:id",updatestatus)
 
 //download route 
 router.get("/download",downloadenquiries)
+
+//reply to enquiry
+router.post("/reply/:id",replyenquiry);
 
 export default router;
