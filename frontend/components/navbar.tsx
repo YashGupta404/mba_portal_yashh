@@ -4,10 +4,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
 import { Menu, X, ChevronDown } from "lucide-react"
+import ApplicationForm from "@/components/application/ApplicationForm"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [openForm, setOpenForm] = useState(false)
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -61,7 +63,10 @@ export default function Navbar() {
           </div>
 
           {/* ===== APPLY BUTTON ===== */}
-          <button className="hidden md:block px-6 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl">
+          <button
+            onClick={() => setOpenForm(true)}
+            className="hidden md:block px-6 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors shadow-lg hover:shadow-xl"
+          >
             Apply Now
           </button>
 
@@ -87,12 +92,20 @@ export default function Navbar() {
                 </Link>
               </div>
             ))}
-            <button className="w-full mt-4 px-6 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
+            <button
+              onClick={() => { setOpenForm(true); setIsOpen(false); }}
+              className="w-full mt-4 px-6 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors"
+            >
               Apply Now
             </button>
           </div>
         )}
       </div>
+
+      {/* APPLICATION FORM MODAL */}
+      {openForm && (
+        <ApplicationForm onClose={() => setOpenForm(false)} />
+      )}
     </nav>
   )
 }
