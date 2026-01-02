@@ -117,8 +117,8 @@ export default function HeroSection() {
         <div
           key={idx}
           className={`absolute inset-0 transition-all duration-1500 ${idx === imageIndex
-              ? "opacity-100 scale-105"
-              : "opacity-0 scale-100"
+            ? "opacity-100 scale-105"
+            : "opacity-0 scale-100"
             }`}
           style={{
             backgroundImage: `url(${img})`,
@@ -206,11 +206,11 @@ export default function HeroSection() {
 
 
 
-      {/*enquiry box*/}
-      <div className="absolute z-3 bottom-10 right-10 w-60 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
-            shadow-lg  p-6 animate-float p-1 border-box flex flex-col justify-between  gap-4" >
-        <p className=" text-white drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight">Want to know more About MBA program?</p>
-        <button type="button" onClick={handleclick} className={clsx("py-1 hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation)}>
+      {/*enquiry box - hidden on mobile to prevent overlap*/}
+      <div className="hidden md:flex absolute z-3 bottom-10 right-10 w-52 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
+            shadow-lg p-4 animate-float border-box flex-col justify-between gap-3" >
+        <p className="text-white text-sm drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight">Want to know more About MBA program?</p>
+        <button type="button" onClick={handleclick} className={clsx("py-1 text-sm hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation)}>
           Enquire Here
         </button>
       </div>

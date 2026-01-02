@@ -90,16 +90,17 @@ const CustomXAxisTick = ({ x, y, payload }: any) => {
   const [line1, line2] = payload.value.split(" & ")
 
   return (
-    <g transform={`translate(${x},${y + 10})`}>
+    <g transform={`translate(${x},${y + 8})`}>
       <text
         x={0}
         y={0}
         textAnchor="middle"
         fill="#475569"
-        fontSize={12}
+        fontSize={10}
+        className="text-[8px] sm:text-[10px] md:text-[12px]"
       >
         <tspan x="0" dy="0">{line1}</tspan>
-        {line2 && <tspan x="0" dy="14">& {line2}</tspan>}
+        {line2 && <tspan x="0" dy="12">& {line2}</tspan>}
       </text>
     </g>
   )
@@ -120,8 +121,8 @@ export default function StudentAcademicExcellenceSection() {
   const averageCGPA =
     data.length > 0
       ? (
-          data.reduce((sum, d) => sum + d.highestCGPA, 0) / data.length
-        ).toFixed(2)
+        data.reduce((sum, d) => sum + d.highestCGPA, 0) / data.length
+      ).toFixed(2)
       : "0.00"
 
   const visibleSpecializations = showAll ? data : data.slice(0, 3)
@@ -169,14 +170,15 @@ export default function StudentAcademicExcellenceSection() {
                 Highest CGPA by Specialization
               </h3>
 
-              <div className="h-[400px]">
+              <div className="h-[320px] sm:h-[380px] lg:h-[400px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={data} margin={{ bottom: 50 }}>
+                  <BarChart data={data} margin={{ top: 20, right: 10, left: 0, bottom: 60 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis
                       dataKey="specialization"
                       tick={<CustomXAxisTick />}
                       interval={0}
+                      height={70}
                     />
                     <YAxis domain={[0, 10]} />
                     <Tooltip />
@@ -192,7 +194,7 @@ export default function StudentAcademicExcellenceSection() {
                         value: `Average CGPA: ${averageCGPA}`,
                         position: "top",
                         fill: "#ca8a04",
-                        fontSize: 12,
+                        fontSize: 11,
                         fontWeight: 600,
                       }}
                     />
@@ -201,7 +203,7 @@ export default function StudentAcademicExcellenceSection() {
                       dataKey="highestCGPA"
                       fill="#2563eb"
                       radius={[6, 6, 0, 0]}
-                      barSize={48}
+                      barSize={32}
                     />
                   </BarChart>
                 </ResponsiveContainer>

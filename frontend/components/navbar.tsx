@@ -86,6 +86,7 @@ export default function Navbar() {
               <div key={item.label}>
                 <Link
                   href={item.href}
+                  onClick={() => setIsOpen(false)}
                   className="block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10 hover:text-primary transition-colors"
                 >
                   {item.label}
@@ -94,7 +95,7 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => { setOpenForm(true); setIsOpen(false); }}
-              className="w-full mt-4 px-6 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors"
+              className="mx-3 mt-2 px-4 py-1.5 bg-accent text-accent-foreground rounded-md text-sm font-medium hover:bg-accent/90 transition-colors"
             >
               Apply Now
             </button>
