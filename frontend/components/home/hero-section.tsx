@@ -206,11 +206,11 @@ export default function HeroSection() {
 
 
 
-      {/*enquiry box - hidden on mobile to prevent overlap*/}
-      <div className="hidden md:flex absolute z-3 bottom-10 right-10 w-52 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
-            shadow-lg p-4 animate-float border-box flex-col justify-between gap-3" >
-        <p className="text-white text-sm drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight">Want to know more About MBA program?</p>
-        <button type="button" onClick={handleclick} className={clsx("py-1 text-sm hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation)}>
+      {/*enquiry box - repositioned for mobile (top) vs desktop (bottom)*/}
+      <div className="absolute z-3 right-4 md:right-10 top-20 md:top-auto md:bottom-10 w-44 md:w-52 rounded-bl-[15px] rounded-tr-[15px] md:rounded-bl-[20px] md:rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60 
+            shadow-lg p-3 md:p-4 animate-float border-box flex flex-col justify-between gap-2 md:gap-3" >
+        <p className="text-white text-xs md:text-sm drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight">Want to know more About MBA program?</p>
+        <button type="button" onClick={handleclick} className={clsx("py-1 text-xs md:text-sm hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation)}>
           Enquire Here
         </button>
       </div>
