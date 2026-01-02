@@ -11,6 +11,7 @@ import {
   FolderOpen,
   Download,
 } from "lucide-react"
+import { API_BASE_URL } from "@/lib/api-config"
 
 // multicolour steps (RESTORED)
 const stepColors = [
@@ -31,7 +32,7 @@ export default function ProgramDetailsPage() {
     const fetchData = async () => {
       try {
         // Fetch program details
-        const programRes = await fetch(`http://localhost:5000/api/programs/program/${id}`)
+        const programRes = await fetch(`${API_BASE_URL}/api/programs/program/${id}`)
         const programData = await programRes.json()
 
         if (programData.success) {
@@ -39,7 +40,7 @@ export default function ProgramDetailsPage() {
         }
 
         // Fetch courses for this program
-        const coursesRes = await fetch(`http://localhost:5000/api/courses?programId=${id}&status=Published`)
+        const coursesRes = await fetch(`${API_BASE_URL}/api/courses?programId=${id}&status=Published`)
         const coursesData = await coursesRes.json()
 
         if (coursesData.success) {

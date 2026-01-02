@@ -4,6 +4,7 @@ import { Clock, Users, Award, CheckCircle } from "lucide-react"
 import Videoanimation from "../../components/ui/videoanimation.jsx"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
+import { API_BASE_URL } from "@/lib/api-config"
 
 export default function ProgramsPage() {
   const router = useRouter()
@@ -16,7 +17,7 @@ export default function ProgramsPage() {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/programs?isActive=true')
+        const response = await fetch(`${API_BASE_URL}/api/programs?isActive=true`)
         const data = await response.json()
 
         if (data.success) {

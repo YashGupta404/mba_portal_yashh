@@ -6,6 +6,7 @@ import Videoanimation from "../../components/ui/videoanimation.jsx"
 import { useState, useEffect } from "react";
 // NEW: useFaculty context import
 import { useFaculty } from "@/app/context/FacultyContext";
+import { API_BASE_URL } from "@/lib/api-config";
 
 interface Project {
   name: string;
@@ -47,7 +48,7 @@ export default function FacultyPage() {
     async function fetchFaculty() {
       try {
         setLoading(true);
-        const res = await fetch("http://localhost:5000/api/faculty");
+        const res = await fetch(`${API_BASE_URL}/api/faculty`);
         const data = await res.json();
         setFaculty(data);
       } catch (error) {
@@ -86,17 +87,17 @@ export default function FacultyPage() {
     );
   }
   const videos = [
-        "/videos/video1.mp4",
-        "/videos/video2.mp4",
-        "/videos/video3.mp4"
-    ]
+    "/videos/video1.mp4",
+    "/videos/video2.mp4",
+    "/videos/video3.mp4"
+  ]
 
 
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
-      <Videoanimation videos={videos}/>
+        <Videoanimation videos={videos} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
             <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Our Faculty</h1>
@@ -128,34 +129,30 @@ export default function FacultyPage() {
               >
                 {/* Premium Glow Border */}
                 <div
-                  className={`absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${
-                    hoveredId === member._id ? "animate-pulse" : ""
-                  }`}
+                  className={`absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${hoveredId === member._id ? "animate-pulse" : ""
+                    }`}
                 />
 
                 {/* Main Card Container */}
                 <div
-                  className={`relative h-full transition-all duration-500 transform ${
-                    expandedId === member._id ? "scale-105" : "scale-100"
-                  }`}
+                  className={`relative h-full transition-all duration-500 transform ${expandedId === member._id ? "scale-105" : "scale-100"
+                    }`}
                 >
                   {/* Card Background */}
                   <div className="relative bg-card/95 backdrop-blur-xl rounded-3xl overflow-hidden border border-border/50 hover:border-accent/50 transition-all duration-500 hover:shadow-2xl flex flex-col h-full">
-                    
+
                     {/* Profile Image Section */}
                     <div className="relative overflow-hidden bg-gradient-to-b from-muted via-muted/70 to-muted/50">
                       <div className="relative w-full pt-8 pb-6 px-4 flex justify-center h-72 overflow-hidden">
-                        
+
                         {/* Image Section */}
                         <div
-                          className={`absolute inset-4 transition-all duration-500 ease-out ${
-                            hoveredId === member._id ? "-translate-x-20 opacity-100" : "translate-x-0 opacity-100"
-                          }`}
+                          className={`absolute inset-4 transition-all duration-500 ease-out ${hoveredId === member._id ? "-translate-x-20 opacity-100" : "translate-x-0 opacity-100"
+                            }`}
                         >
-                          <div className={`relative transition-all duration-500 h-full flex items-center justify-center ${
-                            hoveredId === member._id ? "scale-110" : "scale-100"
-                          }`}>
-                            
+                          <div className={`relative transition-all duration-500 h-full flex items-center justify-center ${hoveredId === member._id ? "scale-110" : "scale-100"
+                            }`}>
+
                             {/* Outer Glow */}
                             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 blur-lg animate-pulse" />
 
@@ -164,9 +161,8 @@ export default function FacultyPage() {
                               <img
                                 src={member.image || "/placeholder.svg"}
                                 alt={member.name}
-                                className={`w-full h-full object-cover transition-all duration-700 ${
-                                  hoveredId === member._id ? "scale-120 brightness-125" : "scale-100 brightness-100"
-                                }`}
+                                className={`w-full h-full object-cover transition-all duration-700 ${hoveredId === member._id ? "scale-120 brightness-125" : "scale-100 brightness-100"
+                                  }`}
                               />
                             </div>
 
@@ -179,12 +175,11 @@ export default function FacultyPage() {
 
                         {/* Details Panel Slide */}
                         <div
-                          className={`absolute inset-4 right-auto left-32 transition-all duration-500 ease-out ${
-                            hoveredId === member._id ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-                          }`}
+                          className={`absolute inset-4 right-auto left-32 transition-all duration-500 ease-out ${hoveredId === member._id ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+                            }`}
                         >
                           <div className="h-full flex flex-col justify-between p-4 bg-gradient-to-b from-primary/10 to-accent/5 rounded-2xl border border-accent/20 backdrop-blur-sm overflow-y-auto">
-                            
+
                             {/* Stats */}
                             <div className="space-y-3">
                               <div className="flex items-center gap-2 text-xs">
@@ -234,9 +229,8 @@ export default function FacultyPage() {
                       </div>
 
                       {/* Accent Line */}
-                      <div className={`h-1 bg-gradient-to-r from-transparent via-accent to-transparent transition-all duration-500 ${
-                        hoveredId === member._id ? "opacity-100 scale-x-100" : "opacity-50 scale-x-75"
-                      }`} />
+                      <div className={`h-1 bg-gradient-to-r from-transparent via-accent to-transparent transition-all duration-500 ${hoveredId === member._id ? "opacity-100 scale-x-100" : "opacity-50 scale-x-75"
+                        }`} />
                     </div>
 
                     {/* Content Section */}
@@ -245,11 +239,10 @@ export default function FacultyPage() {
                       {/* Name */}
                       <div className="mb-2 text-center">
                         <h3
-                          className={`text-2xl font-bold transition-all duration-500 ${
-                            hoveredId === member._id
+                          className={`text-2xl font-bold transition-all duration-500 ${hoveredId === member._id
                               ? "text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary"
                               : "text-foreground"
-                          }`}
+                            }`}
                         >
                           {member.name}
                         </h3>
@@ -257,11 +250,10 @@ export default function FacultyPage() {
 
                       {/* Title */}
                       <div className="text-center mb-3">
-                        <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ${
-                          hoveredId === member._id
+                        <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ${hoveredId === member._id
                             ? "bg-accent/30 text-accent border border-accent/50"
                             : "bg-accent/10 text-accent border border-accent/20"
-                        }`}>
+                          }`}>
                           {member.title}
                         </span>
                       </div>
@@ -273,18 +265,16 @@ export default function FacultyPage() {
 
                       {/* Achievements */}
                       <div
-                        className={`relative p-4 rounded-2xl border transition-all duration-500 overflow-hidden group/badge ${
-                          hoveredId === member._id
+                        className={`relative p-4 rounded-2xl border transition-all duration-500 overflow-hidden group/badge ${hoveredId === member._id
                             ? "bg-accent/25 border-accent/60 shadow-lg shadow-accent/30"
                             : "bg-accent/8 border-accent/20"
-                        }`}
+                          }`}
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500 animate-shimmer" />
 
                         <div className="relative flex items-start gap-3">
-                          <div className={`transition-transform duration-500 flex-shrink-0 ${
-                            hoveredId === member._id ? "animate-bounce scale-110" : "scale-100"
-                          }`}>
+                          <div className={`transition-transform duration-500 flex-shrink-0 ${hoveredId === member._id ? "animate-bounce scale-110" : "scale-100"
+                            }`}>
                             <Award className="w-5 h-5 text-accent" />
                           </div>
                           <p className="text-xs text-foreground/80 font-medium leading-relaxed">
@@ -299,11 +289,10 @@ export default function FacultyPage() {
                         {/* Email */}
                         <a
                           href={`mailto:${member.email}`}
-                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 rounded-xl font-medium text-xs transition-all duration-500 ${
-                            hoveredId === member._id
+                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 rounded-xl font-medium text-xs transition-all duration-500 ${hoveredId === member._id
                               ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105"
                               : "bg-accent/10 text-accent hover:bg-accent/20"
-                          }`}
+                            }`}
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Mail className="w-4 h-4" />
@@ -319,11 +308,10 @@ export default function FacultyPage() {
                             // Navigate to the fixed details page
                             router.push("/faculty/facultyinfo");
                           }}
-                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 rounded-xl font-medium text-xs transition-all duration-500 ${
-                            hoveredId === member._id
+                          className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 rounded-xl font-medium text-xs transition-all duration-500 ${hoveredId === member._id
                               ? "bg-gradient-to-r from-accent to-primary text-white shadow-lg scale-105"
                               : "bg-accent/10 text-accent hover:bg-accent/20"
-                          }`}
+                            }`}
                         >
                           <ExternalLink className="w-4 h-4" />
                           <span>Details</span>
@@ -439,13 +427,12 @@ export default function FacultyPage() {
                               <div className="flex items-start justify-between">
                                 <p className="font-medium">{project.name}</p>
                                 <span
-                                  className={`text-xs px-3 py-1 rounded-full font-bold ${
-                                    project.status === "Ongoing"
+                                  className={`text-xs px-3 py-1 rounded-full font-bold ${project.status === "Ongoing"
                                       ? "bg-green-500/20 text-green-600"
                                       : project.status === "In Review"
-                                      ? "bg-yellow-500/20 text-yellow-600"
-                                      : "bg-blue-500/20 text-blue-600"
-                                  }`}
+                                        ? "bg-yellow-500/20 text-yellow-600"
+                                        : "bg-blue-500/20 text-blue-600"
+                                    }`}
                                 >
                                   {project.status}
                                 </span>
@@ -531,7 +518,7 @@ export default function FacultyPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            
+
             <div className="p-8 bg-card rounded-xl border hover:border-accent/50 transition-all">
               <BookOpen className="w-8 h-8 text-accent mb-4" />
               <h3 className="font-bold text-lg mb-2">Research & Publication</h3>

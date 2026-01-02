@@ -1,18 +1,19 @@
 "use client"
 
 import { useState } from "react"
+import { API_BASE_URL } from "@/lib/api-config"
 
 /* ---------------- DATA ---------------- */
 
 const COUNTRIES = {
   India: [
-    "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Delhi",
-    "Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala",
-    "Madhya Pradesh","Maharashtra","Odisha","Punjab","Rajasthan","Tamil Nadu",
-    "Telangana","Uttar Pradesh","Uttarakhand","West Bengal",
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Delhi",
+    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala",
+    "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu",
+    "Telangana", "Uttar Pradesh", "Uttarakhand", "West Bengal",
   ],
-  USA: ["California","Texas","New York","Florida","Illinois"],
-  Canada: ["Ontario","Quebec","British Columbia","Alberta"],
+  USA: ["California", "Texas", "New York", "Florida", "Illinois"],
+  Canada: ["Ontario", "Quebec", "British Columbia", "Alberta"],
 }
 
 const COUNTRY_CODES = [
@@ -29,14 +30,14 @@ const COUNTRY_CODES = [
 ]
 
 const BACHELORS_COURSES = [
-  "B.A","B.Sc","B.Com","B.Tech / B.E","BBA","BCA","B.Arch","B.Pharm","LLB","MBBS","Other",
+  "B.A", "B.Sc", "B.Com", "B.Tech / B.E", "BBA", "BCA", "B.Arch", "B.Pharm", "LLB", "MBBS", "Other",
 ]
 
 const MASTERS_COURSES = [
-  "M.A","M.Sc","M.Com","M.Tech / M.E","MBA","MCA","M.Arch","M.Pharm","LLM","MD / MS","Other",
+  "M.A", "M.Sc", "M.Com", "M.Tech / M.E", "MBA", "MCA", "M.Arch", "M.Pharm", "LLM", "MD / MS", "Other",
 ]
 
-const OTHER_QUALIFICATIONS = ["Diploma","CA / CS / CMA","PhD","Other"]
+const OTHER_QUALIFICATIONS = ["Diploma", "CA / CS / CMA", "PhD", "Other"]
 
 /* ---------------- COMPONENT ---------------- */
 
@@ -135,7 +136,7 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
 
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target
-    
+
     // Phone number validation - only allow digits and max 10
     if (name === "mobile") {
       const numericValue = value.replace(/\D/g, "").slice(0, 10)
@@ -145,7 +146,7 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
       }
       return
     }
-    
+
     // Pincode validation - only allow digits and max 6
     if (name === "pincode") {
       const numericValue = value.replace(/\D/g, "").slice(0, 6)
@@ -155,7 +156,7 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
       }
       return
     }
-    
+
     // Name fields - only allow letters and spaces
     if (name === "firstName" || name === "middleName" || name === "lastName") {
       const textValue = value.replace(/[^a-zA-Z\s]/g, "")
@@ -165,14 +166,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
       }
       return
     }
-    
+
     const newValue = type === "checkbox" ? checked : value
     setForm(prev => ({
       ...prev,
       [name]: newValue,
       ...(name === "country" ? { state: "" } : {}),
     }))
-    
+
     if (touched[name] && typeof newValue === "string") {
       setErrors(prev => ({ ...prev, [name]: validateField(name, newValue) }))
     }
@@ -186,14 +187,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-    
+
     // Mark all fields as touched
     const allTouched: Record<string, boolean> = {}
     Object.keys(form).forEach(key => {
       allTouched[key] = true
     })
     setTouched(allTouched)
-    
+
     // Validate all fields
     const newErrors: Record<string, string> = {}
     Object.entries(form).forEach(([key, value]) => {
@@ -202,7 +203,7 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
         if (error) newErrors[key] = error
       }
     })
-    
+
     // Check required fields
     if (!form.firstName) newErrors.firstName = "First name is required"
     if (!form.lastName) newErrors.lastName = "Last name is required"
@@ -223,9 +224,9 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
     }
     if (!form.program) newErrors.program = "Programme selection is required"
     if (!form.agree) newErrors.agree = "You must agree to continue"
-    
+
     setErrors(newErrors)
-    
+
     if (Object.keys(newErrors).length > 0) {
       return
     }
@@ -257,7 +258,7 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/applications", {
+      const res = await fetch(`${API_BASE_URL}/api/applications`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -309,8 +310,8 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
               <h2 className="text-3xl font-bold text-white tracking-tight">MBA Application Form</h2>
               <p className="text-blue-100 mt-2 text-sm font-medium">Please fill in your details carefully to proceed</p>
             </div>
-            <button 
-              onClick={onClose} 
+            <button
+              onClick={onClose}
               className="text-white hover:bg-white/20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 text-2xl font-light"
             >
               ✕
@@ -328,14 +329,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <div className="relative">
-                <input 
-                  name="firstName" 
-                  placeholder="First Name *" 
+                <input
+                  name="firstName"
+                  placeholder="First Name *"
                   className={`input peer ${errors.firstName && touched.firstName ? 'border-red-500' : ''}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={form.firstName}
-                  required 
+                  required
                 />
                 <label className="floating-label">First Name</label>
                 {errors.firstName && touched.firstName && (
@@ -343,9 +344,9 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
                 )}
               </div>
               <div className="relative">
-                <input 
-                  name="middleName" 
-                  placeholder="Middle Name (Optional)" 
+                <input
+                  name="middleName"
+                  placeholder="Middle Name (Optional)"
                   className={`input peer ${errors.middleName && touched.middleName ? 'border-red-500' : ''}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
@@ -357,14 +358,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
                 )}
               </div>
               <div className="relative">
-                <input 
-                  name="lastName" 
-                  placeholder="Last Name *" 
+                <input
+                  name="lastName"
+                  placeholder="Last Name *"
                   className={`input peer ${errors.lastName && touched.lastName ? 'border-red-500' : ''}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={form.lastName}
-                  required 
+                  required
                 />
                 <label className="floating-label">Last Name</label>
                 {errors.lastName && touched.lastName && (
@@ -374,15 +375,15 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
               <div className="relative">
-                <input 
-                  name="email" 
-                  type="email" 
-                  placeholder="Email Address *" 
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email Address *"
                   className={`input peer ${errors.email && touched.email ? 'border-red-500' : ''}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={form.email}
-                  required 
+                  required
                 />
                 <label className="floating-label">Email Address</label>
                 {errors.email && touched.email && (
@@ -390,37 +391,37 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
                 )}
               </div>
               <div className="relative flex gap-2">
-  <div className="w-32">
-    <select 
-      name="countryCode" 
-      className="input h-full"
-      onChange={handleChange}
-      value={form.countryCode}
-    >
-      {COUNTRY_CODES.map(c => (
-        <option key={c.code} value={c.code}>
-          {c.code} {c.country}
-        </option>
-      ))}
-    </select>
-  </div>
-  <div className="relative flex-1">
-    <input 
-      name="mobile" 
-      type="tel"
-      placeholder="Mobile Number (10 digits) *" 
-      className={`input peer ${errors.mobile && touched.mobile ? 'border-red-500' : ''}`}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      value={form.mobile}
-      required 
-    />
-    <label className="floating-label">Mobile Number</label>
-    {errors.mobile && touched.mobile && (
-      <p className="error-message">{errors.mobile}</p>
-    )}
-  </div>
-</div>
+                <div className="w-32">
+                  <select
+                    name="countryCode"
+                    className="input h-full"
+                    onChange={handleChange}
+                    value={form.countryCode}
+                  >
+                    {COUNTRY_CODES.map(c => (
+                      <option key={c.code} value={c.code}>
+                        {c.code} {c.country}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="relative flex-1">
+                  <input
+                    name="mobile"
+                    type="tel"
+                    placeholder="Mobile Number (10 digits) *"
+                    className={`input peer ${errors.mobile && touched.mobile ? 'border-red-500' : ''}`}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={form.mobile}
+                    required
+                  />
+                  <label className="floating-label">Mobile Number</label>
+                  {errors.mobile && touched.mobile && (
+                    <p className="error-message">{errors.mobile}</p>
+                  )}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -430,15 +431,15 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
               <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-600 text-white flex items-center justify-center text-base font-bold shadow-md">2</span>
               <h3 className="text-xl font-bold text-gray-900">Address Details</h3>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="relative">
-                <select 
-                  name="country" 
+                <select
+                  name="country"
                   className={`input ${errors.country && touched.country ? 'border-red-500' : ''}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.country} 
+                  value={form.country}
                   required
                 >
                   <option value="">Select Country *</option>
@@ -450,13 +451,13 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="relative">
-                <select 
-                  name="state" 
+                <select
+                  name="state"
                   className={`input ${errors.state && touched.state ? 'border-red-500' : ''}`}
-                  disabled={!form.country} 
+                  disabled={!form.country}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={form.state} 
+                  value={form.state}
                   required
                 >
                   <option value="">Select State *</option>
@@ -472,14 +473,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
             </div>
 
             <div className="relative">
-              <input 
-                name="pincode" 
-                placeholder="PIN Code (6 digits) *" 
+              <input
+                name="pincode"
+                placeholder="PIN Code (6 digits) *"
                 className={`input ${errors.pincode && touched.pincode ? 'border-red-500' : ''}`}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={form.pincode}
-                required 
+                required
               />
               {errors.pincode && touched.pincode && (
                 <p className="error-message">{errors.pincode}</p>
@@ -487,14 +488,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
             </div>
 
             <div className="relative">
-              <textarea 
-                name="fullAddress" 
-                placeholder="Full Address *" 
+              <textarea
+                name="fullAddress"
+                placeholder="Full Address *"
                 className={`input min-h-[110px] resize-none ${errors.fullAddress && touched.fullAddress ? 'border-red-500' : ''}`}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={form.fullAddress}
-                required 
+                required
               />
               {errors.fullAddress && touched.fullAddress && (
                 <p className="error-message">{errors.fullAddress}</p>
@@ -513,12 +514,12 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
               <div className="space-y-3">
                 <label className="label-modern">Bachelor's Qualification *</label>
                 <div className="relative">
-                  <select 
-                    name="bachelors" 
+                  <select
+                    name="bachelors"
                     className={`input ${errors.bachelors && touched.bachelors ? 'border-red-500' : ''}`}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={form.bachelors} 
+                    value={form.bachelors}
                     required
                   >
                     <option value="">Select Bachelor's Degree</option>
@@ -530,10 +531,10 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
                 </div>
                 {form.bachelors === "Other" && (
                   <div className="relative">
-                    <input 
-                      name="bachelorsOther" 
+                    <input
+                      name="bachelorsOther"
                       className={`input mt-3 ${errors.bachelorsOther && touched.bachelorsOther ? 'border-red-500' : ''}`}
-                      placeholder="Please specify your Bachelor's degree" 
+                      placeholder="Please specify your Bachelor's degree"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={form.bachelorsOther}
@@ -549,8 +550,8 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
               <div className="space-y-3">
                 <label className="label-modern">Master's Qualification</label>
                 <div className="relative">
-                  <select 
-                    name="masters" 
+                  <select
+                    name="masters"
                     className={`input ${errors.masters && touched.masters ? 'border-red-500' : ''}`}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -565,10 +566,10 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
                 </div>
                 {form.masters === "Other" && (
                   <div className="relative">
-                    <input 
-                      name="mastersOther" 
+                    <input
+                      name="mastersOther"
                       className={`input mt-3 ${errors.mastersOther && touched.mastersOther ? 'border-red-500' : ''}`}
-                      placeholder="Please specify your Master's degree" 
+                      placeholder="Please specify your Master's degree"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={form.mastersOther}
@@ -589,12 +590,12 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
               <h3 className="text-xl font-bold text-gray-900">Programme Selection</h3>
             </div>
             <div className="relative">
-              <select 
-                name="program" 
+              <select
+                name="program"
                 className={`input ${errors.program && touched.program ? 'border-red-500' : ''}`}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={form.program} 
+                value={form.program}
                 required
               >
                 <option value="">Select MBA Programme *</option>
@@ -611,14 +612,14 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
           {/* AGREEMENT */}
           <div className="bg-blue-50 border-l-4 border-blue-600 p-5 rounded-lg">
             <label className="flex gap-3 text-sm text-gray-700 cursor-pointer">
-              <input 
-                type="checkbox" 
-                name="agree" 
-                onChange={handleChange} 
+              <input
+                type="checkbox"
+                name="agree"
+                onChange={handleChange}
                 onBlur={handleBlur}
                 checked={form.agree}
-                required 
-                className="mt-0.5 w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500" 
+                required
+                className="mt-0.5 w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
               />
               <span className="font-medium">I agree to receive information regarding my application and understand that my data will be processed according to the privacy policy *</span>
             </label>
@@ -628,9 +629,9 @@ export default function ApplicationForm({ onClose }: { onClose: () => void }) {
           </div>
 
           {/* SUBMIT */}
-          <button 
+          <button
             onClick={handleSubmit}
-            disabled={loading} 
+            disabled={loading}
             className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 disabled:cursor-not-allowed disabled:transform-none"
           >
             {loading ? (

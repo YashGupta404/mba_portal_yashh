@@ -6,6 +6,7 @@ import clsx from "clsx"
 import ApplicationForm from "@/components/application/ApplicationForm"
 import axios from "axios";
 import Link from "next/link"
+import { API_BASE_URL } from "@/lib/api-config"
 
 
 export default function HeroSection() {
@@ -50,64 +51,60 @@ export default function HeroSection() {
     }
   }
   // csss related......
-  const formfielddiv="h-13 flex flex-col  ";
-  const formlabel="font-bold text-blue-700 ";
+  const formfielddiv = "h-13 flex flex-col  ";
+  const formlabel = "font-bold text-blue-700 ";
   const formfield = "h-full w-full rounded-[4px] hover:border-blue-900/70 focus:border-blue-800/70 focus:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] hover:shadow-[1px_1px_5px_rgba(30,64,175,0.3)] bg-accent/10 hover:border-[2px] focus:border-[2px] border-box py-1 my-1 px-3";
   const buttonanimation = "transition-all transition-100 active:scale-99 hover:scale-102 active:opacity-[0.9]";
 
   //enquiry form logic
-  const [formdata,setformdata]=useState<Record<string, string>>({
-    name:"",
-    email:"",
-    mobile:"",
-    subject:"",
-    message:""
+  const [formdata, setformdata] = useState<Record<string, string>>({
+    name: "",
+    email: "",
+    mobile: "",
+    subject: "",
+    message: ""
   });
 
-  const handlechange=(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)=>{
-    const {name,value}=e.target;
-    console.log(name,value);
-    const shallowcopy={...formdata};
-    shallowcopy[name]=value;
+  const handlechange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    const shallowcopy = { ...formdata };
+    shallowcopy[name] = value;
     setformdata(shallowcopy);
   }
 
-  const handlesubmission=async (e: React.FormEvent<HTMLFormElement>)=>{
+  const handlesubmission = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const {name,email,mobile,subject,message}=formdata;
-    if(!name || !email || !message || !subject || !mobile)
-    {
+    const { name, email, mobile, subject, message } = formdata;
+    if (!name || !email || !message || !subject || !mobile) {
       console.log("Kindly fill up the credentials")
     }
-    try{
-      const response= await axios.post("http://localhost:5000/api/enquiry/post",formdata,{
-        headers:{
-          "Content-Type":"application/json",
-          
+    try {
+      const response = await axios.post(`${API_BASE_URL}/api/enquiry/post`, formdata, {
+        headers: {
+          "Content-Type": "application/json",
+
         },
         withCredentials: true,
       })
-      const {success,error,message}=response.data;
-      if(success)
-      {
+      const { success, error, message } = response.data;
+      if (success) {
         console.log("Enquiry posted successfully");
         handleclick()
         setformdata({
-          name:"",
-          email:"",
-          message:"",
-          mobile:"",
-          subject:""
+          name: "",
+          email: "",
+          message: "",
+          mobile: "",
+          subject: ""
         })
       }
-      if(error)
-      {
-        console.log("Error occured while posting data=",error)
+      if (error) {
+        console.log("Error occured while posting data=", error)
       }
     }
-    catch(err)
-    {
-      console.log("Error with enquiry form api...",err)
+    catch (err) {
+      console.log("Error with enquiry form api...", err)
     }
   }
 
@@ -119,11 +116,10 @@ export default function HeroSection() {
       {images.map((img, idx) => (
         <div
           key={idx}
-          className={`absolute inset-0 transition-all duration-1500 ${
-            idx === imageIndex
+          className={`absolute inset-0 transition-all duration-1500 ${idx === imageIndex
               ? "opacity-100 scale-105"
               : "opacity-0 scale-100"
-          }`}
+            }`}
           style={{
             backgroundImage: `url(${img})`,
             backgroundSize: "cover",
@@ -165,7 +161,7 @@ export default function HeroSection() {
       {/*form*/}
       <div className={clsx("w-screen h-screen top-0  fixed z-90 bg-black/50", style)}>
         <div id="homeenquiryform" className={clsx("flex flex-col justify-center items-end border-box py-5 px-8 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-100 w-[50vw] h-[90vh]  bg-zinc-50 transition-all duration-300 transform ease-out rounded-[10px] ", style === "block" ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none")}>
-          <button type="button" onClick={handleclick} className={clsx("w-auto ",buttonanimation)}>
+          <button type="button" onClick={handleclick} className={clsx("w-auto ", buttonanimation)}>
             <CircleX size={40} className="text-accent" strokeWidth={2.5} />
           </button>
           <div className="w-full h-full flex flex-col justify-around">
@@ -180,15 +176,15 @@ export default function HeroSection() {
               </div>
               <div className={clsx(formfielddiv)}>
                 <label htmlFor="email" className={clsx(formlabel)}>Email ID</label>
-                <input onChange={handlechange} value={formdata.email}  id="email" name="email" required placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)} />
+                <input onChange={handlechange} value={formdata.email} id="email" name="email" required placeholder="Enter Email Id e.g. xxxx@gmail.com" className={clsx(formfield)} />
               </div>
               <div className={clsx(formfielddiv)}>
                 <label htmlFor="mobile" className={clsx(formlabel)}>Contact Number</label>
-                <input onChange={handlechange} value={formdata.mobile}  id="mobile" name="mobile" required placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)} />
+                <input onChange={handlechange} value={formdata.mobile} id="mobile" name="mobile" required placeholder="Enter Mobile Number e.g. xxxxxxxxxx" className={clsx(formfield)} />
               </div>
               <div className={clsx(formfielddiv)}>
                 <label htmlFor="subject" className={clsx(formlabel)}>Subject</label>
-                <select onChange={handlechange} value={formdata.subject}  id="subject" name="subject" required className={clsx(formfield)} >
+                <select onChange={handlechange} value={formdata.subject} id="subject" name="subject" required className={clsx(formfield)} >
                   <option value="">Subject Type</option>
                   <option value="Admission Query">Admission Query</option>
                   <option value="Program Details">Program Details</option>
@@ -196,11 +192,11 @@ export default function HeroSection() {
                   <option value="Others">Others</option>
                 </select>
               </div>
-              <div className={clsx(formfielddiv,"col-span-2 row-span-3 h-full resize-none ")}>
+              <div className={clsx(formfielddiv, "col-span-2 row-span-3 h-full resize-none ")}>
                 <label htmlFor="message" className={clsx(formlabel)}>Message</label>
-                <textarea value={formdata.message} onChange={handlechange}  id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield, )}></textarea>
+                <textarea value={formdata.message} onChange={handlechange} id="message" name="message" required placeholder="State your Enquiry..." className={clsx(formfield,)}></textarea>
               </div>
-              <button type="submit"  className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
+              <button type="submit" className={clsx("col-span-2 text-white bg-gradient-to-b from-blue-800 to-blue-500 ", buttonanimation)}>Submit your query</button>
             </form>
 
           </div>
@@ -255,53 +251,53 @@ export default function HeroSection() {
             </button>
 
             <Link
-  href="/programs"
-  className="group px-8 py-4 bg-white/15 text-primary-foreground rounded-lg font-bold hover:bg-white/25 transition-all border-2 border-white/30 inline-flex items-center justify-center"
->
-  Explore Programs
-</Link>
+              href="/programs"
+              className="group px-8 py-4 bg-white/15 text-primary-foreground rounded-lg font-bold hover:bg-white/25 transition-all border-2 border-white/30 inline-flex items-center justify-center"
+            >
+              Explore Programs
+            </Link>
 
           </div>
         </div>
       </div>
 
-<aside
-  className="hidden lg:block absolute top-10 right-10 w-32 
+      <aside
+        className="hidden lg:block absolute top-10 right-10 w-32 
   bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl 
   p-3 shadow-2xl overflow-hidden animate-fade-in"
->
-  {/* Header */}
-  <div className="flex items-start gap-2 mb-2">
-    <div className="w-1 h-7 bg-gradient-to-b from-yellow-300 via-orange-400 to-red-400 rounded-full animate-pulse"></div>
+      >
+        {/* Header */}
+        <div className="flex items-start gap-2 mb-2">
+          <div className="w-1 h-7 bg-gradient-to-b from-yellow-300 via-orange-400 to-red-400 rounded-full animate-pulse"></div>
 
-    <h3 className="text-[11px] font-semibold text-white tracking-tight leading-snug break-words">
-      News & Announcements
-    </h3>
-  </div>
+          <h3 className="text-[11px] font-semibold text-white tracking-tight leading-snug break-words">
+            News & Announcements
+          </h3>
+        </div>
 
-  {/* Auto-Scrolling Content */}
-  <div className="relative h-64 overflow-hidden">
-   <ul className="news-loop absolute w-full animate-news-loop space-y-4 text-white/90 text-[10px] pr-1">
+        {/* Auto-Scrolling Content */}
+        <div className="relative h-64 overflow-hidden">
+          <ul className="news-loop absolute w-full animate-news-loop space-y-4 text-white/90 text-[10px] pr-1">
 
-  {/* ORIGINAL LIST */}
-  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🏆 IEM ranked top 10 in Eastern India.</li>
-  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🌍 Leadership Summit in Jan 2025.</li>
-  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">💼 98.5% placement achieved.</li>
-  <li className="hover:text-yellow-300">✨ New specialization added.</li>
+            {/* ORIGINAL LIST */}
+            <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🏆 IEM ranked top 10 in Eastern India.</li>
+            <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🌍 Leadership Summit in Jan 2025.</li>
+            <li className="border-b border-white/20 pb-1 hover:text-yellow-300">💼 98.5% placement achieved.</li>
+            <li className="hover:text-yellow-300">✨ New specialization added.</li>
 
-  {/* --- GAP / SPACER (visible gap between loops) --- */}
-  <li className="h-8"></li>  {/* Add a blank vertical gap */}
+            {/* --- GAP / SPACER (visible gap between loops) --- */}
+            <li className="h-8"></li>  {/* Add a blank vertical gap */}
 
-  {/* DUPLICATE LIST */}
-  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🏆 IEM ranked top 10 in Eastern India.</li>
-  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🌍 Leadership Summit in Jan 2025.</li>
-  <li className="border-b border-white/20 pb-1 hover:text-yellow-300">💼 98.5% placement achieved.</li>
-  <li className="hover:text-yellow-300">✨ New specialization added.</li>
+            {/* DUPLICATE LIST */}
+            <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🏆 IEM ranked top 10 in Eastern India.</li>
+            <li className="border-b border-white/20 pb-1 hover:text-yellow-300">🌍 Leadership Summit in Jan 2025.</li>
+            <li className="border-b border-white/20 pb-1 hover:text-yellow-300">💼 98.5% placement achieved.</li>
+            <li className="hover:text-yellow-300">✨ New specialization added.</li>
 
-</ul>
+          </ul>
 
-  </div>
-</aside>
+        </div>
+      </aside>
 
       {/* APPLICATION FORM MODAL */}
       {openForm && (

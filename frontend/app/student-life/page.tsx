@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Calendar, Clock, MapPin, Users } from "lucide-react"
 import Videoanimation from "../../components/ui/videoanimation.jsx"
+import { API_BASE_URL } from "@/lib/api-config"
 
 interface Activity {
   _id: string;
@@ -53,8 +54,8 @@ export default function StudentLifePage() {
 
         // Fetch both activities and facilities
         const [activitiesRes, facilitiesRes] = await Promise.all([
-          fetch("http://localhost:5000/api/student-life"),
-          fetch("http://localhost:5000/api/facilities")
+          fetch(`${API_BASE_URL}/api/student-life`),
+          fetch(`${API_BASE_URL}/api/facilities`)
         ]);
 
         const activitiesData = await activitiesRes.json();
