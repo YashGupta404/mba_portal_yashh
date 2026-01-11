@@ -14,7 +14,7 @@ export default function Navbar() {
     { label: "About", href: "/about" },
     { label: "Faculty", href: "/faculty" },
     { label: "Programs", href: "/programs" },
-    { label: "Admissions", href: "/admissions" },
+    { label: "Admissions", href: "/admissions" },     
     { label: "Placements", href: "/placements" },
     { label: "Student Life", href: "/student-life" },
     { label: "Contact", href: "/contact" },

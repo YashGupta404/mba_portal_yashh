@@ -1,40 +1,76 @@
-"use client"
+"use client";
 
-import type React from "react"
-import Videoanimation from "../../components/ui/videoanimation.jsx"
+import type React from "react";
+import Videoanimation from "../../components/ui/videoanimation.jsx";
 
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
-import { useState } from "react"
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
+  const videos = [
+    "/videos/video1.mp4",
+    "/videos/video2.mp4",
+    "/videos/video3.mp4",
+  ];
+  const [submitted, setSubmitted] = useState(false);
+
+  //enquiry form logic
+  const [formdata, setformdata] = useState<Record<string, string>>({
     name: "",
     email: "",
-    phone: "",
+    mobile: "",
     subject: "",
     message: "",
-  })
-  const videos = [
-        "/videos/video1.mp4",
-        "/videos/video2.mp4",
-        "/videos/video3.mp4"
-    ]
-  const [submitted, setSubmitted] = useState(false)
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Simulate form submission
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-    }, 3000)
-  }
+  const handlechange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    const shallowcopy = { ...formdata };
+    shallowcopy[name] = value;
+    setformdata(shallowcopy);
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const handlesubmission = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { name, email, mobile, subject, message } = formdata;
+    if (!name || !email || !message || !subject || !mobile) {
+      console.log("Kindly fill up the credentials");
+    }
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/enquiry/post",
+        formdata,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      const { success, error, message } = response.data;
+      if (success) {
+        console.log("Enquiry posted successfully");
+        setformdata({
+          name: "",
+          email: "",
+          message: "",
+          mobile: "",
+          subject: "",
+        });
+      }
+      if (error) {
+        console.log("Error occured while posting data=", error);
+      }
+    } catch (err) {
+      console.log("Error with enquiry form api...", err);
+    }
+  };
 
   const contactInfo = [
     {
@@ -61,19 +97,22 @@ export default function ContactPage() {
       value: "9:00 AM - 6:00 PM",
       subtext: "Monday to Friday",
     },
-  ]
+  ];
 
   return (
     <main className="overflow-hidden">
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-black/70 relative text-primary-foreground">
-      <Videoanimation videos={videos}/>
+        <Videoanimation videos={videos} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl animate-slide-in-up">
-            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">Get In Touch</h1>
+            <h1 className="drop-shadow-[2px_2px_5px_white] text-4xl lg:text-5xl font-bold mb-6">
+              Get In Touch
+            </h1>
             <p className="drop-shadow-[2px_2px_5px_white] text-lg opacity-90">
-              Have questions about our programs? We'd love to hear from you. Reach out to us through any channel, and
-              we'll get back to you shortly.
+              Have questions about our programs? We'd love to hear from you.
+              Reach out to us through any channel, and we'll get back to you
+              shortly.
             </p>
           </div>
         </div>
@@ -81,11 +120,10 @@ export default function ContactPage() {
 
       {/* Contact Info */}
       <section className="py-16 lg:py-24 bg-background">
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => {
-              const Icon = info.icon
+              const Icon = info.icon;
               return (
                 <div
                   key={idx}
@@ -93,11 +131,15 @@ export default function ContactPage() {
                   style={{ animationDelay: `${idx * 100}ms` }}
                 >
                   <Icon className="w-6 h-6 text-accent mb-4" />
-                  <p className="text-foreground/60 text-sm mb-2">{info.label}</p>
-                  <p className="font-semibold text-foreground mb-1">{info.value}</p>
+                  <p className="text-foreground/60 text-sm mb-2">
+                    {info.label}
+                  </p>
+                  <p className="font-semibold text-foreground mb-1">
+                    {info.value}
+                  </p>
                   <p className="text-foreground/60 text-xs">{info.subtext}</p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -105,34 +147,39 @@ export default function ContactPage() {
 
       {/* Contact Form and Map */}
       <section className="py-16 lg:py-24 bg-muted/50">
-      
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <div className="animate-slide-in-up">
-              <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-foreground">Send us a Message</h2>
+              <h2 className="text-2xl lg:text-3xl font-bold mb-6 text-foreground">
+                Send us a Message
+              </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handlesubmission} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Full Name
+                    </label>
                     <input
                       type="text"
                       name="name"
-                      value={formData.name}
-                      onChange={handleChange}
+                      value={formdata.name}
+                      onChange={handlechange}
                       required
                       className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder-foreground/40 focus:border-accent focus:outline-none transition-colors"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Email</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Email
+                    </label>
                     <input
                       type="email"
                       name="email"
-                      value={formData.email}
-                      onChange={handleChange}
+                      value={formdata.email}
+                      onChange={handlechange}
                       required
                       className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder-foreground/40 focus:border-accent focus:outline-none transition-colors"
                       placeholder="your@email.com"
@@ -142,40 +189,47 @@ export default function ContactPage() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Phone</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Phone
+                    </label>
                     <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
+                      name="mobile"
+                      value={formdata.mobile}
+                      onChange={handlechange}
                       className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder-foreground/40 focus:border-accent focus:outline-none transition-colors"
                       placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">Subject</label>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Subject
+                    </label>
                     <select
                       name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
+                      value={formdata.subject}
+                      onChange={handlechange}
                       required
                       className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:border-accent focus:outline-none transition-colors"
                     >
-                      <option value="">Select a subject</option>
-                      <option value="admission">Admission Query</option>
-                      <option value="program">Program Details</option>
-                      <option value="placement">Placement Information</option>
-                      <option value="other">Other</option>
+                      <option value="">Subject Type</option>
+                      <option value="Admission Query">Admission Query</option>
+                      <option value="Program Details">Program Details</option>
+                      <option value="Placement Information">
+                        Placement Information
+                      </option>
+                      <option value="Others">Others</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Message</label>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Message
+                  </label>
                   <textarea
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
+                    value={formdata.message}
+                    onChange={handlechange}
                     required
                     rows={5}
                     className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder-foreground/40 focus:border-accent focus:outline-none transition-colors resize-none"
@@ -193,14 +247,19 @@ export default function ContactPage() {
 
                 {submitted && (
                   <div className="p-4 bg-green-100/20 border border-green-500/30 rounded-lg animate-slide-in-up">
-                    <p className="text-green-700">Thank you! We'll get back to you soon.</p>
+                    <p className="text-green-700">
+                      Thank you! We'll get back to you soon.
+                    </p>
                   </div>
                 )}
               </form>
             </div>
 
             {/* Map & Info */}
-            <div className="animate-slide-in-up" style={{ animationDelay: "100ms" }}>
+            <div
+              className="animate-slide-in-up"
+              style={{ animationDelay: "100ms" }}
+            >
               <div className="mb-6 h-80 bg-muted rounded-xl overflow-hidden border border-border">
                 <iframe
                   width="100%"
@@ -225,25 +284,39 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <h3 className="font-bold text-foreground mb-2">Quick Links</h3>
+                  <h3 className="font-bold text-foreground mb-2">
+                    Quick Links
+                  </h3>
                   <ul className="space-y-1 text-sm">
                     <li>
-                      <a href="#" className="text-accent hover:text-accent/80 transition-colors">
+                      <a
+                        href="#"
+                        className="text-accent hover:text-accent/80 transition-colors"
+                      >
                         Academic Calendar
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-accent hover:text-accent/80 transition-colors">
+                      <a
+                        href="#"
+                        className="text-accent hover:text-accent/80 transition-colors"
+                      >
                         Fee Structure
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-accent hover:text-accent/80 transition-colors">
+                      <a
+                        href="#"
+                        className="text-accent hover:text-accent/80 transition-colors"
+                      >
                         Scholarship Info
                       </a>
                     </li>
                     <li>
-                      <a href="#" className="text-accent hover:text-accent/80 transition-colors">
+                      <a
+                        href="#"
+                        className="text-accent hover:text-accent/80 transition-colors"
+                      >
                         Student Portal
                       </a>
                     </li>
@@ -259,7 +332,9 @@ export default function ContactPage() {
       <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 animate-slide-in-up">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">Frequently Asked Questions</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-foreground">
+              Frequently Asked Questions
+            </h2>
           </div>
 
           <div className="space-y-4">
@@ -294,5 +369,5 @@ export default function ContactPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }
