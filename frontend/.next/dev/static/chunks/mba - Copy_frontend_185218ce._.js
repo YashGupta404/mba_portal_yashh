@@ -83,9 +83,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$frontend$
 var __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/mba - Copy/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 // NEW: useFaculty context import
 var __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$frontend$2f$app$2f$context$2f$FacultyContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/mba - Copy/frontend/app/context/FacultyContext.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$frontend$2f$lib$2f$api$2d$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/mba - Copy/frontend/lib/api-config.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -106,7 +108,7 @@ function FacultyPage() {
             async function fetchFaculty() {
                 try {
                     setLoading(true);
-                    const res = await fetch("http://localhost:5000/api/faculty");
+                    const res = await fetch(`${__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$frontend$2f$lib$2f$api$2d$config$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["API_BASE_URL"]}/api/faculty`);
                     const data = await res.json();
                     setFaculty(data);
                 } catch (error) {
@@ -138,7 +140,7 @@ function FacultyPage() {
                                     children: "Our Faculty"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 78,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -146,23 +148,23 @@ function FacultyPage() {
                                     children: "Loading faculty information..."
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 79,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 76,
+                            lineNumber: 77,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                        lineNumber: 75,
+                        lineNumber: 76,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                    lineNumber: 74,
+                    lineNumber: 75,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -171,18 +173,18 @@ function FacultyPage() {
                         className: "animate-spin rounded-full h-12 w-12 border-b-2 border-primary"
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                        lineNumber: 83,
+                        lineNumber: 84,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                    lineNumber: 82,
+                    lineNumber: 83,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-            lineNumber: 73,
+            lineNumber: 74,
             columnNumber: 7
         }, this);
     }
@@ -201,8 +203,8 @@ function FacultyPage() {
                         videos: videos
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                        lineNumber: 99,
-                        columnNumber: 7
+                        lineNumber: 100,
+                        columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
@@ -214,7 +216,7 @@ function FacultyPage() {
                                     children: "Our Faculty"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -222,24 +224,24 @@ function FacultyPage() {
                                     children: "Meet the world-class educators and mentors who bring industry expertise and academic rigor to every classroom. Our faculty combines decades of experience with innovative teaching methodologies."
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 103,
+                                    lineNumber: 104,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 101,
+                            lineNumber: 102,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                        lineNumber: 100,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                lineNumber: 98,
+                lineNumber: 99,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -252,7 +254,7 @@ function FacultyPage() {
                                 className: "absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse"
                             }, void 0, false, {
                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                lineNumber: 114,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -262,13 +264,13 @@ function FacultyPage() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                lineNumber: 115,
+                                lineNumber: 116,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                        lineNumber: 113,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -288,7 +290,7 @@ function FacultyPage() {
                                             className: `absolute -inset-1 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${hoveredId === member._id ? "animate-pulse" : ""}`
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -311,7 +313,7 @@ function FacultyPage() {
                                                                                     className: "absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 blur-lg animate-pulse"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 160,
+                                                                                    lineNumber: 157,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -322,12 +324,12 @@ function FacultyPage() {
                                                                                         className: `w-full h-full object-cover transition-all duration-700 ${hoveredId === member._id ? "scale-120 brightness-125" : "scale-100 brightness-100"}`
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                        lineNumber: 164,
+                                                                                        lineNumber: 161,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 163,
+                                                                                    lineNumber: 160,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -335,18 +337,18 @@ function FacultyPage() {
                                                                                     children: "⭐ Featured"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 174,
+                                                                                    lineNumber: 170,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                            lineNumber: 155,
+                                                                            lineNumber: 153,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 150,
+                                                                        lineNumber: 149,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -364,7 +366,7 @@ function FacultyPage() {
                                                                                                     className: "w-4 h-4 text-accent shrink-0"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                    lineNumber: 191,
+                                                                                                    lineNumber: 186,
                                                                                                     columnNumber: 33
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -374,10 +376,44 @@ function FacultyPage() {
                                                                                                             children: member.publications || 0
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                            lineNumber: 192,
+                                                                                                            lineNumber: 187,
                                                                                                             columnNumber: 39
                                                                                                         }, this),
                                                                                                         " Publications"
+                                                                                                    ]
+                                                                                                }, void 0, true, {
+                                                                                                    fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
+                                                                                                    lineNumber: 187,
+                                                                                                    columnNumber: 33
+                                                                                                }, this)
+                                                                                            ]
+                                                                                        }, void 0, true, {
+                                                                                            fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
+                                                                                            lineNumber: 185,
+                                                                                            columnNumber: 31
+                                                                                        }, this),
+                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                            className: "flex items-center gap-2 text-xs",
+                                                                                            children: [
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+                                                                                                    className: "w-4 h-4 text-accent shrink-0"
+                                                                                                }, void 0, false, {
+                                                                                                    fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
+                                                                                                    lineNumber: 191,
+                                                                                                    columnNumber: 33
+                                                                                                }, this),
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                                    children: [
+                                                                                                        "Mentors ",
+                                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                                            className: "font-bold text-accent",
+                                                                                                            children: member.students || 0
+                                                                                                        }, void 0, false, {
+                                                                                                            fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
+                                                                                                            lineNumber: 192,
+                                                                                                            columnNumber: 47
+                                                                                                        }, this),
+                                                                                                        " Students"
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
@@ -393,7 +429,7 @@ function FacultyPage() {
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                             className: "flex items-center gap-2 text-xs",
                                                                                             children: [
-                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {
+                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$code$2d$xml$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Code2$3e$__["Code2"], {
                                                                                                     className: "w-4 h-4 text-accent shrink-0"
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
@@ -402,16 +438,15 @@ function FacultyPage() {
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                                     children: [
-                                                                                                        "Mentors ",
                                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                                             className: "font-bold text-accent",
-                                                                                                            children: member.students || 0
+                                                                                                            children: member.researchAreas?.length || 0
                                                                                                         }, void 0, false, {
                                                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
                                                                                                             lineNumber: 197,
-                                                                                                            columnNumber: 47
+                                                                                                            columnNumber: 39
                                                                                                         }, this),
-                                                                                                        " Students"
+                                                                                                        " Research Areas"
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
@@ -423,44 +458,11 @@ function FacultyPage() {
                                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
                                                                                             lineNumber: 195,
                                                                                             columnNumber: 31
-                                                                                        }, this),
-                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                            className: "flex items-center gap-2 text-xs",
-                                                                                            children: [
-                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$code$2d$xml$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Code2$3e$__["Code2"], {
-                                                                                                    className: "w-4 h-4 text-accent shrink-0"
-                                                                                                }, void 0, false, {
-                                                                                                    fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                    lineNumber: 201,
-                                                                                                    columnNumber: 33
-                                                                                                }, this),
-                                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                                    children: [
-                                                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                                            className: "font-bold text-accent",
-                                                                                                            children: member.researchAreas?.length || 0
-                                                                                                        }, void 0, false, {
-                                                                                                            fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                            lineNumber: 202,
-                                                                                                            columnNumber: 39
-                                                                                                        }, this),
-                                                                                                        " Research Areas"
-                                                                                                    ]
-                                                                                                }, void 0, true, {
-                                                                                                    fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                    lineNumber: 202,
-                                                                                                    columnNumber: 33
-                                                                                                }, this)
-                                                                                            ]
-                                                                                        }, void 0, true, {
-                                                                                            fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                            lineNumber: 200,
-                                                                                            columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 189,
+                                                                                    lineNumber: 184,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -470,7 +472,7 @@ function FacultyPage() {
                                                                                             children: "Research Focus:"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                            lineNumber: 208,
+                                                                                            lineNumber: 203,
                                                                                             columnNumber: 31
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -481,7 +483,7 @@ function FacultyPage() {
                                                                                                         children: area
                                                                                                     }, i, false, {
                                                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                        lineNumber: 211,
+                                                                                                        lineNumber: 206,
                                                                                                         columnNumber: 35
                                                                                                     }, this)),
                                                                                                 member.researchAreas && member.researchAreas.length > 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -493,19 +495,19 @@ function FacultyPage() {
                                                                                                     ]
                                                                                                 }, void 0, true, {
                                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                                    lineNumber: 214,
+                                                                                                    lineNumber: 209,
                                                                                                     columnNumber: 35
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                            lineNumber: 209,
+                                                                                            lineNumber: 204,
                                                                                             columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 207,
+                                                                                    lineNumber: 202,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -520,43 +522,43 @@ function FacultyPage() {
                                                                                             className: "w-3 h-3"
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                            lineNumber: 229,
+                                                                                            lineNumber: 224,
                                                                                             columnNumber: 42
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 222,
+                                                                                    lineNumber: 217,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                            lineNumber: 186,
+                                                                            lineNumber: 181,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 181,
+                                                                        lineNumber: 177,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 147,
+                                                                lineNumber: 146,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: `h-1 bg-gradient-to-r from-transparent via-accent to-transparent transition-all duration-500 ${hoveredId === member._id ? "opacity-100 scale-x-100" : "opacity-50 scale-x-75"}`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 237,
+                                                                lineNumber: 232,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                        lineNumber: 146,
+                                                        lineNumber: 145,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -569,12 +571,12 @@ function FacultyPage() {
                                                                     children: member.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                    lineNumber: 247,
+                                                                    lineNumber: 241,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 246,
+                                                                lineNumber: 240,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -584,12 +586,12 @@ function FacultyPage() {
                                                                     children: member.title
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                    lineNumber: 260,
+                                                                    lineNumber: 253,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 259,
+                                                                lineNumber: 252,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -597,7 +599,7 @@ function FacultyPage() {
                                                                 children: member.specialization
                                                             }, void 0, false, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 270,
+                                                                lineNumber: 262,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -607,7 +609,7 @@ function FacultyPage() {
                                                                         className: "absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500 animate-shimmer"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 282,
+                                                                        lineNumber: 273,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -619,12 +621,12 @@ function FacultyPage() {
                                                                                     className: "w-5 h-5 text-accent"
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                    lineNumber: 288,
+                                                                                    lineNumber: 278,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                lineNumber: 285,
+                                                                                lineNumber: 276,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -632,19 +634,19 @@ function FacultyPage() {
                                                                                 children: member.achievements || "No achievements listed"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                lineNumber: 290,
+                                                                                lineNumber: 280,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 284,
+                                                                        lineNumber: 275,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 275,
+                                                                lineNumber: 267,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -659,20 +661,20 @@ function FacultyPage() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                lineNumber: 309,
+                                                                                lineNumber: 298,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 children: "Email"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                lineNumber: 310,
+                                                                                lineNumber: 299,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 300,
+                                                                        lineNumber: 290,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -689,52 +691,52 @@ function FacultyPage() {
                                                                                 className: "w-4 h-4"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                lineNumber: 328,
+                                                                                lineNumber: 316,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 children: "Details"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                                lineNumber: 329,
+                                                                                lineNumber: 317,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 314,
+                                                                        lineNumber: 303,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 297,
+                                                                lineNumber: 287,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                        lineNumber: 243,
+                                                        lineNumber: 237,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-accent/10 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                        lineNumber: 336,
+                                                        lineNumber: 324,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-primary/10 to-transparent rounded-tr-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                                                     }, void 0, false, {
                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                        lineNumber: 337,
+                                                        lineNumber: 325,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                lineNumber: 143,
+                                                lineNumber: 142,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
@@ -745,23 +747,23 @@ function FacultyPage() {
                                     ]
                                 }, member._id, true, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 122,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 119,
+                            lineNumber: 120,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                        lineNumber: 118,
+                        lineNumber: 119,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                lineNumber: 112,
+                lineNumber: 113,
                 columnNumber: 7
             }, this),
             selectedFaculty && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -780,14 +782,14 @@ function FacultyPage() {
                                     className: "w-full h-full object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 360,
+                                    lineNumber: 348,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 369,
+                                    lineNumber: 357,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -797,18 +799,18 @@ function FacultyPage() {
                                         className: "w-5 h-5 text-white"
                                     }, void 0, false, {
                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                        lineNumber: 375,
+                                        lineNumber: 363,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 371,
+                                    lineNumber: 359,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 358,
+                            lineNumber: 346,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -826,7 +828,7 @@ function FacultyPage() {
                                                     children: member.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 391,
+                                                    lineNumber: 379,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -834,7 +836,7 @@ function FacultyPage() {
                                                     children: member.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 392,
+                                                    lineNumber: 380,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -842,13 +844,13 @@ function FacultyPage() {
                                                     children: member.bio || "No bio available"
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 393,
+                                                    lineNumber: 381,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 390,
+                                            lineNumber: 378,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -862,7 +864,7 @@ function FacultyPage() {
                                                             children: member.publications || 0
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 399,
+                                                            lineNumber: 387,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -870,13 +872,13 @@ function FacultyPage() {
                                                             children: "Publications"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 400,
+                                                            lineNumber: 388,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 398,
+                                                    lineNumber: 386,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -887,7 +889,7 @@ function FacultyPage() {
                                                             children: member.students || 0
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 403,
+                                                            lineNumber: 391,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -895,13 +897,13 @@ function FacultyPage() {
                                                             children: "Students Mentored"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 404,
+                                                            lineNumber: 392,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 402,
+                                                    lineNumber: 390,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -912,7 +914,7 @@ function FacultyPage() {
                                                             children: member.qualifications?.length || 0
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 407,
+                                                            lineNumber: 395,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -920,19 +922,19 @@ function FacultyPage() {
                                                             children: "Qualifications"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 408,
+                                                            lineNumber: 396,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 406,
+                                                    lineNumber: 394,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 397,
+                                            lineNumber: 385,
                                             columnNumber: 21
                                         }, this),
                                         member.researchAreas && member.researchAreas.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -945,14 +947,14 @@ function FacultyPage() {
                                                             className: "w-5 h-5 text-accent"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 416,
+                                                            lineNumber: 404,
                                                             columnNumber: 27
                                                         }, this),
                                                         "Research Areas"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 415,
+                                                    lineNumber: 403,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -964,23 +966,23 @@ function FacultyPage() {
                                                                 children: area
                                                             }, void 0, false, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 422,
+                                                                lineNumber: 410,
                                                                 columnNumber: 31
                                                             }, this)
                                                         }, i, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 421,
+                                                            lineNumber: 409,
                                                             columnNumber: 29
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 419,
+                                                    lineNumber: 407,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 414,
+                                            lineNumber: 402,
                                             columnNumber: 23
                                         }, this),
                                         member.currentProjects && member.currentProjects.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -993,14 +995,14 @@ function FacultyPage() {
                                                             className: "w-5 h-5 text-accent"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 433,
+                                                            lineNumber: 421,
                                                             columnNumber: 27
                                                         }, this),
                                                         "Current Projects"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 432,
+                                                    lineNumber: 420,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1015,7 +1017,7 @@ function FacultyPage() {
                                                                         children: project.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 440,
+                                                                        lineNumber: 428,
                                                                         columnNumber: 33
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1023,29 +1025,29 @@ function FacultyPage() {
                                                                         children: project.status
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                        lineNumber: 441,
+                                                                        lineNumber: 429,
                                                                         columnNumber: 33
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                lineNumber: 439,
+                                                                lineNumber: 427,
                                                                 columnNumber: 31
                                                             }, this)
                                                         }, i, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 438,
+                                                            lineNumber: 426,
                                                             columnNumber: 29
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 436,
+                                                    lineNumber: 424,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 431,
+                                            lineNumber: 419,
                                             columnNumber: 23
                                         }, this),
                                         member.qualifications && member.qualifications.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1058,14 +1060,14 @@ function FacultyPage() {
                                                             className: "w-5 h-5 text-accent"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 463,
+                                                            lineNumber: 450,
                                                             columnNumber: 27
                                                         }, this),
                                                         "Qualifications"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 462,
+                                                    lineNumber: 449,
                                                     columnNumber: 25
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1077,31 +1079,31 @@ function FacultyPage() {
                                                                     className: "w-2 h-2 bg-accent rounded-full"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                    lineNumber: 469,
+                                                                    lineNumber: 456,
                                                                     columnNumber: 31
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                     children: qual
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                                    lineNumber: 470,
+                                                                    lineNumber: 457,
                                                                     columnNumber: 31
                                                                 }, this)
                                                             ]
                                                         }, i, true, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 468,
+                                                            lineNumber: 455,
                                                             columnNumber: 29
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 466,
+                                                    lineNumber: 453,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 461,
+                                            lineNumber: 448,
                                             columnNumber: 23
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1116,14 +1118,14 @@ function FacultyPage() {
                                                             className: "w-5 h-5 inline-block mr-2"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 484,
+                                                            lineNumber: 471,
                                                             columnNumber: 25
                                                         }, this),
                                                         "Send Email"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 479,
+                                                    lineNumber: 466,
                                                     columnNumber: 23
                                                 }, this),
                                                 member.linkedin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1137,20 +1139,20 @@ function FacultyPage() {
                                                             className: "w-5 h-5 inline-block mr-2"
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                            lineNumber: 496,
+                                                            lineNumber: 483,
                                                             columnNumber: 27
                                                         }, this),
                                                         "LinkedIn"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                    lineNumber: 489,
+                                                    lineNumber: 476,
                                                     columnNumber: 25
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 478,
+                                            lineNumber: 465,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1165,12 +1167,12 @@ function FacultyPage() {
                                                 children: "View Full Profile"
                                             }, void 0, false, {
                                                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                                lineNumber: 504,
+                                                lineNumber: 491,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 503,
+                                            lineNumber: 490,
                                             columnNumber: 21
                                         }, this)
                                     ]
@@ -1178,18 +1180,18 @@ function FacultyPage() {
                             })()
                         }, void 0, false, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 381,
+                            lineNumber: 369,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                    lineNumber: 353,
+                    lineNumber: 341,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                lineNumber: 349,
+                lineNumber: 337,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1205,7 +1207,7 @@ function FacultyPage() {
                                     children: "Faculty Excellence"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 527,
+                                    lineNumber: 514,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1213,13 +1215,13 @@ function FacultyPage() {
                                     children: "Our faculty is committed to continuous learning and research excellence"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 528,
+                                    lineNumber: 515,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 526,
+                            lineNumber: 513,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1232,7 +1234,7 @@ function FacultyPage() {
                                             className: "w-8 h-8 text-accent mb-4"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 536,
+                                            lineNumber: 523,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1240,7 +1242,7 @@ function FacultyPage() {
                                             children: "Research & Publication"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 537,
+                                            lineNumber: 524,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1248,13 +1250,13 @@ function FacultyPage() {
                                             children: "Active contributors to peer-reviewed journals and conferences"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 538,
+                                            lineNumber: 525,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 535,
+                                    lineNumber: 522,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1264,7 +1266,7 @@ function FacultyPage() {
                                             className: "w-8 h-8 text-accent mb-4"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 544,
+                                            lineNumber: 531,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1272,7 +1274,7 @@ function FacultyPage() {
                                             children: "Industry Experience"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 545,
+                                            lineNumber: 532,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1280,13 +1282,13 @@ function FacultyPage() {
                                             children: "Faculty bring decades of hands-on industry leadership"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 546,
+                                            lineNumber: 533,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 543,
+                                    lineNumber: 530,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1296,7 +1298,7 @@ function FacultyPage() {
                                             className: "w-8 h-8 text-accent mb-4"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 552,
+                                            lineNumber: 539,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1304,7 +1306,7 @@ function FacultyPage() {
                                             children: "Mentorship & Guidance"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 553,
+                                            lineNumber: 540,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1312,36 +1314,36 @@ function FacultyPage() {
                                             children: "Personalized mentorship to help students grow professionally"
                                         }, void 0, false, {
                                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                            lineNumber: 554,
+                                            lineNumber: 541,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                                    lineNumber: 551,
+                                    lineNumber: 538,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                            lineNumber: 533,
+                            lineNumber: 520,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                    lineNumber: 525,
+                    lineNumber: 512,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-                lineNumber: 524,
+                lineNumber: 511,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/mba - Copy/frontend/app/faculty/page.tsx",
-        lineNumber: 96,
+        lineNumber: 97,
         columnNumber: 5
     }, this);
 }

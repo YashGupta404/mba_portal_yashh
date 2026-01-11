@@ -1647,6 +1647,7 @@ function Navbar() {
                             navItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                         href: item.href,
+                                        onClick: ()=>setIsOpen(false),
                                         className: "block px-3 py-2 rounded-md text-sm font-medium text-foreground hover:bg-accent/10 hover:text-primary transition-colors",
                                         children: item.label
                                     }, void 0, false, {
@@ -1664,11 +1665,11 @@ function Navbar() {
                                     setOpenForm(true);
                                     setIsOpen(false);
                                 },
-                                className: "w-full mt-4 px-6 py-2 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors",
+                                className: "mx-3 mt-2 px-4 py-1.5 bg-accent text-accent-foreground rounded-md text-sm font-medium hover:bg-accent/90 transition-colors",
                                 children: "Apply Now"
                             }, void 0, false, {
                                 fileName: "[project]/mba - Copy/frontend/components/navbar.tsx",
-                                lineNumber: 95,
+                                lineNumber: 96,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -1687,7 +1688,7 @@ function Navbar() {
                 onClose: ()=>setOpenForm(false)
             }, void 0, false, {
                 fileName: "[project]/mba - Copy/frontend/components/navbar.tsx",
-                lineNumber: 107,
+                lineNumber: 108,
                 columnNumber: 9
             }, this)
         ]

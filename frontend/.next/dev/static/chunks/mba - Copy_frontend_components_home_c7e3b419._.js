@@ -471,10 +471,10 @@ function HeroSection() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute z-3 bottom-10 right-10 w-60 h-auto rounded-bl-[20px] rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60    shadow-lg  p-6 animate-float p-1 border-box flex flex-col justify-between  gap-4",
+                className: "absolute z-3 right-4 md:right-10 top-20 md:top-auto md:bottom-10 w-44 md:w-52 rounded-bl-[15px] rounded-tr-[15px] md:rounded-bl-[20px] md:rounded-tr-[20px] bg-white/40 backdrop-blur-md border border-white/60    shadow-lg p-3 md:p-4 animate-float border-box flex flex-col justify-between gap-2 md:gap-3",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: " text-white drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight",
+                        className: "text-white text-xs md:text-sm drop-shadow-[3px_3px_4px_rgba(0,0,0,0.9)] text-center leading-tight",
                         children: "Want to know more About MBA program?"
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/components/home/hero-section.tsx",
@@ -484,7 +484,7 @@ function HeroSection() {
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         type: "button",
                         onClick: handleclick,
-                        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])("py-1 hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation),
+                        className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$clsx$2f$dist$2f$clsx$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])("py-1 text-xs md:text-sm hover:shadow-[3px_3px_4px_rgba(0,0,0,0.3)] rounded-l-full rounded-r-full border border-[2px] bg-black/50 hover:bg-black/45 text-primary-foreground ", buttonanimation),
                         children: "Enquire Here"
                     }, void 0, false, {
                         fileName: "[project]/mba - Copy/frontend/components/home/hero-section.tsx",
@@ -2373,13 +2373,14 @@ var _s = __turbopack_context__.k.signature();
 /* ===================== CUSTOM X-AXIS TICK ===================== */ const CustomXAxisTick = ({ x, y, payload })=>{
     const [line1, line2] = payload.value.split(" & ");
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
-        transform: `translate(${x},${y + 10})`,
+        transform: `translate(${x},${y + 8})`,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("text", {
             x: 0,
             y: 0,
             textAnchor: "middle",
             fill: "#475569",
-            fontSize: 12,
+            fontSize: 10,
+            className: "text-[8px] sm:text-[10px] md:text-[12px]",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tspan", {
                     x: "0",
@@ -2387,19 +2388,19 @@ var _s = __turbopack_context__.k.signature();
                     children: line1
                 }, void 0, false, {
                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                    lineNumber: 101,
+                    lineNumber: 102,
                     columnNumber: 9
                 }, ("TURBOPACK compile-time value", void 0)),
                 line2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tspan", {
                     x: "0",
-                    dy: "14",
+                    dy: "12",
                     children: [
                         "& ",
                         line2
                     ]
                 }, void 0, true, {
                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                    lineNumber: 102,
+                    lineNumber: 103,
                     columnNumber: 19
                 }, ("TURBOPACK compile-time value", void 0))
             ]
@@ -2436,7 +2437,7 @@ function StudentAcademicExcellenceSection() {
                             children: "Student Academic Excellence"
                         }, void 0, false, {
                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                            lineNumber: 135,
+                            lineNumber: 136,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2444,7 +2445,7 @@ function StudentAcademicExcellenceSection() {
                             children: "Comparative analysis of academic performance across specializations, highlighting peak CGPA achievers and hiring outcomes."
                         }, void 0, false, {
                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                            lineNumber: 139,
+                            lineNumber: 140,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2464,23 +2465,23 @@ function StudentAcademicExcellenceSection() {
                                         ]
                                     }, year, true, {
                                         fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                        lineNumber: 154,
+                                        lineNumber: 155,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                lineNumber: 145,
+                                lineNumber: 146,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                            lineNumber: 144,
+                            lineNumber: 145,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                    lineNumber: 134,
+                    lineNumber: 135,
                     columnNumber: 9
                 }, this),
                 data.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2493,38 +2494,42 @@ function StudentAcademicExcellenceSection() {
                                     children: "Highest CGPA by Specialization"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                    lineNumber: 168,
+                                    lineNumber: 169,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "h-[400px]",
+                                    className: "h-[320px] sm:h-[380px] lg:h-[400px]",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$component$2f$ResponsiveContainer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ResponsiveContainer"], {
                                         width: "100%",
                                         height: "100%",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$chart$2f$BarChart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BarChart"], {
                                             data: data,
                                             margin: {
-                                                bottom: 50
+                                                top: 20,
+                                                right: 10,
+                                                left: 0,
+                                                bottom: 60
                                             },
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$CartesianGrid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartesianGrid"], {
                                                     strokeDasharray: "3 3"
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 175,
+                                                    lineNumber: 176,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$XAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["XAxis"], {
                                                     dataKey: "specialization",
                                                     tick: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomXAxisTick, {}, void 0, false, {
                                                         fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                        lineNumber: 178,
+                                                        lineNumber: 179,
                                                         columnNumber: 29
                                                     }, void 0),
-                                                    interval: 0
+                                                    interval: 0,
+                                                    height: 70
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 176,
+                                                    lineNumber: 177,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YAxis"], {
@@ -2534,12 +2539,12 @@ function StudentAcademicExcellenceSection() {
                                                     ]
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 181,
+                                                    lineNumber: 183,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Tooltip$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Tooltip"], {}, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 182,
+                                                    lineNumber: 184,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$ReferenceLine$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ReferenceLine"], {
@@ -2552,12 +2557,12 @@ function StudentAcademicExcellenceSection() {
                                                         value: `Average CGPA: ${averageCGPA}`,
                                                         position: "top",
                                                         fill: "#ca8a04",
-                                                        fontSize: 12,
+                                                        fontSize: 11,
                                                         fontWeight: 600
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 185,
+                                                    lineNumber: 187,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$Bar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bar"], {
@@ -2569,32 +2574,32 @@ function StudentAcademicExcellenceSection() {
                                                         0,
                                                         0
                                                     ],
-                                                    barSize: 48
+                                                    barSize: 32
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 200,
+                                                    lineNumber: 202,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                            lineNumber: 174,
+                                            lineNumber: 175,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                        lineNumber: 173,
+                                        lineNumber: 174,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                    lineNumber: 172,
+                                    lineNumber: 173,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                            lineNumber: 167,
+                            lineNumber: 168,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2604,7 +2609,7 @@ function StudentAcademicExcellenceSection() {
                                     children: "Hiring Based on Highest CGPA"
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                    lineNumber: 213,
+                                    lineNumber: 215,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2620,7 +2625,7 @@ function StudentAcademicExcellenceSection() {
                                                             children: item.specialization
                                                         }, void 0, false, {
                                                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                            lineNumber: 224,
+                                                            lineNumber: 226,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2631,13 +2636,13 @@ function StudentAcademicExcellenceSection() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                            lineNumber: 227,
+                                                            lineNumber: 229,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 223,
+                                                    lineNumber: 225,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2645,7 +2650,7 @@ function StudentAcademicExcellenceSection() {
                                                     children: "Companies hiring top CGPA performers:"
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 232,
+                                                    lineNumber: 234,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2653,18 +2658,18 @@ function StudentAcademicExcellenceSection() {
                                                     children: item.hiringCompanies.join(", ")
                                                 }, void 0, false, {
                                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                                    lineNumber: 236,
+                                                    lineNumber: 238,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, item.specialization, true, {
                                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                            lineNumber: 219,
+                                            lineNumber: 221,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                    lineNumber: 217,
+                                    lineNumber: 219,
                                     columnNumber: 15
                                 }, this),
                                 data.length > 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2675,24 +2680,24 @@ function StudentAcademicExcellenceSection() {
                                         children: showAll ? "Show Less" : "Read More"
                                     }, void 0, false, {
                                         fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                        lineNumber: 245,
+                                        lineNumber: 247,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 246,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                            lineNumber: 212,
+                            lineNumber: 214,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                    lineNumber: 164,
+                    lineNumber: 165,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$mba__$2d$__Copy$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "text-center py-20 text-foreground/60",
@@ -2703,18 +2708,18 @@ function StudentAcademicExcellenceSection() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-                    lineNumber: 257,
+                    lineNumber: 259,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-            lineNumber: 131,
+            lineNumber: 132,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/mba - Copy/frontend/components/home/StudentexcellenceSection.tsx",
-        lineNumber: 130,
+        lineNumber: 131,
         columnNumber: 5
     }, this);
 }
