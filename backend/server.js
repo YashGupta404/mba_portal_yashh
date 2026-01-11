@@ -11,6 +11,7 @@ import studentLifeRoutes from "./routes/studentLifeRoutes.js";
 import facilityRoutes from "./routes/facilityRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import programRoutes from "./routes/programRoutes.js";
+import collegeinfoRoutes from "./routes/collegeinfoRoute.js";
 dotenv.config();
 
 const app = express();
@@ -37,6 +38,8 @@ app.use("/api/student-life", studentLifeRoutes);
 app.use("/api/facilities", facilityRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/programs", programRoutes);
+app.use("/api/collegeinfo", collegeinfoRoutes);
+
 
 // Health check (optional but useful)
 app.get("/api/health", (req, res) => {
