@@ -53,3 +53,21 @@ export const updateinfo = async (req, res) => {
         });
     }
 }
+
+export const getinfo = async (req, res) => {
+    try{
+        const info = await collegeinfomodel.findOne({});
+        return res.json({
+            success: true,
+            message: "Fetched college info successfully",
+            data: info
+        });
+    }
+    catch(err){
+        return res.json({
+            success: false,
+            message: "Error fetching college info",
+            error: err.message,
+        });
+    }
+};

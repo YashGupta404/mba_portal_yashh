@@ -4,8 +4,9 @@ import type React from "react";
 import Videoanimation from "../../components/ui/videoanimation.jsx";
 
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
+import { setContactDataGlobal} from "../../hooks/contactStore.js"
 
 export default function ContactPage() {
   const videos = [
@@ -72,29 +73,68 @@ export default function ContactPage() {
     }
   };
 
+
+  // Contact Information Data
+  const [contactdata,setcontactData]=useState({});
+  const getdata=async ()=>{
+    try{
+      const response = await axios.get(
+        "http://localhost:5000/api/collegeinfo/getinfo",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      const { success, error, data } = response.data;
+      
+      if (success) {
+        setcontactData(data);
+        setContactDataGlobal(data); // Update global state
+        
+      }
+    }
+    catch(err){
+      console.log("Error fetching contact data",err);
+
+    }
+  }
+
+
+
+  useEffect(()=>{
+    getdata();
+    
+  },[])
+
+  useEffect(() => {
+  console.log("Updated contact data:", contactdata);
+}, [contactdata]);
+
   const contactInfo = [
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 9876 543 210",
-      subtext: "Mon-Fri, 9 AM - 6 PM IST",
+      value: contactdata['phone'],
+      subtext: "Mon-Fri, "+ contactdata['officeHours']+" IST",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "admissions@iemcollege.edu",
+      value: contactdata['email'],
       subtext: "We respond within 24 hours",
     },
     {
       icon: MapPin,
       label: "Address",
       value: "IEM College Campus",
-      subtext: "Mumbai - 400000, India",
+      subtext: contactdata['address'],
     },
     {
       icon: Clock,
       label: "Office Hours",
-      value: "9:00 AM - 6:00 PM",
+      value: contactdata['officeHours'],
       subtext: "Monday to Friday",
     },
   ];
@@ -267,7 +307,7 @@ export default function ContactPage() {
                   style={{ border: "none" }}
                   loading="lazy"
                   allowFullScreen
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.4393559424397!2d72.8479!3d19.1136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8e8e8e8e8f%3A0xe8e8e8e8e8e8e8e8!2sMumbai!5e0!3m2!1sen!2sin!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7368.411020177792!2d88.42840389250843!3d22.571415767969835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027514cd20d659%3A0x4b66eefc1cb3ed78!2sIEM%20Kolkata!5e0!3m2!1sen!2sin!4v1768185918335!5m2!1sen!2sin"
                 />
               </div>
 
@@ -275,11 +315,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-bold text-foreground mb-2">Visit Us</h3>
                   <p className="text-foreground/70 text-sm">
-                    IEM College Campus
-                    <br />
-                    Mumbai - 400000
-                    <br />
-                    India
+                   { contactInfo[2].subtext} 
                   </p>
                 </div>
 
