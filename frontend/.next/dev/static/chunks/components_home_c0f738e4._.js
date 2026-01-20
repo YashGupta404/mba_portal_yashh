@@ -745,7 +745,7 @@ function HeroSection() {
                 onClose: ()=>setOpenForm(false)
             }, void 0, false, {
                 fileName: "[project]/components/home/hero-section.tsx",
-                lineNumber: 304,
+                lineNumber: 303,
                 columnNumber: 9
             }, this)
         ]

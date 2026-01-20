@@ -1,8 +1,5 @@
 {
-  "/admissions/page": "app/admissions/page.js",
   "/contact/page": "app/contact/page.js",
   "/faculty/page": "app/faculty/page.js",
-  "/page": "app/page.js",
-  "/placements/page": "app/placements/page.js",
-  "/student-life/page": "app/student-life/page.js"
+  "/page": "app/page.js"
 }

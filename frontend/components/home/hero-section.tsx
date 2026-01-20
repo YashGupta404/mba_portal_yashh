@@ -298,7 +298,6 @@ export default function HeroSection() {
 
         </div>
       </aside>
-
       {/* APPLICATION FORM MODAL */}
       {openForm && (
         <ApplicationForm onClose={() => setOpenForm(false)} />

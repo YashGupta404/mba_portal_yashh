@@ -12,30 +12,47 @@ import {
   Instagram,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-import { getContactDataGlobal } from "../hooks/contactStore.js";
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [contactdata, setcontactData] = useState({});
+  const [contactdata,setcontactData]=useState({});
+  const getdata=async ()=>{
+    try{
+      const response = await axios.get(
+        "http://localhost:5000/api/collegeinfo/getinfo",
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      const { success, error, data } = response.data;
+      
+      if (success) {
+        setcontactData(data);
+        
+      }
+    }
+    catch(err){
+      console.log("Error fetching contact data",err);
+
+    }
+  }
+
+
+
+  useEffect(()=>{
+    getdata();
+    
+  },[])
+
   useEffect(() => {
-    // initial load
-    setcontactData(getContactDataGlobal());
-
-    // listen for updates
-    const handler = () => {
-      setcontactData(getContactDataGlobal());
-    };
-
-    window.addEventListener("contactDataUpdated", handler);
-
-    return () => {
-      window.removeEventListener("contactDataUpdated", handler);
-    };
-  }, []);
-  useEffect(() => {
-    console.log("Footer contact data:", contactdata);
-  }, [contactdata]);
+  console.log("Updated contact data:", contactdata);
+}, [contactdata]);
 
   return (
     <footer className="bg-white text-gray-800 py-16 border-t">

@@ -6,7 +6,6 @@ import Videoanimation from "../../components/ui/videoanimation.jsx";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { useState,useEffect } from "react";
 import axios from "axios";
-import { setContactDataGlobal} from "../../hooks/contactStore.js"
 
 export default function ContactPage() {
   const videos = [
@@ -91,7 +90,6 @@ export default function ContactPage() {
       
       if (success) {
         setcontactData(data);
-        setContactDataGlobal(data); // Update global state
         
       }
     }
