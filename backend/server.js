@@ -12,6 +12,7 @@ import facilityRoutes from "./routes/facilityRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import programRoutes from "./routes/programRoutes.js";
 import collegeinfoRoutes from "./routes/collegeinfoRoute.js";
+import chatbotRoutes from "./routes/chatbotRoute.js";
 dotenv.config();
 
 const app = express();
@@ -39,6 +40,7 @@ app.use("/api/facilities", facilityRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/programs", programRoutes);
 app.use("/api/collegeinfo", collegeinfoRoutes);
+app.use("/api/chatbot", chatbotRoutes);
 
 
 // Health check (optional but useful)
