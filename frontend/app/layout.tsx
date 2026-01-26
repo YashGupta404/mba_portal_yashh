@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import Chatbot from "@/components/chatbot"
 
 // 👉 ADD THIS IMPORT
 import { FacultyProvider } from "@/app/context/FacultyContext"
@@ -51,6 +52,7 @@ export default function RootLayout({
           {children}
 
           <Footer />
+          <Chatbot />
           <Analytics />
         </FacultyProvider>
 

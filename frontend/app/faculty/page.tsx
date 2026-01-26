@@ -165,11 +165,6 @@ export default function FacultyPage() {
                                   }`}
                               />
                             </div>
-
-                            {/* Featured Badge */}
-                            <div className="absolute -bottom-2 right-0 bg-accent text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
-                              ⭐ Featured
-                            </div>
                           </div>
                         </div>
 
@@ -240,8 +235,8 @@ export default function FacultyPage() {
                       <div className="mb-2 text-center">
                         <h3
                           className={`text-2xl font-bold transition-all duration-500 ${hoveredId === member._id
-                              ? "text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary"
-                              : "text-foreground"
+                            ? "text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary"
+                            : "text-foreground"
                             }`}
                         >
                           {member.name}
@@ -251,8 +246,8 @@ export default function FacultyPage() {
                       {/* Title */}
                       <div className="text-center mb-3">
                         <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 ${hoveredId === member._id
-                            ? "bg-accent/30 text-accent border border-accent/50"
-                            : "bg-accent/10 text-accent border border-accent/20"
+                          ? "bg-accent/30 text-accent border border-accent/50"
+                          : "bg-accent/10 text-accent border border-accent/20"
                           }`}>
                           {member.title}
                         </span>
@@ -266,8 +261,8 @@ export default function FacultyPage() {
                       {/* Achievements */}
                       <div
                         className={`relative p-4 rounded-2xl border transition-all duration-500 overflow-hidden group/badge ${hoveredId === member._id
-                            ? "bg-accent/25 border-accent/60 shadow-lg shadow-accent/30"
-                            : "bg-accent/8 border-accent/20"
+                          ? "bg-accent/25 border-accent/60 shadow-lg shadow-accent/30"
+                          : "bg-accent/8 border-accent/20"
                           }`}
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 opacity-0 group-hover/badge:opacity-100 transition-opacity duration-500 animate-shimmer" />
@@ -290,8 +285,8 @@ export default function FacultyPage() {
                         <a
                           href={`mailto:${member.email}`}
                           className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 rounded-xl font-medium text-xs transition-all duration-500 ${hoveredId === member._id
-                              ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105"
-                              : "bg-accent/10 text-accent hover:bg-accent/20"
+                            ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg scale-105"
+                            : "bg-accent/10 text-accent hover:bg-accent/20"
                             }`}
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -309,8 +304,8 @@ export default function FacultyPage() {
                             router.push("/faculty/facultyinfo");
                           }}
                           className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 rounded-xl font-medium text-xs transition-all duration-500 ${hoveredId === member._id
-                              ? "bg-gradient-to-r from-accent to-primary text-white shadow-lg scale-105"
-                              : "bg-accent/10 text-accent hover:bg-accent/20"
+                            ? "bg-gradient-to-r from-accent to-primary text-white shadow-lg scale-105"
+                            : "bg-accent/10 text-accent hover:bg-accent/20"
                             }`}
                         >
                           <ExternalLink className="w-4 h-4" />
@@ -428,10 +423,10 @@ export default function FacultyPage() {
                                 <p className="font-medium">{project.name}</p>
                                 <span
                                   className={`text-xs px-3 py-1 rounded-full font-bold ${project.status === "Ongoing"
-                                      ? "bg-green-500/20 text-green-600"
-                                      : project.status === "In Review"
-                                        ? "bg-yellow-500/20 text-yellow-600"
-                                        : "bg-blue-500/20 text-blue-600"
+                                    ? "bg-green-500/20 text-green-600"
+                                    : project.status === "In Review"
+                                      ? "bg-yellow-500/20 text-yellow-600"
+                                      : "bg-blue-500/20 text-blue-600"
                                     }`}
                                 >
                                   {project.status}

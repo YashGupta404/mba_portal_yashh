@@ -13,13 +13,20 @@ import courseRoutes from "./routes/courseRoutes.js";
 import programRoutes from "./routes/programRoutes.js";
 import collegeinfoRoutes from "./routes/collegeinfoRoute.js";
 import chatbotRoutes from "./routes/chatbotRoute.js";
+import mbaFitRoutes from "./routes/mbaFitRoutes.js";
 dotenv.config();
 
 const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:8080','https://mba-admin-portal.vercel.app'],
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:8080',
+    'https://mba-admin-portal.vercel.app',
+    'https://mba-portal-yashh-mtmd.vercel.app',
+    'https://mba-admin-portal-mauve.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -41,8 +48,7 @@ app.use("/api/courses", courseRoutes);
 app.use("/api/programs", programRoutes);
 app.use("/api/collegeinfo", collegeinfoRoutes);
 app.use("/api/chatbot", chatbotRoutes);
-
-
+app.use("/api/mba-fit", mbaFitRoutes);
 // Health check (optional but useful)
 app.get("/api/health", (req, res) => {
   res.json({ status: "OK", service: "mba-portal-backend" });
