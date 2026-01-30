@@ -1,0 +1,30 @@
+SNEHA PATEL
+Analytics Consultant | Data Visualization Specialist
+
+SUMMARY
+Results-oriented analytics professional with expertise in business 
+intelligence, data visualization, and statistical analysis. Passionate 
+about transforming data into strategic insights.
+
+EXPERIENCE
+
+Senior Analytics Consultant | Deloitte | 2020 - Present
+- Developed data strategy roadmaps for Fortune 500 clients
+- Built machine learning models for risk prediction
+- Created interactive dashboards for C-level executives
+- Conducted advanced statistical analysis using R
+- Implemented big data solutions using Hadoop and Spark
+
+Data Visualization Analyst | Ernst & Young | 2018 - 2020
+- Designed data visualization solutions using Tableau
+- Performed regression and clustering analysis
+- Built automated reporting systems
+- Analyzed marketing ROI using attribution modeling
+
+EDUCATION
+MBA in Business Analytics | ISB Hyderabad | 2018
+B.E. in IT | BITS Pilani | 2016
+
+TECHNICAL EXPERTISE
+Python, SQL, R, Tableau, Power BI, Apache Spark,
+Data Mining, Predictive Modeling, Business Intelligence

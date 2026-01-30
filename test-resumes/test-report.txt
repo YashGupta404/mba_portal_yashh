@@ -1,0 +1,84 @@
+======================================================================
+RESUME ANALYSER TEST RESULTS
+Test Date: 2026-01-30T14:29:53.956Z
+======================================================================
+
+[CORRECT] resume_finance_1.txt
+    Expected: finance
+    Predicted: finance (Score: 75)
+
+[CORRECT] resume_finance_2.txt
+    Expected: finance
+    Predicted: finance (Score: 75)
+
+[CORRECT] resume_finance_3.txt
+    Expected: finance
+    Predicted: finance (Score: 75)
+
+[CORRECT] resume_analytics_1.txt
+    Expected: business-analytics
+    Predicted: business-analytics (Score: 75)
+
+[CORRECT] resume_analytics_2.txt
+    Expected: business-analytics
+    Predicted: business-analytics (Score: 75)
+
+[CORRECT] resume_analytics_3.txt
+    Expected: business-analytics
+    Predicted: business-analytics (Score: 75)
+
+[CORRECT] resume_marketing_1.txt
+    Expected: marketing
+    Predicted: marketing (Score: 75)
+
+[CORRECT] resume_marketing_2.txt
+    Expected: marketing
+    Predicted: marketing (Score: 75)
+
+[CORRECT] resume_marketing_3.txt
+    Expected: marketing
+    Predicted: marketing (Score: 75)
+
+[CORRECT] resume_operations_1.txt
+    Expected: operations
+    Predicted: operations (Score: 75)
+
+[CORRECT] resume_operations_2.txt
+    Expected: operations
+    Predicted: operations (Score: 75)
+
+[WRONG] resume_hr_1.txt
+    Expected: hr
+    Predicted: business-analytics (Score: 75)
+    Secondary: hr
+
+[CORRECT] resume_hr_2.txt
+    Expected: hr
+    Predicted: hr (Score: 75)
+
+[WRONG] resume_entrepreneurship_1.txt
+    Expected: entrepreneurship
+    Predicted: finance (Score: 75)
+    Secondary: entrepreneurship
+
+[CORRECT] resume_entrepreneurship_2.txt
+    Expected: entrepreneurship
+    Predicted: entrepreneurship (Score: 75)
+
+======================================================================
+SUMMARY
+======================================================================
+Total Tests: 15
+Correct: 13
+Wrong: 2
+ACCURACY: 86.7%
+
+Results by Specialization:
+  finance: 3/3 (100%)
+  business-analytics: 3/3 (100%)
+  marketing: 3/3 (100%)
+  operations: 2/2 (100%)
+  hr: 1/2 (50%)
+    - resume_hr_1.txt -> predicted as business-analytics
+  entrepreneurship: 1/2 (50%)
+    - resume_entrepreneurship_1.txt -> predicted as finance

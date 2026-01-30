@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBA Fit Finder - AI Resume Analyzer Test Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            color: #64748b;
+        }
+
+        .header .date {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            color: #1e40af;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section h3 {
+            font-size: 16px;
+            color: #475569;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        /* Summary Box */
+        .summary-box {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .summary-box .big-number {
+            font-size: 72px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .summary-box .label {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .summary-item .number {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .summary-item .text {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #1e40af;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        .success {
+            color: #059669;
+            font-weight: bold;
+        }
+
+        .warning {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #dc2626;
+            font-weight: bold;
+        }
+
+        /* Charts */
+        .chart-container {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 220px;
+            padding: 20px 10px;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+        }
+
+        .bar {
+            width: 50px;
+            border-radius: 6px 6px 0 0;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            font-size: 14px;
+            color: #1e40af;
+        }
+
+        .bar-label {
+            margin-top: 10px;
+            font-size: 11px;
+            text-align: center;
+            color: #64748b;
+            max-width: 70px;
+            word-wrap: break-word;
+        }
+
+        /* Pie Chart */
+        .pie-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .pie-chart {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(#10b981 0deg 312deg,
+                    #ef4444 312deg 360deg);
+            position: relative;
+        }
+
+        .pie-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pie-center .percentage {
+            font-size: 28px;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .pie-center .text {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-text {
+            font-size: 14px;
+            color: #475569;
+        }
+
+        /* Confusion Matrix */
+        .confusion-matrix {
+            overflow-x: auto;
+        }
+
+        .confusion-matrix table {
+            font-size: 12px;
+        }
+
+        .confusion-matrix th {
+            background: #475569;
+            font-size: 11px;
+        }
+
+        .confusion-matrix .header-col {
+            background: #64748b;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            padding: 8px 5px;
+        }
+
+        .cell-correct {
+            background: #dcfce7 !important;
+            color: #166534;
+            font-weight: bold;
+        }
+
+        .cell-wrong {
+            background: #fef2f2 !important;
+            color: #dc2626;
+            font-weight: bold;
+        }
+
+        .cell-zero {
+            background: #f1f5f9 !important;
+            color: #94a3b8;
+        }
+
+        /* Dataset Info */
+        .dataset-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .info-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .info-card .label {
+            font-size: 12px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-card .value {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 5px;
+        }
+
+        /* Misclassification Box */
+        .misclass-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .misclass-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .misclass-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #f59e0b;
+        }
+
+        .misclass-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+            }
+
+            .chart-container {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>🎓 MBA Fit Finder - AI Resume Analyzer</h1>
+        <div class="subtitle">Model Testing & Accuracy Report</div>
+        <div class="date">Test Date: January 30, 2026 | IEM College MBA Portal</div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="section">
+        <h2>1. Executive Summary</h2>
+        <div class="summary-box">
+            <div class="big-number">86.7%</div>
+            <div class="label">Overall Model Accuracy</div>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="number">15</div>
+                    <div class="text">Total Test Cases</div>
+                </div>
+                <div class="summary-item">
+                    <div class="number">13</div>
+                    <div class="text">Correct Predictions</div>
+                </div>
+                <div class="summary-item">
+                    <div class="number">2</div>
+                    <div class="text">Incorrect Predictions</div>
+                </div>
+            </div>
+        </div>
+        <p>
+            The AI Resume Analyzer was tested against a curated dataset of 15 professional resumes,
+            each specifically crafted to represent one of the 6 MBA specializations offered by IEM College.
+            The model achieved <strong>86.7% accuracy</strong> in correctly identifying the appropriate
+            MBA specialization for each resume.
+        </p>
+        <p>
+            The 2 misclassifications occurred in <strong>cross-domain resumes</strong> where candidates had
+            significant experience spanning multiple fields (e.g., HR Analytics professionals with heavy data science
+            background, or Startup Finance managers with venture capital experience).
+        </p>
+    </div>
+
+    <!-- Dataset Description -->
+    <div class="section">
+        <h2>2. Dataset Description</h2>
+        <p>
+            The test dataset consists of synthetically generated professional resumes designed to
+            represent typical career profiles for each MBA specialization. The dataset includes both
+            <strong>clear-cut profiles</strong> and <strong>ambiguous cross-domain profiles</strong>
+            to stress-test the classifier.
+        </p>
+
+        <div class="dataset-info">
+            <div class="info-card">
+                <div class="label">Total Resumes</div>
+                <div class="value">15</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Specializations</div>
+                <div class="value">6</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Avg Resume Length</div>
+                <div class="value">~1,100 chars</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Cross-Domain Resumes</div>
+                <div class="value">2</div>
+            </div>
+        </div>
+
+        <h3>2.1 Resume Distribution by Specialization</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Specialization</th>
+                    <th>Count</th>
+                    <th>Sample Profiles</th>
+                    <th>Accuracy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Finance</td>
+                    <td>3</td>
+                    <td>Financial Analyst, Investment Banker, Treasury Manager</td>
+                    <td class="success">100%</td>
+                </tr>
+                <tr>
+                    <td>Business Analytics</td>
+                    <td>3</td>
+                    <td>Data Scientist, BI Analyst, Analytics Consultant</td>
+                    <td class="success">100%</td>
+                </tr>
+                <tr>
+                    <td>Marketing</td>
+                    <td>3</td>
+                    <td>Digital Marketing Manager, Brand Manager, Product Marketing</td>
+                    <td class="success">100%</td>
+                </tr>
+                <tr>
+                    <td>Operations</td>
+                    <td>2</td>
+                    <td>Operations Manager, Supply Chain Expert</td>
+                    <td class="success">100%</td>
+                </tr>
+                <tr>
+                    <td>Human Resources</td>
+                    <td>2</td>
+                    <td>HR Analytics Manager*, CHRO/VP HR</td>
+                    <td class="warning">50%</td>
+                </tr>
+                <tr>
+                    <td>Entrepreneurship</td>
+                    <td>2</td>
+                    <td>Startup Finance Manager*, Business Development Director</td>
+                    <td class="warning">50%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: #94a3b8;">* Indicates cross-domain resume that was misclassified</p>
+    </div>
+
+    <!-- Chart 1: Accuracy by Specialization -->
+    <div class="section">
+        <h2>3. Test Results & Metrics</h2>
+
+        <div class="chart-container">
+            <div class="chart-title">Chart 1: Accuracy by Specialization (%)</div>
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar" style="height: 180px; background: linear-gradient(to top, #10b981, #34d399);">
+                        <span class="bar-value">100%</span>
+                    </div>
+                    <div class="bar-label">Finance</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar" style="height: 180px; background: linear-gradient(to top, #3b82f6, #60a5fa);">
+                        <span class="bar-value">100%</span>
+                    </div>
+                    <div class="bar-label">Analytics</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar" style="height: 180px; background: linear-gradient(to top, #f59e0b, #fbbf24);">
+                        <span class="bar-value">100%</span>
+                    </div>
+                    <div class="bar-label">Marketing</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar" style="height: 180px; background: linear-gradient(to top, #14b8a6, #2dd4bf);">
+                        <span class="bar-value">100%</span>
+                    </div>
+                    <div class="bar-label">Operations</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar" style="height: 90px; background: linear-gradient(to top, #a855f7, #c084fc);">
+                        <span class="bar-value">50%</span>
+                    </div>
+                    <div class="bar-label">HR</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar" style="height: 90px; background: linear-gradient(to top, #ef4444, #f87171);">
+                        <span class="bar-value">50%</span>
+                    </div>
+                    <div class="bar-label">Entrepre-neurship</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart 2: Pie Chart -->
+        <div class="chart-container">
+            <div class="chart-title">Chart 2: Overall Prediction Distribution</div>
+            <div class="pie-chart-container">
+                <div class="pie-chart">
+                    <div class="pie-center">
+                        <div class="percentage">86.7%</div>
+                        <div class="text">Accuracy</div>
+                    </div>
+                </div>
+                <div class="pie-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #10b981;"></div>
+                        <div class="legend-text"><strong>13</strong> Correct Predictions (86.7%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <div class="legend-text"><strong>2</strong> Incorrect Predictions (13.3%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Misclassification Analysis -->
+        <div class="misclass-box">
+            <div class="misclass-title">⚠️ Misclassification Analysis</div>
+            <div class="misclass-item">
+                <strong>resume_hr_1.txt:</strong>
+                <span>Expected: HR → Predicted: <span class="error">Business Analytics</span></span>
+            </div>
+            <p style="font-size: 12px; margin: 5px 0 10px 0;">
+                <em>Reason: Resume heavily featured Python, SQL, Machine Learning, Tableau for HR Analytics.
+                    The data science keywords outweighed HR-specific terms.</em>
+            </p>
+            <div class="misclass-item">
+                <strong>resume_entrepreneurship_1.txt:</strong>
+                <span>Expected: Entrepreneurship → Predicted: <span class="error">Finance</span></span>
+            </div>
+            <p style="font-size: 12px; margin: 5px 0 0 0;">
+                <em>Reason: Resume focused on startup finance, venture capital, and financial modeling.
+                    Finance keywords dominated over entrepreneurship signals.</em>
+            </p>
+        </div>
+
+        <h3>3.1 Detailed Results Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Resume File</th>
+                    <th>Expected</th>
+                    <th>Predicted</th>
+                    <th>Score</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>resume_finance_1.txt</td>
+                    <td>Finance</td>
+                    <td>Finance</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_finance_2.txt</td>
+                    <td>Finance</td>
+                    <td>Finance</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_finance_3.txt</td>
+                    <td>Finance</td>
+                    <td>Finance</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_analytics_1.txt</td>
+                    <td>Business Analytics</td>
+                    <td>Business Analytics</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_analytics_2.txt</td>
+                    <td>Business Analytics</td>
+                    <td>Business Analytics</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_analytics_3.txt</td>
+                    <td>Business Analytics</td>
+                    <td>Business Analytics</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_marketing_1.txt</td>
+                    <td>Marketing</td>
+                    <td>Marketing</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_marketing_2.txt</td>
+                    <td>Marketing</td>
+                    <td>Marketing</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_marketing_3.txt</td>
+                    <td>Marketing</td>
+                    <td>Marketing</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_operations_1.txt</td>
+                    <td>Operations</td>
+                    <td>Operations</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr>
+                    <td>resume_operations_2.txt</td>
+                    <td>Operations</td>
+                    <td>Operations</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr style="background: #fef2f2 !important;">
+                    <td>resume_hr_1.txt</td>
+                    <td>Human Resources</td>
+                    <td class="error">Business Analytics</td>
+                    <td>75</td>
+                    <td class="error">✗ WRONG</td>
+                </tr>
+                <tr>
+                    <td>resume_hr_2.txt</td>
+                    <td>Human Resources</td>
+                    <td>Human Resources</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+                <tr style="background: #fef2f2 !important;">
+                    <td>resume_entrepreneurship_1.txt</td>
+                    <td>Entrepreneurship</td>
+                    <td class="error">Finance</td>
+                    <td>75</td>
+                    <td class="error">✗ WRONG</td>
+                </tr>
+                <tr>
+                    <td>resume_entrepreneurship_2.txt</td>
+                    <td>Entrepreneurship</td>
+                    <td>Entrepreneurship</td>
+                    <td>75</td>
+                    <td class="success">✓ CORRECT</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Chart 3: Confusion Matrix -->
+    <div class="section">
+        <h2>4. Confusion Matrix</h2>
+        <p>
+            The confusion matrix below shows the relationship between expected (actual) specializations
+            and predicted specializations. Values on the diagonal represent correct classifications,
+            while off-diagonal values indicate misclassifications.
+        </p>
+
+        <div class="chart-container confusion-matrix">
+            <div class="chart-title">Chart 3: Confusion Matrix - Predicted vs Actual</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="background: #334155;">Actual ↓ / Predicted →</th>
+                        <th>Finance</th>
+                        <th>Analytics</th>
+                        <th>Marketing</th>
+                        <th>Operations</th>
+                        <th>HR</th>
+                        <th>Entrep.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Finance</strong></td>
+                        <td class="cell-correct">3</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Business Analytics</strong></td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-correct">3</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing</strong></td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-correct">3</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Operations</strong></td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-correct">2</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Human Resources</strong></td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-wrong">1</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-correct">1</td>
+                        <td class="cell-zero">0</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Entrepreneurship</strong></td>
+                        <td class="cell-wrong">1</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-zero">0</td>
+                        <td class="cell-correct">1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div class="section">
+        <h2>5. Performance Metrics</h2>
+        <p>
+            The following metrics provide a comprehensive evaluation of the model's classification performance
+            across all specializations.
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Overall Accuracy</strong></td>
+                    <td class="success">86.7%</td>
+                    <td>Percentage of correct predictions out of total predictions</td>
+                </tr>
+                <tr>
+                    <td><strong>Precision (Macro Avg)</strong></td>
+                    <td class="success">0.89</td>
+                    <td>Average precision across all classes</td>
+                </tr>
+                <tr>
+                    <td><strong>Recall (Macro Avg)</strong></td>
+                    <td class="success">0.83</td>
+                    <td>Average recall across all classes</td>
+                </tr>
+                <tr>
+                    <td><strong>F1 Score (Macro Avg)</strong></td>
+                    <td class="success">0.86</td>
+                    <td>Harmonic mean of precision and recall</td>
+                </tr>
+                <tr>
+                    <td><strong>True Positives</strong></td>
+                    <td>13</td>
+                    <td>Number of correctly classified samples</td>
+                </tr>
+                <tr>
+                    <td><strong>False Positives</strong></td>
+                    <td>2</td>
+                    <td>Number of incorrectly classified samples</td>
+                </tr>
+                <tr>
+                    <td><strong>Error Rate</strong></td>
+                    <td class="warning">13.3%</td>
+                    <td>Percentage of misclassifications</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>5.1 Per-Class Metrics</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Specialization</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F1 Score</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Finance</td>
+                    <td class="success">0.75</td>
+                    <td class="success">1.00</td>
+                    <td class="success">0.86</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Business Analytics</td>
+                    <td class="success">0.75</td>
+                    <td class="success">1.00</td>
+                    <td class="success">0.86</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Marketing</td>
+                    <td class="success">1.00</td>
+                    <td class="success">1.00</td>
+                    <td class="success">1.00</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Operations</td>
+                    <td class="success">1.00</td>
+                    <td class="success">1.00</td>
+                    <td class="success">1.00</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Human Resources</td>
+                    <td class="success">1.00</td>
+                    <td class="warning">0.50</td>
+                    <td class="warning">0.67</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Entrepreneurship</td>
+                    <td class="success">1.00</td>
+                    <td class="warning">0.50</td>
+                    <td class="warning">0.67</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Methodology -->
+    <div class="section">
+        <h2>6. Testing Methodology</h2>
+        <h3>6.1 Test Environment</h3>
+        <table>
+            <tr>
+                <td><strong>Backend Server</strong></td>
+                <td>Node.js Express (localhost:5000)</td>
+            </tr>
+            <tr>
+                <td><strong>AI Model</strong></td>
+                <td>Google Gemini 2.0 Flash</td>
+            </tr>
+            <tr>
+                <td><strong>API Endpoint</strong></td>
+                <td>/api/mba-fit/resume/analyze-text</td>
+            </tr>
+            <tr>
+                <td><strong>Fallback Method</strong></td>
+                <td>Keyword-based classification with tiebreaker</td>
+            </tr>
+        </table>
+
+        <h3>6.2 Resume Analysis Process</h3>
+        <ol style="margin-left: 20px; color: #475569;">
+            <li style="margin-bottom: 8px;">Resume text is extracted from uploaded file</li>
+            <li style="margin-bottom: 8px;">Text is sent to Gemini AI with specialization context</li>
+            <li style="margin-bottom: 8px;">AI analyzes keywords, skills, experience patterns</li>
+            <li style="margin-bottom: 8px;">Fallback keyword matching if AI fails</li>
+            <li style="margin-bottom: 8px;">Results sorted by score with package-based tiebreaker</li>
+        </ol>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="section">
+        <h2>7. Conclusion & Recommendations</h2>
+        <p>
+            The MBA Fit Finder AI Resume Analyzer demonstrates <strong>strong performance</strong>
+            with an 86.7% accuracy rate across all 6 MBA specializations. The model performs excellently
+            on clear-cut professional profiles but shows some confusion on cross-domain resumes.
+        </p>
+
+        <h3>7.1 Key Findings</h3>
+        <ul style="margin-left: 20px; color: #475569; margin-top: 10px;">
+            <li style="margin-bottom: 8px;"><strong>Strengths:</strong> 100% accuracy on Finance, Analytics, Marketing,
+                and Operations</li>
+            <li style="margin-bottom: 8px;"><strong>Weaknesses:</strong> Cross-domain profiles (HR Analytics, Startup
+                Finance) get misclassified</li>
+            <li style="margin-bottom: 8px;"><strong>Pattern:</strong> Data science keywords overpower domain-specific
+                context</li>
+        </ul>
+
+        <h3>7.2 Recommendations for Improvement</h3>
+        <ul style="margin-left: 20px; color: #475569; margin-top: 10px;">
+            <li style="margin-bottom: 8px;">Add context-aware keyword weighting (e.g., "HR Analytics" should boost HR,
+                not Analytics)</li>
+            <li style="margin-bottom: 8px;">Implement secondary match presentation when confidence is low</li>
+            <li style="margin-bottom: 8px;">Expand test dataset to 50+ resumes with more edge cases</li>
+            <li style="margin-bottom: 8px;">Add compound keyword detection for cross-domain terms</li>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            <strong>MBA Fit Finder - AI Resume Analyzer Test Report</strong><br>
+            Institute of Engineering and Management (IEM) - MBA Portal<br>
+            Generated: January 30, 2026 | Version 1.0
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+ARJUN KAPOOR
+Startup Founder & CEO
+arjun.kapoor@email.com | @arjunstartup
+
+PROFESSIONAL SUMMARY
+Serial entrepreneur with experience founding and scaling technology startups.
+Raised $2M+ in venture funding. Passionate about innovation, product development,
+and building disruptive businesses.
+
+ENTREPRENEURIAL EXPERIENCE
+
+Founder & CEO | TechVentures Pvt Ltd | 2020 - Present
+• Founded B2B SaaS startup for supply chain optimization
+• Raised $2M seed funding from Sequoia and angel investors
+• Built product from MVP to product-market fit
+• Manage team of 25 across engineering, sales, and operations
+• Developed business model canvas and growth strategy
+• Achieved 300% revenue growth year-over-year
+
+Co-Founder | EduLearn App | 2018 - 2020
+• Bootstrapped ed-tech startup reaching 100K users
+• Led new venture creation from ideation to market launch
+• Managed customer acquisition with CAC < INR 50
+• Successfully pivoted product based on market feedback
+• Exited through acqui-hire to major ed-tech company
+
+EDUCATION
+B.Tech Computer Science | IIT Bombay | 2018
+
+SKILLS & EXPERTISE
+Startup Funding | Venture Capital | Business Model Innovation
+MVP Development | Lean Startup | Product-Market Fit
+CAC/LTV Analysis | Pitch Deck Creation | Team Building
+Technologies: React, Node.js, AWS, Product Management

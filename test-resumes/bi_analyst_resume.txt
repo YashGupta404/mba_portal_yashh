@@ -1,0 +1,33 @@
+ARUN KRISHNAN
+Business Intelligence Analyst
+arun.krishnan@email.com | Portfolio: arunkrishnan.dev
+
+SUMMARY
+Analytics professional specializing in business intelligence, data visualization,
+and predictive analytics. 5+ years of experience building enterprise data solutions.
+
+EXPERIENCE
+
+Business Intelligence Manager | Infosys | 2020 - Present
+• Led team of 8 data analysts for Fortune 500 clients
+• Designed enterprise data warehouse solutions on Azure
+• Created ETL pipelines for real-time data integration
+• Built executive dashboards achieving 99.9% uptime
+• Implemented predictive analytics for revenue forecasting
+
+Data Analyst | TCS | 2018 - 2020
+• Performed data mining and pattern recognition on customer data
+• Built statistical models for customer segmentation
+• Developed automated reporting using Python and SQL
+• Conducted A/B testing for marketing campaigns
+
+EDUCATION
+M.Sc. Statistics | ISI Kolkata | 2018
+B.Sc. Mathematics | St. Stephen's College | 2016
+
+SKILLS & TOOLS
+Data Analysis: Python, R, SQL, SAS
+Visualization: Tableau, Power BI, Looker
+Cloud: AWS, Azure, GCP
+Databases: PostgreSQL, MongoDB, Snowflake
+Statistics: Hypothesis Testing, Regression, ML Algorithms

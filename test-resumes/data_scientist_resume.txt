@@ -1,0 +1,33 @@
+PRIYA SHARMA
+Data Scientist | Business Analytics Expert
+priya.sharma@email.com | +91 8765432109
+
+PROFILE
+Data-driven professional with 4 years of experience in business analytics,
+machine learning, and predictive modeling. Expert in transforming complex 
+data into actionable business insights using Python, SQL, and ML frameworks.
+
+PROFESSIONAL EXPERIENCE
+
+Senior Data Scientist | Amazon India | 2021 - Present
+• Built predictive models for customer behavior analysis achieving 92% accuracy
+• Developed recommendation algorithms increasing cross-sell revenue by 25%
+• Created Tableau dashboards for real-time business intelligence
+• Implemented A/B testing frameworks optimizing product features
+• Analyzed big data using Apache Spark and Hadoop ecosystem
+
+Business Analyst | Flipkart | 2019 - 2021
+• Conducted market research and competitive analysis using data mining
+• Built KPI dashboards for executive decision-making in Power BI
+• Performed regression analysis for demand forecasting
+• Automated reporting pipelines using Python and SQL
+
+EDUCATION
+B.Tech in Computer Science | IIT Delhi | 2019
+
+TECHNICAL EXPERTISE
+Programming: Python, R, SQL, Scala
+ML/AI: TensorFlow, Scikit-learn, PyTorch, XGBoost
+Visualization: Tableau, Power BI, Matplotlib, D3.js
+Big Data: Apache Spark, Hadoop, Hive, Kafka
+Statistics: Regression, Classification, Clustering, Time Series

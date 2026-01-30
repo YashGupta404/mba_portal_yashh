@@ -9,8 +9,8 @@ export default function MBAFitFinderSidebar() {
         <motion.div
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="fixed right-0 top-1/3 z-40"
+            transition={{ delay: 1.5, duration: 0.5 }}
+            className="fixed right-0 top-[45%] z-40"
         >
             <Link href="/mba-fit-finder">
                 <motion.div
@@ -93,21 +93,6 @@ export default function MBAFitFinderSidebar() {
                             </motion.div>
                         </div>
                     </div>
-
-                    {/* Notification badge */}
-                    <motion.div
-                        className="absolute -top-2 -left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
-                        animate={{
-                            scale: [1, 1.2, 1],
-                        }}
-                        transition={{
-                            duration: 0.8,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                        }}
-                    >
-                        FREE
-                    </motion.div>
                 </motion.div>
             </Link>
         </motion.div>

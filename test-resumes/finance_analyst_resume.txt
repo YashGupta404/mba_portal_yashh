@@ -1,0 +1,33 @@
+SARAH JOHNSON
+Senior Financial Analyst | Investment Banking Professional
+Email: sarah.johnson@email.com | Phone: +91 9876543210
+
+PROFESSIONAL SUMMARY
+Results-driven financial analyst with 5+ years of experience in investment banking, 
+corporate finance, and M&A advisory. Proven track record in financial modeling, 
+valuation analysis, and strategic financial planning. CFA Level II candidate.
+
+PROFESSIONAL EXPERIENCE
+
+Senior Financial Analyst | Goldman Sachs India | 2020 - Present
+• Led DCF and LBO valuation models for M&A transactions worth $500M+
+• Managed portfolio of 15 corporate banking clients in technology sector
+• Developed financial forecasts and conducted equity research
+• Supported IPO preparations and debt restructuring projects
+• Analyzed financial derivatives and hedging strategies
+
+Financial Analyst | ICICI Bank | 2018 - 2020
+• Performed credit analysis and risk assessment for corporate loans
+• Created financial statements analysis and earnings forecasts
+• Supported investment banking team in capital raising activities
+• Managed interest rate risk and forex hedging portfolios
+
+EDUCATION
+Bachelor of Commerce (Honors) | Delhi University | 2018
+CFA Level II Candidate
+
+TECHNICAL SKILLS
+• Financial Modeling: DCF, LBO, M&A, Comparable Analysis
+• Tools: Bloomberg Terminal, Capital IQ, FactSet, Excel VBA
+• Analysis: Portfolio Management, Risk Assessment, Valuation
+• Languages: Python (for financial analysis)

@@ -1,0 +1,32 @@
+RAHUL VERMA
+HR Analytics Manager | People Operations Data Expert
+rahul.verma@email.com | +91 9876543210
+
+PROFESSIONAL SUMMARY
+HR professional with strong analytical background specializing in 
+workforce analytics, HR dashboards, and data-driven talent decisions.
+Expert in Python, SQL, and Tableau for HR metrics analysis.
+
+WORK EXPERIENCE
+
+HR Analytics Manager | Infosys | 2021 - Present
+• Build predictive models for employee attrition using machine learning
+• Develop Power BI dashboards for workforce planning analytics
+• Analyze large HR datasets using Python and SQL
+• Create regression models for compensation benchmarking
+• Implement data visualization for talent metrics
+• Use statistical analysis for diversity and inclusion insights
+
+People Analytics Lead | TCS | 2019 - 2021
+• Led HR data science initiatives for 50,000 employee organization
+• Built tableau dashboards for recruitment funnel analysis
+• Applied machine learning algorithms to predict hiring success
+• Managed big data pipelines for employee engagement data
+
+EDUCATION
+MBA in Human Resources | XLRI | 2019
+B.Tech Computer Science | NIT | 2017
+
+SKILLS
+Python, SQL, Tableau, Power BI, Machine Learning, Statistics,
+HR Analytics, People Operations, Workforce Planning, Data Visualization

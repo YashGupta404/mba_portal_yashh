@@ -1,0 +1,29 @@
+ANANYA KRISHNAN
+Data Scientist | Business Analytics Professional
+
+SUMMARY
+Data-driven professional with 3+ years of experience in business analytics,
+machine learning, and data visualization. Expert in transforming complex data
+into actionable business insights.
+
+EXPERIENCE
+
+Data Scientist | Amazon India | 2021 - Present
+- Built predictive models for customer behavior analysis using Python and ML
+- Developed dashboards in Tableau for real-time business intelligence
+- Implemented A/B testing frameworks for product optimization
+- Created recommendation algorithms increasing sales by 25%
+- Analyzed big data using SQL and Apache Spark
+
+Business Analyst | Flipkart | 2019 - 2021
+- Conducted market research and competitive analysis
+- Built KPI dashboards for executive decision-making
+- Performed regression analysis for demand forecasting
+- Automated reporting using Python and Excel VBA
+
+EDUCATION
+B.Tech in Computer Science | IIT Delhi | 2019
+
+TECHNICAL SKILLS
+Python, R, SQL, Tableau, Power BI, Machine Learning, 
+Data Mining, Statistical Analysis, Big Data Analytics, TensorFlow

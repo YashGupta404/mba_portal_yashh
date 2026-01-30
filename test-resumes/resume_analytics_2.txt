@@ -1,0 +1,30 @@
+VIKRAM REDDY
+Business Intelligence Analyst | Data Analytics Expert
+
+PROFILE
+Analytics professional specializing in data-driven decision making,
+business intelligence, and predictive analytics. Strong experience
+in SQL, Python, and visualization tools.
+
+PROFESSIONAL EXPERIENCE
+
+Business Intelligence Manager | Infosys | 2020 - Present
+- Led data analytics team of 8 analysts
+- Designed enterprise data warehouse solutions
+- Created ETL pipelines for data integration
+- Built executive dashboards using Power BI
+- Implemented predictive analytics for business forecasting
+
+Data Analyst | TCS | 2017 - 2020
+- Performed data mining and pattern recognition analysis
+- Built statistical models for customer segmentation
+- Automated data collection and reporting processes
+- Conducted A/B testing for marketing campaigns
+
+EDUCATION
+M.Sc. Statistics | ISI Kolkata | 2017
+B.Sc. Mathematics | St. Stephen's College | 2015
+
+SKILLS
+SQL, Python, R, Tableau, Power BI, Machine Learning,
+Data Warehousing, ETL, Statistical Modeling, Predictive Analytics

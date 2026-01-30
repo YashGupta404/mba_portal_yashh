@@ -932,32 +932,9 @@ function ResultsView({
                     Your MBA Fit Result
                 </h1>
                 <p className="text-slate-600">
-                    Based on your {source === 'quiz' ? 'quiz performance' : 'resume'}, here's your personalized recommendation
+                    Based on your {source === 'quiz' ? 'quiz responses' : 'resume'}, here's your personalized recommendation
                 </p>
             </div>
-
-            {/* Score Summary (for quiz) */}
-            {source === 'quiz' && results.summary && (
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.05 }}
-                    className="grid grid-cols-3 gap-4 mb-6"
-                >
-                    <div className="bg-emerald-50 rounded-xl p-4 text-center border border-emerald-200">
-                        <div className="text-3xl font-bold text-emerald-600">{results.summary.correctAnswers}</div>
-                        <div className="text-sm text-emerald-700">Correct</div>
-                    </div>
-                    <div className="bg-red-50 rounded-xl p-4 text-center border border-red-200">
-                        <div className="text-3xl font-bold text-red-600">{results.summary.wrongAnswers}</div>
-                        <div className="text-sm text-red-700">Wrong</div>
-                    </div>
-                    <div className="bg-blue-50 rounded-xl p-4 text-center border border-blue-200">
-                        <div className="text-3xl font-bold text-blue-600">{results.summary.percentage}%</div>
-                        <div className="text-sm text-blue-700">Score</div>
-                    </div>
-                </motion.div>
-            )}
 
             {/* Primary Match Card */}
             <motion.div

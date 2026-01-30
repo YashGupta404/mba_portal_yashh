@@ -1,0 +1,28 @@
+JOHN SMITH
+Financial Analyst | Investment Banking Professional
+
+PROFESSIONAL EXPERIENCE
+
+Senior Financial Analyst | Goldman Sachs | 2020 - Present
+- Conducted equity research and valuation analysis for M&A transactions worth $500M+
+- Built advanced financial models including DCF, LBO, and comparable company analysis
+- Managed portfolio of investment banking clients in technology sector
+- Performed due diligence for merger and acquisition deals
+
+Financial Analyst | JP Morgan Chase | 2018 - 2020
+- Analyzed corporate finance strategies and capital structure optimization
+- Created financial statements analysis and earnings forecasts
+- Supported investment banking team in IPO preparation
+- Managed derivative portfolios and hedging strategies
+
+EDUCATION
+Bachelor of Commerce in Finance | University of Delhi | 2018
+CFA Level 2 Candidate
+
+SKILLS
+- Financial Modeling (DCF, LBO, M&A)
+- Bloomberg Terminal, Capital IQ
+- Portfolio Management
+- Risk Assessment
+- Investment Valuation
+- Corporate Finance
