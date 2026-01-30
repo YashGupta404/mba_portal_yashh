@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
+import { PERSONALITY_QUESTIONS, INDUSTRY_PACKAGES } from './personalityQuestions.js';
 
 dotenv.config();
 
@@ -15,12 +16,13 @@ function getModel() {
     return model;
 }
 
-// MBA Specializations with their courses
+// MBA Specializations with their courses and average packages (LPA)
 const MBA_SPECIALIZATIONS = [
     {
         id: "business-analytics",
         name: "MBA in Business Analytics",
         color: "#7CB342",
+        avgPackage: 16, // LPA
         courses: ["Business Statistics", "Data Mining", "Predictive Analytics", "Machine Learning for Business", "Big Data Analytics", "Business Intelligence", "Data Visualization"],
         roles: ["Business Analyst", "Data Analyst", "Strategy Consultant", "Analytics Manager"],
         traits: ["Passion for data-driven problem solving", "Preference for structured decision-making", "Interest in analytical and consulting roles"],
@@ -30,6 +32,7 @@ const MBA_SPECIALIZATIONS = [
         id: "finance",
         name: "MBA in Finance",
         color: "#5C6BC0",
+        avgPackage: 18, // LPA - highest typically
         courses: ["Corporate Finance", "Investment Banking", "Financial Derivatives", "Portfolio Management", "Mergers & Acquisitions", "Financial Risk Management", "Equity Research"],
         roles: ["Investment Banker", "Financial Analyst", "Portfolio Manager", "CFO"],
         traits: ["Strong numerical aptitude", "Interest in markets and investments", "Risk assessment capabilities"],
@@ -39,6 +42,7 @@ const MBA_SPECIALIZATIONS = [
         id: "operations",
         name: "MBA in Operations",
         color: "#26A69A",
+        avgPackage: 11, // LPA
         courses: ["Supply Chain Management", "Operations Research", "Lean Manufacturing", "Six Sigma", "Project Management", "Quality Management", "Logistics Management"],
         roles: ["Operations Manager", "Supply Chain Analyst", "Process Improvement Lead", "Plant Manager"],
         traits: ["Process-oriented thinking", "Efficiency optimization mindset", "Detail-oriented approach"],
@@ -48,6 +52,7 @@ const MBA_SPECIALIZATIONS = [
         id: "marketing",
         name: "MBA in Marketing",
         color: "#FF7043",
+        avgPackage: 12, // LPA
         courses: ["Consumer Behavior", "Brand Management", "Digital Marketing", "Market Research", "Advertising Management", "Sales Management", "Product Management"],
         roles: ["Brand Manager", "Marketing Director", "Product Manager", "Growth Hacker"],
         traits: ["Creative thinking ability", "Consumer behavior understanding", "Strong communication skills"],
@@ -57,6 +62,7 @@ const MBA_SPECIALIZATIONS = [
         id: "entrepreneurship",
         name: "MBA in Entrepreneurship",
         color: "#FFA726",
+        avgPackage: 10, // LPA - variable for founders
         courses: ["New Venture Creation", "Venture Capital", "Business Model Innovation", "Startup Funding", "Lean Startup Methodology", "Social Entrepreneurship", "Family Business Management"],
         roles: ["Startup Founder", "Venture Capitalist", "Product Innovator", "Business Development Manager"],
         traits: ["Risk-taking appetite", "Innovative mindset", "Leadership and vision"],
@@ -66,6 +72,7 @@ const MBA_SPECIALIZATIONS = [
         id: "hr",
         name: "MBA in Human Resources",
         color: "#AB47BC",
+        avgPackage: 10, // LPA
         courses: ["Organizational Behavior", "Talent Management", "Compensation & Benefits", "Performance Management", "Training & Development", "Labor Laws", "HR Analytics"],
         roles: ["HR Manager", "Talent Acquisition Lead", "L&D Manager", "CHRO"],
         traits: ["People-oriented mindset", "Strong interpersonal skills", "Conflict resolution abilities"],
@@ -509,11 +516,12 @@ const MBA_QUESTION_POOL = [
     { question: "What is diversity and inclusion?", targetSpecialization: "hr", options: [{ text: "Creating an environment where all feel valued", isCorrect: true }, { text: "Product variety", isCorrect: false }, { text: "Multiple office locations", isCorrect: false }, { text: "Service expansion", isCorrect: false }] }
 ];
 
-// Quiz Generator Agent
+// Quiz Generator Agent - Updated to use personality-based questions
 export class QuizGeneratorAgent {
     constructor() {
         this.specializations = MBA_SPECIALIZATIONS;
-        this.questionPool = MBA_QUESTION_POOL;
+        // Use personality questions instead of academic questions
+        this.questionPool = PERSONALITY_QUESTIONS;
     }
 
     shuffleArray(array) {
@@ -526,29 +534,46 @@ export class QuizGeneratorAgent {
     }
 
     async generateQuizQuestions() {
-        // Shuffle the question pool and pick 10 random questions
-        // Ensure we get diverse specializations
-        const shuffledPool = this.shuffleArray([...this.questionPool]);
+        // Get a random selection of 10 personality questions
+        // Ensure we get at least one question from each specialization
+        const questionsBySpec = {};
+
+        // Group questions by specialization
+        this.specializations.forEach(spec => {
+            questionsBySpec[spec.id] = this.questionPool.filter(q =>
+                q.targetSpecialization === spec.id
+            );
+        });
+
         const selectedQuestions = [];
-        const usedSpecs = new Set();
 
-        // First pass: get one question from each specialization
-        for (const q of shuffledPool) {
-            if (!usedSpecs.has(q.targetSpecialization) && selectedQuestions.length < 6) {
-                usedSpecs.add(q.targetSpecialization);
-                selectedQuestions.push(q);
-            }
-        }
+        // First pass: get 1-2 questions from each specialization (6 specs x ~1.5 = 9-10 questions)
+        const specIds = this.shuffleArray(Object.keys(questionsBySpec));
 
-        // Second pass: fill remaining with random questions
-        for (const q of shuffledPool) {
+        for (const specId of specIds) {
             if (selectedQuestions.length >= 10) break;
-            if (!selectedQuestions.includes(q)) {
-                selectedQuestions.push(q);
+
+            const specQuestions = this.shuffleArray(questionsBySpec[specId]);
+            // Take 1-2 questions per specialization
+            const numToTake = selectedQuestions.length < 6 ? 1 : Math.min(2, 10 - selectedQuestions.length);
+
+            for (let i = 0; i < numToTake && i < specQuestions.length; i++) {
+                selectedQuestions.push(specQuestions[i]);
             }
         }
 
-        // Shuffle the selected questions order
+        // Fill remaining slots with random questions if needed
+        while (selectedQuestions.length < 10) {
+            const allShuffled = this.shuffleArray([...this.questionPool]);
+            for (const q of allShuffled) {
+                if (selectedQuestions.length >= 10) break;
+                if (!selectedQuestions.some(sq => sq.question === q.question)) {
+                    selectedQuestions.push(q);
+                }
+            }
+        }
+
+        // Shuffle the final selection
         const finalQuestions = this.shuffleArray(selectedQuestions.slice(0, 10));
 
         // Format questions with shuffled options
@@ -564,7 +589,6 @@ export class QuizGeneratorAgent {
             return {
                 id: index + 1,
                 question: q.question,
-                course: q.course,
                 category: q.category,
                 targetSpecialization: q.targetSpecialization,
                 options: shuffledOptions
@@ -578,7 +602,7 @@ export class QuizGeneratorAgent {
     }
 }
 
-// Course Recommender Agent - Fixed scoring
+// Course Recommender Agent - Fixed scoring with package-based tiebreaker
 export class CourseRecommenderAgent {
     constructor() {
         this.specializations = MBA_SPECIALIZATIONS;
@@ -622,16 +646,32 @@ export class CourseRecommenderAgent {
         const totalWrong = answers.length - totalCorrect;
 
         // Sort specializations by score (higher scores = better fit)
+        // TIEBREAKER: If scores are equal, use average package to decide (higher package wins)
         const sortedSpecs = Object.entries(scores)
-            .sort(([, a], [, b]) => b - a)
-            .map(([id, score]) => ({
-                id,
-                score: score || 0,
-                correct: correctBySpec[id] || 0,
-                total: totalBySpec[id] || 0
-            }));
+            .sort(([idA, scoreA], [idB, scoreB]) => {
+                // First sort by score (descending - higher score first)
+                if (scoreB !== scoreA) {
+                    return scoreB - scoreA;
+                }
+                // If tie, use package as tiebreaker (higher package wins)
+                const specA = this.specializations.find(s => s.id === idA);
+                const specB = this.specializations.find(s => s.id === idB);
+                const pkgA = specA?.avgPackage || INDUSTRY_PACKAGES[idA] || 0;
+                const pkgB = specB?.avgPackage || INDUSTRY_PACKAGES[idB] || 0;
+                return pkgB - pkgA;
+            })
+            .map(([id, score]) => {
+                const spec = this.specializations.find(s => s.id === id);
+                return {
+                    id,
+                    score: score || 0,
+                    correct: correctBySpec[id] || 0,
+                    total: totalBySpec[id] || 0,
+                    avgPackage: spec?.avgPackage || INDUSTRY_PACKAGES[id] || 0
+                };
+            });
 
-        // Get top matches
+        // Get top matches (already sorted with tiebreaker)
         const topMatchId = sortedSpecs[0]?.id || 'business-analytics';
         const secondMatchId = sortedSpecs[1]?.id || 'finance';
 
@@ -845,7 +885,7 @@ Return ONLY JSON.`;
             console.log("Providing fallback recommendation...");
             const resumeLower = resumeText.toLowerCase();
 
-            // Simple keyword matching for fallback
+            // Simple keyword matching for fallback - improved with more keywords
             let scores = {
                 'business-analytics': 0,
                 'finance': 0,
@@ -855,20 +895,55 @@ Return ONLY JSON.`;
                 'hr': 0
             };
 
-            // Analytics keywords
-            if (resumeLower.includes('data') || resumeLower.includes('analytics') || resumeLower.includes('python') || resumeLower.includes('sql')) scores['business-analytics'] += 20;
-            // Finance keywords
-            if (resumeLower.includes('finance') || resumeLower.includes('accounting') || resumeLower.includes('investment') || resumeLower.includes('banking')) scores['finance'] += 20;
-            // Operations keywords
-            if (resumeLower.includes('operations') || resumeLower.includes('supply chain') || resumeLower.includes('manufacturing') || resumeLower.includes('logistics')) scores['operations'] += 20;
-            // Marketing keywords
-            if (resumeLower.includes('marketing') || resumeLower.includes('brand') || resumeLower.includes('digital') || resumeLower.includes('social media')) scores['marketing'] += 20;
-            // Entrepreneurship keywords
-            if (resumeLower.includes('startup') || resumeLower.includes('entrepreneur') || resumeLower.includes('founder') || resumeLower.includes('business')) scores['entrepreneurship'] += 20;
-            // HR keywords
-            if (resumeLower.includes('hr') || resumeLower.includes('human resource') || resumeLower.includes('recruitment') || resumeLower.includes('talent')) scores['hr'] += 20;
+            // Analytics keywords - expanded
+            const analyticsKeywords = ['data scientist', 'data analyst', 'data mining', 'machine learning', 'ai ', 'artificial intelligence',
+                'python', 'sql', 'tableau', 'power bi', 'big data', 'predictive', 'statistics', 'regression', 'dashboard', 'visualization',
+                'business intelligence', 'etl', 'spark', 'hadoop', 'tensorflow'];
+            analyticsKeywords.forEach(kw => { if (resumeLower.includes(kw)) scores['business-analytics'] += 5; });
 
-            const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+            // Finance keywords - expanded
+            const financeKeywords = ['finance', 'investment', 'banking', 'accounting', 'cfa', 'portfolio', 'equity', 'debt', 'treasury',
+                'financial analyst', 'risk management', 'valuation', 'merger', 'acquisition', 'm&a', 'ipo', 'capital market', 'hedge fund',
+                'private equity', 'venture capital', 'dcf', 'lbo', 'balance sheet', 'profit', 'revenue', 'cfo', 'budget'];
+            financeKeywords.forEach(kw => { if (resumeLower.includes(kw)) scores['finance'] += 5; });
+
+            // Operations keywords - expanded
+            const opsKeywords = ['operations', 'supply chain', 'manufacturing', 'logistics', 'lean', 'six sigma', 'quality', 'production',
+                'inventory', 'warehouse', 'procurement', 'vendor', 'process improvement', 'kaizen', 'tqm', 'plant', 'factory',
+                'assembly', 'erp', 'scm', 'jit', 'kanban', 'throughput', 'efficiency'];
+            opsKeywords.forEach(kw => { if (resumeLower.includes(kw)) scores['operations'] += 5; });
+
+            // Marketing keywords - expanded
+            const marketingKeywords = ['marketing', 'brand', 'advertising', 'digital marketing', 'social media', 'seo', 'sem', 'ppc',
+                'content', 'campaign', 'launch', 'growth', 'customer acquisition', 'crm', 'email marketing', 'influencer', 'pr ',
+                'public relation', 'market research', 'consumer', 'audience', 'engagement', 'conversion'];
+            marketingKeywords.forEach(kw => { if (resumeLower.includes(kw)) scores['marketing'] += 5; });
+
+            // Entrepreneurship keywords - expanded
+            const entrepreneurKeywords = ['startup', 'entrepreneur', 'founder', 'co-founder', 'ceo', 'venture', 'bootstrap', 'mvp',
+                'pivot', 'pitch', 'angel', 'incubator', 'accelerator', 'disrupt', 'innovation', 'product-market', 'seed funding',
+                'series a', 'unicorn', 'growth hack', 'scalable', 'own business', 'my company'];
+            entrepreneurKeywords.forEach(kw => { if (resumeLower.includes(kw)) scores['entrepreneurship'] += 5; });
+
+            // HR keywords - significantly expanded to catch more HR terms
+            const hrKeywords = ['human resource', ' hr ', 'hr manager', 'hr business partner', 'hrbp', 'talent acquisition',
+                'recruitment', 'recruiter', 'hiring', 'onboarding', 'offboarding', 'employee engagement', 'performance management',
+                'performance appraisal', 'compensation', 'benefits', 'payroll', 'training', 'l&d', 'learning and development',
+                'organizational behavior', 'organizational development', 'culture', 'diversity', 'inclusion', 'd&i', 'dei',
+                'employee relation', 'labor law', 'hris', 'workday', 'successfactor', 'talent management', 'succession planning',
+                'workforce', 'headcount', 'attrition', 'retention', 'exit interview', 'team building', 'employee satisfaction',
+                'chro', 'chief human', 'people operations', 'people manager', 'employee experience'];
+            hrKeywords.forEach(kw => { if (resumeLower.includes(kw)) scores['hr'] += 5; });
+
+            // Sort by score, then by package (tiebreaker)
+            const sortedScores = Object.entries(scores).sort((a, b) => {
+                if (b[1] !== a[1]) return b[1] - a[1];
+                // Tiebreaker: use package
+                const pkgA = this.specializations.find(s => s.id === a[0])?.avgPackage || 0;
+                const pkgB = this.specializations.find(s => s.id === b[0])?.avgPackage || 0;
+                return pkgB - pkgA;
+            });
+
             const primarySpec = this.specializations.find(s => s.id === sortedScores[0][0]);
             const secondarySpec = this.specializations.find(s => s.id === sortedScores[1][0]);
 

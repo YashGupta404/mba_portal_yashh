@@ -16,7 +16,6 @@ export default function Navbar() {
     { label: "About", href: "/about" },
     { label: "Faculty", href: "/faculty" },
     { label: "Programs", href: "/programs" },
-    { label: "MBA Fit Finder", href: "/mba-fit-finder" },
     { label: "Admissions", href: "/admissions" },
     { label: "Placements", href: "/placements" },
     { label: "Student Life", href: "/student-life" },
